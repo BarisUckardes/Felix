@@ -25,4 +25,12 @@ namespace Felix
 
 		ClearColorCore(r, g, b, a);
 	}
+	void CommandBuffer::ClearDepth(const unsigned char depth)
+	{
+		ClearDepthCore(depth);
+	}
+	void CommandBuffer::ClearStencil(const int stencil)
+	{
+		ClearStencilCore(stencil);
+	}
 }

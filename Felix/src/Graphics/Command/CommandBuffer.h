@@ -22,6 +22,8 @@ namespace Felix
 		FORCEINLINE void Unlock();
 
 		FORCEINLINE void ClearColor(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a);
+		FORCEINLINE void ClearDepth(const unsigned char depth);
+		FORCEINLINE void ClearStencil(const int stencil);
 
 
 	protected:
@@ -29,6 +31,8 @@ namespace Felix
 		FORCEINLINE virtual void UnlockCore() = 0;
 
 		FORCEINLINE virtual void ClearColorCore(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a) = 0;
+		FORCEINLINE virtual void ClearDepthCore(const unsigned char depth) = 0;
+		FORCEINLINE virtual void ClearStencilCore(const int stencil) = 0;
 	private:
 		bool _asyncSubmission;
 		bool _locked;

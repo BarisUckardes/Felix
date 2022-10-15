@@ -12,10 +12,22 @@ namespace Felix
 		glClearColor(r, g, b, a);
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
+	void OpenGLCommandBuffer::ClearDepthCore(const unsigned char depth)
+	{
+		glClearDepth(depth);
+		glClear(GL_DEPTH_BUFFER_BIT);
+	}
+	void OpenGLCommandBuffer::ClearStencilCore(const int stencil)
+	{
+		glClearStencil(stencil);
+		glClear(GL_STENCIL_BUFFER_BIT);
+	}
 	void OpenGLCommandBuffer::LockCore()
 	{
+
 	}
 	void OpenGLCommandBuffer::UnlockCore()
 	{
+
 	}
 }
