@@ -102,7 +102,7 @@ namespace Felix
 		wc.lpszClassName = WINDOW_CLASS_NAME;
 		wc.hIconSm = NULL;
 
-		RegisterClassEx(&wc);
+		ASSERT(RegisterClassEx(&wc) != NULL,"WindowsWindow","Window class registration failed!");
 
 		/*
 		* Create window handle
@@ -118,6 +118,7 @@ namespace Felix
 			processHandle,
 			this
 		);
+		ASSERT(windowHandle != NULL,"WindowsWindow","Window creation failed!");
 
 		WindowHandle = windowHandle;
 		WindowDeviceContext = GetDC(windowHandle);
