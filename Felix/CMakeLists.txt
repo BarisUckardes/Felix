@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_library (Felix "Felix.cpp" "Felix.h" "src/Window/Window.h" "src/Core/Core.h" "src/Window/WindowCreateDesc.h" "src/Window/Window.cpp" "src/Platform/Windows/Window/WindowsWindow.h" "src/Platform/Windows/Window/WindowsWindow.cpp" "src/Window/WindowEventType.h" "src/Window/WindowEvent.h" "src/Window/Events/Window/WindowClosedEvent.h" "src/Window/WindowEvents.h" "src/Window/Events/Window/WindowMovedEvent.h" "src/Window/Events/Window/WindowResizedEvent.h")
+add_library (Felix "Felix.cpp" "Felix.h" "src/Window/Window.h" "src/Core/Core.h" "src/Window/WindowCreateDesc.h" "src/Window/Window.cpp" "src/Platform/Windows/Window/WindowsWindow.h" "src/Platform/Windows/Window/WindowsWindow.cpp" "src/Window/WindowEventType.h" "src/Window/WindowEvent.h" "src/Window/Events/Window/WindowClosedEvent.h" "src/Window/WindowEvents.h" "src/Window/Events/Window/WindowMovedEvent.h" "src/Window/Events/Window/WindowResizedEvent.h" "src/Platform/PlatformType.h" "src/Graphics/GraphicsAPI.h")
 
 
 if (WIN32)
