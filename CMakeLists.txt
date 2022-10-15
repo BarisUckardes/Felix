@@ -4,6 +4,8 @@
 cmake_minimum_required (VERSION 3.8)
 
 project ("Felix")
+project ("WindowsTest")
 
 # Include sub-projects.
 add_subdirectory ("Felix")
+add_subdirectory("WindowsTest")
