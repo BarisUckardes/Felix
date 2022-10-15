@@ -1,5 +1,6 @@
 #include "OpenGLDevice.h"
 #include <GLAD/glad.h>
+#include <Graphics/API/OpenGL/Device/OpenGLDeviceObjects.h>
 
 #ifdef FELIX_OS_WINDOWS
 #include <Platform/Windows/Window/WindowsWindow.h>
@@ -18,6 +19,7 @@ namespace Felix
 {
     OpenGLDevice::OpenGLDevice(Window* pOwnerWindow) : GraphicsDevice(pOwnerWindow)
     {
+
 #ifdef FELIX_OS_WINDOWS
         const WindowsWindow* pWin32Window = (const WindowsWindow*)pOwnerWindow;
 
@@ -92,5 +94,9 @@ namespace Felix
     void OpenGLDevice::SwapbuffersCore()
     {
         SwapBuffers(_windowDeviceContext);
+    }
+    CommandBuffer* OpenGLDevice::CreateCommandBufferCore(const CommandBufferCreateDesc& desc)
+    {
+        return new OpenGLCommandBuffer(desc);
     }
 }

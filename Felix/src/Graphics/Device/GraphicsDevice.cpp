@@ -1,8 +1,8 @@
 #include "GraphicsDevice.h"
 #include <Graphics/Device/StandaloneGraphicsDeviceCreateDesc.h>
 #include <Graphics/Device/WindowGraphicsDeviceCreateDesc.h>
-
 #include <Graphics/API/OpenGL/Device/OpenGLDevice.h>
+#include <Graphics/Device/GraphicsDeviceObjects.h>
 
 namespace Felix
 {
@@ -51,6 +51,15 @@ namespace Felix
 
         SwapbuffersCore();
     }
+    CommandBuffer* GraphicsDevice::CreateCommandBuffer(const CommandBufferCreateDesc& desc)
+    {
+        CommandBuffer* pObject = CreateCommandBufferCore(desc);
+
+        RegisterDeviceObject(pObject);
+
+        return pObject;
+
+    }
     GraphicsDevice::GraphicsDevice(Window* pOwnerWindow)
     {
         _standalone = false;
@@ -60,6 +69,10 @@ namespace Felix
     {
         _standalone = true;
         _ownerWindow = nullptr;
+    }
+    void GraphicsDevice::RegisterDeviceObject(GraphicsDeviceObject* pDeviceObject)
+    {
+        _objects.push_back(pDeviceObject);
     }
     GraphicsDevice* GraphicsDevice::CreateWindowDevice(const WindowGraphicsDeviceCreateDesc& desc,Window* pOwnerWindow, const GraphicsDeviceCapabilities& requiredCapabilities)
     {

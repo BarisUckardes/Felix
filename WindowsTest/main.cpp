@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Window/Window.h>
 #include <Graphics/Device/GraphicsDevice.h>
-
+#include <Graphics/Command/CommandBuffer.h>
 using namespace std;
 
 int main()
@@ -24,6 +24,13 @@ int main()
 	Felix::WindowGraphicsDeviceCreateDesc deviceDesc = {};
 
 	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,pWindow);
+
+	/*
+	* Create command buffer
+	*/
+	Felix::CommandBufferCreateDesc cmdBufferDesc = {};
+	Felix::CommandBuffer* pCmdBuffer = pDevice->CreateCommandBuffer(cmdBufferDesc);
+
 	/*
 	* Loop
 	*/
@@ -31,6 +38,13 @@ int main()
 	while (pWindow->IsActive())
 	{
 		pWindow->PollInputEvents();
+
+		pCmdBuffer->Lock();
+
+		pCmdBuffer->ClearColor(1, 0, 0, 1);
+
+		pCmdBuffer->Unlock();
+
 		pDevice->Swapbuffers();
 	}
 
