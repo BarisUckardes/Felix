@@ -15,6 +15,11 @@ namespace Felix
 
 	class GraphicsBuffer;
 	struct GraphicsBufferCreateDesc;
+	struct GraphicsBufferUpdateDesc;
+
+	class Texture;
+	struct TextureCreateDesc;
+	struct TextureUpdateDesc;
 
 	class EXPORT GraphicsDevice
 	{
@@ -30,6 +35,10 @@ namespace Felix
 
 		CommandBuffer* CreateCommandBuffer(const CommandBufferCreateDesc& desc);
 		GraphicsBuffer* CreateBuffer(const GraphicsBufferCreateDesc& desc);
+		Texture* CreateTexture(const TextureCreateDesc& desc);
+
+		void UpdateBuffer(GraphicsBuffer* pBuffer,const GraphicsBufferUpdateDesc& desc);
+		void UpdateTexture(Texture* pTexture,const TextureUpdateDesc& desc);
 
 	protected:
 		GraphicsDevice(Window* pOwnerWindow);
@@ -42,6 +51,10 @@ namespace Felix
 
 		virtual CommandBuffer* CreateCommandBufferCore(const CommandBufferCreateDesc& desc) = 0;
 		virtual GraphicsBuffer* CreateBufferCore(const GraphicsBufferCreateDesc& desc) = 0;
+		virtual Texture* CreateTextureCore(const TextureCreateDesc& desc) = 0;
+
+		virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) = 0;
+		virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) = 0;
 
 	private:
 		void RegisterDeviceObject(GraphicsDeviceObject* pDeviceObject);

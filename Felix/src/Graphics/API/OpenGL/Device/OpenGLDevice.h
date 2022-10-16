@@ -15,8 +15,13 @@ namespace Felix
 
 	protected:
 		virtual void SwapbuffersCore() override;
+
 		virtual CommandBuffer* CreateCommandBufferCore(const CommandBufferCreateDesc& desc) override;
 		virtual GraphicsBuffer* CreateBufferCore(const GraphicsBufferCreateDesc& desc) override;
+		virtual Texture* CreateTextureCore(const TextureCreateDesc& desc) override;
+
+		virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) override;
+		virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) override;
 	private:
 
 #ifdef FELIX_OS_WINDOWS
@@ -26,6 +31,8 @@ namespace Felix
 
 
 	
+
+
 
 	};
 }

@@ -1,9 +1,13 @@
 #include "OpenGLDevice.h"
 #include <GLAD/glad.h>
 #include <Graphics/API/OpenGL/Device/OpenGLDeviceObjects.h>
+#include <Graphics/Buffer/GraphicsBufferUpdateDesc.h>
+#include <Graphics/Texture/TextureUpdateDesc.h>
 
 #ifdef FELIX_OS_WINDOWS
 #include <Platform/Windows/Window/WindowsWindow.h>
+#include <Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.h>
+#include <Graphics/API/OpenGL/Texture/OpenGLTextureUtils.h>
 typedef HGLRC(WINAPI* PFNWGLCREATECONTEXTATTRIBSARBPROC) (HDC hDC, HGLRC hShareContext, const int* attribList);
 typedef const char* (WINAPI* PFNWGLGETEXTENSIONSSTRINGEXTPROC)(void);
 typedef BOOL(WINAPI* PFNWGLSWAPINTERVALEXTPROC)(int);
@@ -102,5 +106,76 @@ namespace Felix
     GraphicsBuffer* OpenGLDevice::CreateBufferCore(const GraphicsBufferCreateDesc& desc)
     {
         return new OpenGLBuffer(desc);
+    }
+    Texture* OpenGLDevice::CreateTextureCore(const TextureCreateDesc& desc)
+    {
+        return new OpenGLTexture(desc);
+    }
+    void OpenGLDevice::UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc)
+    {
+        const OpenGLBuffer* pGLBuffer = (const OpenGLBuffer*)pBuffer;
+
+        glNamedBufferSubData(pGLBuffer->GetGLHandle(), desc.Offset, desc.Size, desc.pData);
+    }
+    void OpenGLDevice::UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc)
+    {
+        const OpenGLTexture* pGLTexture = (const OpenGLTexture*)pTexture;
+
+        const TextureType type = pTexture->GetTextureType();
+        const unsigned handle = pGLTexture->GetGLHandle();
+        const unsigned int format = OpenGLTextureUtils::GetTextureFormat(pTexture->GetFormat());
+        const unsigned int dataType = OpenGLTextureUtils::GetDataType(pTexture->GetFormat());
+
+        switch (type)
+        {
+            case Felix::TextureType::Texture1D:
+            {
+                glTextureSubImage1D(
+                    handle,
+                    0,
+                    0,
+                    pTexture->GetWidth(),
+                    format,
+                    dataType,
+                    desc.pData);
+                break;
+            }
+            case Felix::TextureType::Texture2D:
+            {
+                glTextureSubImage2D(
+                    handle,
+                    0,
+                    0,
+                    0,
+                    pTexture->GetWidth(),
+                    pTexture->GetHeight(),
+                    format,
+                    dataType,
+                    desc.pData
+                );
+                break;
+            }
+            case Felix::TextureType::Texture3D:
+            {
+                glTextureSubImage3D(
+                    handle,
+                    0,
+                    0,
+                    0,
+                    0,
+                    pTexture->GetWidth(),
+                    pTexture->GetHeight(),
+                    pTexture->GetDepth(),
+                    format,
+                    dataType,
+                    desc.pData
+                );
+                break;
+            }
+            case Felix::TextureType::CubeTexture:
+                break;
+            default:
+                break;
+        }
     }
 }

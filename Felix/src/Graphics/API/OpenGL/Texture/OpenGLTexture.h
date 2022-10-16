@@ -7,15 +7,13 @@ namespace Felix
 	/// <summary>
 	/// OpenGL texture implementation
 	/// </summary>
-	class EXPORT OpenGLTexture : public Texture
+	class EXPORT OpenGLTexture final : public Texture
 	{
 	public:
-		FORCEINLINE unsigned int GetGLHandle() const noexcept { return _handle; }
-
-	protected:
 		OpenGLTexture(const TextureCreateDesc& desc);
 		virtual ~OpenGLTexture();
 
+		FORCEINLINE unsigned int GetGLHandle() const noexcept { return _handle; }
 	private:
 		unsigned int _handle;
 	};

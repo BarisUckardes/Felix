@@ -68,6 +68,23 @@ namespace Felix
 
         return pObject;
     }
+    Texture* GraphicsDevice::CreateTexture(const TextureCreateDesc& desc)
+    {
+        Texture* pObject = CreateTextureCore(desc);
+
+        RegisterDeviceObject(pObject);
+
+        return pObject;
+    }
+    void GraphicsDevice::UpdateBuffer(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc)
+    {
+        UpdateBufferCore(pBuffer, desc);
+    }
+    void GraphicsDevice::UpdateTexture(Texture* pTexture, const TextureUpdateDesc& desc)
+    {
+        UpdateTextureCore(pTexture, desc);
+    }
+
     GraphicsDevice::GraphicsDevice(Window* pOwnerWindow)
     {
         _standalone = false;
