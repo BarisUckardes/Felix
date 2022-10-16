@@ -178,6 +178,10 @@ namespace Felix
                 break;
         }
     }
+    GraphicsResource* OpenGLDevice::CreateResourceCore(const GraphicsResourceCreateDesc& desc)
+    {
+        return new OpenGLGraphicsResource(desc);
+    }
     Framebuffer* OpenGLDevice::CreateFramebufferCore(const FramebufferCreateDesc& desc)
     {
         return new OpenGLFramebuffer(desc,false);

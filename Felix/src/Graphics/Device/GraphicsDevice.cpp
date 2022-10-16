@@ -129,6 +129,14 @@ namespace Felix
 
         return pObject;
     }
+    GraphicsResource* GraphicsDevice::CreateResource(const GraphicsResourceCreateDesc& desc)
+    {
+        GraphicsResource* pObject = CreateResourceCore(desc);
+
+        RegisterDeviceObject(pObject);
+
+        return pObject;
+    }
     void GraphicsDevice::UpdateBuffer(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc)
     {
         UpdateBufferCore(pBuffer, desc);

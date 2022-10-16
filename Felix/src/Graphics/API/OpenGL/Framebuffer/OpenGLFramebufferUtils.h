@@ -12,6 +12,6 @@ namespace Felix
 		~OpenGLFramebufferUtils() = delete;
 
 
-		FORCEINLINE static unsigned int GetFramebuffer() const noexcept { return 0; }
+		FORCEINLINE static unsigned int GetFramebuffer() noexcept { return 0; }
 	};
 }

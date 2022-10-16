@@ -27,6 +27,9 @@ namespace Felix
 	struct FramebufferCreateDesc;
 	struct SwapchainFramebufferCreateDesc;
 
+	class GraphicsResource;
+	struct GraphicsResourceCreateDesc;
+
 	class EXPORT GraphicsDevice
 	{
 	public:
@@ -44,6 +47,7 @@ namespace Felix
 		GraphicsBuffer* CreateBuffer(const GraphicsBufferCreateDesc& desc);
 		Texture* CreateTexture(const TextureCreateDesc& desc);
 		Framebuffer* CreateFramebuffer(const FramebufferCreateDesc& desc);
+		GraphicsResource* CreateResource(const GraphicsResourceCreateDesc& desc);
 
 		void UpdateBuffer(GraphicsBuffer* pBuffer,const GraphicsBufferUpdateDesc& desc);
 		void UpdateTexture(Texture* pTexture,const TextureUpdateDesc& desc);
@@ -62,6 +66,7 @@ namespace Felix
 		virtual Texture* CreateTextureCore(const TextureCreateDesc& desc) = 0;
 		virtual Framebuffer* CreateFramebufferCore(const FramebufferCreateDesc& desc) = 0;
 		virtual Framebuffer* CreateSwapchainFramebufferCore(const SwapchainFramebufferCreateDesc& desc) = 0;
+		virtual GraphicsResource* CreateResourceCore(const GraphicsResourceCreateDesc& desc) = 0;
 
 		virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) = 0;
 		virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) = 0;
