@@ -2,6 +2,11 @@
 
 Felix is a cross-platform, graphics API-agnostic rendering and compute library for C++. It offers unified interface to a GPU and exposes graphics and compute functionalities. Felix is aimed to be used as a high-performance and scaleable interface for GPU-works.
 
+Supported compilers
+- [X] MSVC
+- [ ] GNU
+- [ ] Clang
+
 Supported platforms
 - [X] Windows
 - [ ] Linux
