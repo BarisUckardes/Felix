@@ -9,8 +9,12 @@ namespace Felix
 {
 	class GraphicsDeviceObject;
 	class Window;
+
 	class CommandBuffer;
 	struct CommandBufferCreateDesc;
+
+	class GraphicsBuffer;
+	struct GraphicsBufferCreateDesc;
 
 	class EXPORT GraphicsDevice
 	{
@@ -25,6 +29,7 @@ namespace Felix
 		void Swapbuffers();
 
 		CommandBuffer* CreateCommandBuffer(const CommandBufferCreateDesc& desc);
+		GraphicsBuffer* CreateBuffer(const GraphicsBufferCreateDesc& desc);
 
 	protected:
 		GraphicsDevice(Window* pOwnerWindow);
@@ -35,7 +40,8 @@ namespace Felix
 
 		virtual void SwapbuffersCore() = 0;
 
-		FORCEINLINE virtual CommandBuffer* CreateCommandBufferCore(const CommandBufferCreateDesc& desc) = 0;
+		virtual CommandBuffer* CreateCommandBufferCore(const CommandBufferCreateDesc& desc) = 0;
+		virtual GraphicsBuffer* CreateBufferCore(const GraphicsBufferCreateDesc& desc) = 0;
 
 	private:
 		void RegisterDeviceObject(GraphicsDeviceObject* pDeviceObject);

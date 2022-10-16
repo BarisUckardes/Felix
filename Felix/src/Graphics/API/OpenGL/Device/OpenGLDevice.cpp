@@ -99,4 +99,8 @@ namespace Felix
     {
         return new OpenGLCommandBuffer(desc);
     }
+    GraphicsBuffer* OpenGLDevice::CreateBufferCore(const GraphicsBufferCreateDesc& desc)
+    {
+        return new OpenGLBuffer(desc);
+    }
 }

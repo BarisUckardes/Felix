@@ -60,6 +60,14 @@ namespace Felix
         return pObject;
 
     }
+    GraphicsBuffer* GraphicsDevice::CreateBuffer(const GraphicsBufferCreateDesc& desc)
+    {
+        GraphicsBuffer* pObject = CreateBufferCore(desc);
+
+        RegisterDeviceObject(pObject);
+
+        return pObject;
+    }
     GraphicsDevice::GraphicsDevice(Window* pOwnerWindow)
     {
         _standalone = false;

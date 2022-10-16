@@ -16,12 +16,16 @@ namespace Felix
 	protected:
 		virtual void SwapbuffersCore() override;
 		virtual CommandBuffer* CreateCommandBufferCore(const CommandBufferCreateDesc& desc) override;
+		virtual GraphicsBuffer* CreateBufferCore(const GraphicsBufferCreateDesc& desc) override;
 	private:
 
 #ifdef FELIX_OS_WINDOWS
 		HGLRC _context;
 		HDC _windowDeviceContext;
 #endif
+
+
+	
 
 	};
 }
