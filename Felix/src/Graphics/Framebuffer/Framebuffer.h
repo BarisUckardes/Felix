@@ -1,6 +1,7 @@
 #pragma once
 #include <Graphics/Device/GraphicsDeviceObject.h>
 #include <Graphics/Framebuffer/FramebufferCreateDesc.h>
+#include <Graphics/Framebuffer/SwapchainFramebufferCreateDesc.h>
 
 namespace Felix
 {
@@ -20,9 +21,11 @@ namespace Felix
 
 		FORCEINLINE GraphicsDeviceObjectType GetDeviceObjectType() const noexcept final { return GraphicsDeviceObjectType::Framebuffer; }
 	protected:
-		Framebuffer(const FramebufferCreateDesc& desc);
+		Framebuffer(const FramebufferCreateDesc& desc,const bool bSwapchain);
 		virtual ~Framebuffer(){}
 
+		FORCEINLINE void _SetWidth(const unsigned int width) noexcept { _width = width; }
+		FORCEINLINE void _SetHeight(const unsigned int height) noexcept { _height = height; }
 	private:
 		std::vector<Texture*> _attachments;
 		Texture* _depthStencilTexture;

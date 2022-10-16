@@ -1,5 +1,7 @@
 #include "Window.h"
 #include <Window/WindowEvents.h>
+#include <Graphics/Framebuffer/SwapchainFramebuffer.h>
+#include <Graphics/Device/GraphicsDevice.h>
 
 #ifdef FELIX_OS_WINDOWS
 #include <Platform/Windows/Window/WindowsWindow.h>
@@ -65,6 +67,15 @@ namespace Felix
 			{
 				const WindowResizedEvent* pEventData = (const WindowResizedEvent*)pEvent;
 				pEventData->GetSize(_width, _height);
+
+				/*
+				* Validate and report swapchain
+				*/
+				if (_childDevice != nullptr)
+				{
+					SwapchainFramebuffer* pFramebuffer = (SwapchainFramebuffer*)_childDevice->GetSwapchainFramebuffer();
+
+				}
 				break;
 			}
 			case Felix::WindowEventType::KeyboardDown:
@@ -86,4 +97,9 @@ namespace Felix
 		_eventBuffer.push_back(nullptr);
 	}
 		
+	void Window::_BindChildDevice(GraphicsDevice* pChildDevice)
+	{
+		_childDevice = pChildDevice;
+	}
+
 }

@@ -9,7 +9,7 @@ namespace Felix
 	/// </summary>
 	struct EXPORT FramebufferCreateDesc
 	{
-		std::vector<FramebufferAttachmentDesc> Attachmens;
+		std::vector<Texture*> Attachments;
 		unsigned int Width;
 		unsigned int Height;
 	};

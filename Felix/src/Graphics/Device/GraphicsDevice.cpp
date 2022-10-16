@@ -44,6 +44,51 @@ namespace Felix
 
         return pDevice;
     }
+    GraphicsDevice* GraphicsDevice::CreateWindowDevice(const WindowGraphicsDeviceCreateDesc& desc, const SwapchainFramebufferCreateDesc& swapchainDesc, Window* pOwnerWindow, const GraphicsDeviceCapabilities& requiredCapabilities)
+    {
+        /*
+        * Get requested api
+        */
+        GraphicsAPI requestedAPI = desc.PreferredAPI;
+
+        GraphicsDevice* pDevice = nullptr;
+        switch (requestedAPI)
+        {
+        case Felix::GraphicsAPI::OpenGL:
+        {
+            pDevice = new OpenGLDevice(pOwnerWindow);
+            break;
+        }
+        case Felix::GraphicsAPI::OpenGLES:
+            break;
+        case Felix::GraphicsAPI::Directx11:
+            break;
+        case Felix::GraphicsAPI::Directx12:
+            break;
+        case Felix::GraphicsAPI::Vulkan:
+            break;
+        case Felix::GraphicsAPI::Metal:
+            break;
+        case Felix::GraphicsAPI::GNM:
+            break;
+        case Felix::GraphicsAPI::GNMX:
+            break;
+        default:
+            break;
+        }
+
+        /*
+        * Bind device to the window
+        */
+
+        /*
+        * Create swapchain framebuffer
+        */
+        pDevice->CreateSwapchainFramebuffer(swapchainDesc);
+
+        return pDevice;
+    }
+
     void GraphicsDevice::Swapbuffers()
     {
         if (_standalone)
@@ -76,6 +121,14 @@ namespace Felix
 
         return pObject;
     }
+    Framebuffer* GraphicsDevice::CreateFramebuffer(const FramebufferCreateDesc& desc)
+    {
+        Framebuffer* pObject = CreateFramebufferCore(desc);
+
+        RegisterDeviceObject(pObject);
+
+        return pObject;
+    }
     void GraphicsDevice::UpdateBuffer(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc)
     {
         UpdateBufferCore(pBuffer, desc);
@@ -84,58 +137,31 @@ namespace Felix
     {
         UpdateTextureCore(pTexture, desc);
     }
-
     GraphicsDevice::GraphicsDevice(Window* pOwnerWindow)
     {
         _standalone = false;
         _ownerWindow = pOwnerWindow;
     }
+
     GraphicsDevice::GraphicsDevice()
     {
         _standalone = true;
         _ownerWindow = nullptr;
+        _swapchainFramebuffer = nullptr;
     }
+
     void GraphicsDevice::RegisterDeviceObject(GraphicsDeviceObject* pDeviceObject)
     {
         _objects.push_back(pDeviceObject);
     }
-    GraphicsDevice* GraphicsDevice::CreateWindowDevice(const WindowGraphicsDeviceCreateDesc& desc,Window* pOwnerWindow, const GraphicsDeviceCapabilities& requiredCapabilities)
+    void GraphicsDevice::CreateSwapchainFramebuffer(const SwapchainFramebufferCreateDesc& desc)
     {
-        /*
-        * Get requested api
-        */
-        GraphicsAPI requestedAPI = desc.PreferredAPI;
+        Framebuffer* pFramebuffer = CreateSwapchainFramebufferCore(desc);
 
-        GraphicsDevice* pDevice = nullptr;
-        switch (requestedAPI)
-        {
-            case Felix::GraphicsAPI::OpenGL:
-            {
-                pDevice = new OpenGLDevice(pOwnerWindow);
-                break;
-            }
-            case Felix::GraphicsAPI::OpenGLES:
-                break;
-            case Felix::GraphicsAPI::Directx11:
-                break;
-            case Felix::GraphicsAPI::Directx12:
-                break;
-            case Felix::GraphicsAPI::Vulkan:
-                break;
-            case Felix::GraphicsAPI::Metal:
-                break;
-            case Felix::GraphicsAPI::GNM:
-                break;
-            case Felix::GraphicsAPI::GNMX:
-                break;
-            default:
-                break;
-        }
+        RegisterDeviceObject(pFramebuffer);
 
-        /*
-        * Bind device to the window
-        */
-
-        return pDevice;
+        _swapchainFramebuffer = pFramebuffer;
     }
+
+  
 }

@@ -6,11 +6,14 @@
 
 namespace Felix
 {
+	class GraphicsDevice;
+
 	/// <summary>
 	/// Represents a platform-agnostic window
 	/// </summary>
 	class EXPORT Window
 	{
+		friend class WindowDeviceAdapter;
 	public:
 		static Window* Create(const WindowCreateDesc& desc);
 	public:
@@ -32,7 +35,7 @@ namespace Felix
 		void Hide();
 		void PollInputEvents();
 	protected:
-		Window(const WindowCreateDesc& desc) : _title(desc.Title), _width(desc.Width), _height(desc.Height), _positionX(desc.PositionX), _positionY(desc.PositionY),_active(true) {}
+		Window(const WindowCreateDesc& desc) : _title(desc.Title), _width(desc.Width), _height(desc.Height), _positionX(desc.PositionX), _positionY(desc.PositionY),_active(true), _visible(false),_childDevice(nullptr) {}
 		virtual ~Window() {}
 
 		FORCEINLINE void DispatchWindowMessage(WindowEvent* pEvent) noexcept;
@@ -44,9 +47,11 @@ namespace Felix
 		virtual void PollInputEventsCore() = 0;
 		virtual void ShowCore() = 0;
 		virtual void HideCore() = 0;
-
+	private:
+		void _BindChildDevice(GraphicsDevice* pChildDevice);
 	private:
 		std::vector<WindowEvent*> _eventBuffer;
+		GraphicsDevice* _childDevice;
 		std::string _title;
 		unsigned short _width;
 		unsigned short _height;

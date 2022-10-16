@@ -178,4 +178,12 @@ namespace Felix
                 break;
         }
     }
+    Framebuffer* OpenGLDevice::CreateFramebufferCore(const FramebufferCreateDesc& desc)
+    {
+        return new OpenGLFramebuffer(desc,false);
+    }
+    Framebuffer* OpenGLDevice::CreateSwapchainFramebufferCore(const SwapchainFramebufferCreateDesc& desc)
+    {
+        return new OpenGLSwapchainFramebuffer(desc,{},GetOwnerWindow());
+    }
 }

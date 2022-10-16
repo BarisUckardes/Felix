@@ -22,8 +22,9 @@ int main()
 	* Create graphics device
 	*/
 	Felix::WindowGraphicsDeviceCreateDesc deviceDesc = {};
+	Felix::SwapchainFramebufferCreateDesc swapchainDesc = {};
 
-	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,pWindow);
+	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,swapchainDesc,pWindow);
 
 	/*
 	* Create command buffer
