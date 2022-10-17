@@ -1,6 +1,6 @@
 #pragma once
 #include <Core/Core.h>
-#include <Graphics/Pipeline/VertexElementDataType.h>
+#include <Graphics/Pipeline/InputElementDataType.h>
 #include <string>
 
 namespace Felix
@@ -8,10 +8,10 @@ namespace Felix
 	/// <summary>
 	/// Required information to specify a vertex element
 	/// </summary>
-	struct EXPORT VertexElementDesc
+	struct EXPORT InputElementDesc
 	{
 		std::string Name;
-		VertexElementDataType DataType;
+		InputElementDataType DataType;
 		bool bNormalize;
 	};
 }

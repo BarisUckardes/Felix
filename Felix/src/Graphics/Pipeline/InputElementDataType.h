@@ -6,7 +6,7 @@ namespace Felix
 	/// <summary>
 	/// Supported vertex element data types
 	/// </summary>
-	enum class EXPORT VertexElementDataType
+	enum class EXPORT InputElementDataType
 	{
 		Boolean = 0,
 		Integer,
