@@ -5,3 +5,4 @@
 #include <Graphics/API/OpenGL/Framebuffer/OpenGLFramebuffer.h>
 #include <Graphics/API/OpenGL/Framebuffer/OpenGLSwapchainFramebuffer.h>
 #include <Graphics/API/OpenGL/Resource/OpenGLGraphicsResource.h>
+#include <Graphics/API/OpenGL/Pipeline/OpenGLPipeline.h>

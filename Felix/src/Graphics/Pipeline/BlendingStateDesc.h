@@ -1,6 +1,6 @@
 #pragma once
 #include <Graphics/Pipeline/BlendingFunction.h>
-#include <Graphics/Pipeline/BlendingType.h>
+#include <Graphics/Pipeline/BlendingFactor.h>
 
 namespace Felix
 {

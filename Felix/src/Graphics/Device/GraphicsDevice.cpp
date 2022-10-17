@@ -137,6 +137,14 @@ namespace Felix
 
         return pObject;
     }
+    Pipeline* GraphicsDevice::CreatePipeline(const PipelineCreateDesc& desc)
+    {
+        Pipeline* pObject = CreatePipelineCore(desc);
+
+        RegisterDeviceObject(pObject);
+
+        return pObject;
+    }
     void GraphicsDevice::UpdateBuffer(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc)
     {
         UpdateBufferCore(pBuffer, desc);

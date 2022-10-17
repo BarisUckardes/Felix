@@ -178,6 +178,10 @@ namespace Felix
                 break;
         }
     }
+    Pipeline* OpenGLDevice::CreatePipelineCore(const PipelineCreateDesc& desc)
+    {
+        return new OpenGLPipeline(desc);
+    }
     GraphicsResource* OpenGLDevice::CreateResourceCore(const GraphicsResourceCreateDesc& desc)
     {
         return new OpenGLGraphicsResource(desc);

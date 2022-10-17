@@ -6,3 +6,4 @@
 #include <Graphics/Framebuffer/SwapchainFramebuffer.h>
 #include <Graphics/Shader/Shader.h>
 #include <Graphics/Resource/GraphicsResource.h>
+#include <Graphics/Pipeline/Pipeline.h>

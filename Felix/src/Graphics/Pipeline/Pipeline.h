@@ -13,10 +13,11 @@ namespace Felix
 		FORCEINLINE RasterizerStateDesc GetRasterizerDesc() const noexcept { return _rasterizerDesc; }
 		FORCEINLINE DepthStencilStateDesc GetDepthStencilDesc() const noexcept { return _depthStencilDesc; }
 		FORCEINLINE BlendingStateDesc GetBlendingDesc() const noexcept { return _blendingDesc; }
-		FORCEINLINE VertexLayoutDesc GetInputLayoutDesc() const noexcept { return _inputLayoutDesc; }
+		FORCEINLINE InputLayoutDesc GetInputLayoutDesc() const noexcept { return _inputLayoutDesc; }
 		FORCEINLINE ShadingPassDesc GetShadingPassDesc() const noexcept { return _shadingPassDesc; }
 		FORCEINLINE OutputDesc GetOutputDesc() const noexcept { return _outputDesc; }
 		FORCEINLINE PipelineType GetPipelineType() const noexcept { return _type; }
+
 
 	protected:
 		Pipeline(const PipelineCreateDesc& desc) :
@@ -30,11 +31,13 @@ namespace Felix
 		{}
 		virtual ~Pipeline() {}
 
+		FORCEINLINE virtual GraphicsDeviceObjectType GetDeviceObjectType() const noexcept { return GraphicsDeviceObjectType::Pipeline; }
+
 	private:
 		const RasterizerStateDesc _rasterizerDesc;
 		const DepthStencilStateDesc _depthStencilDesc;
 		const BlendingStateDesc _blendingDesc;
-		const VertexLayoutDesc _inputLayoutDesc;
+		const InputLayoutDesc _inputLayoutDesc;
 		const ShadingPassDesc _shadingPassDesc;
 		const OutputDesc _outputDesc;
 		const PipelineType _type;

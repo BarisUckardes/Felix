@@ -22,6 +22,7 @@ namespace Felix
 		virtual Framebuffer* CreateFramebufferCore(const FramebufferCreateDesc& desc) override;
 		virtual Framebuffer* CreateSwapchainFramebufferCore(const SwapchainFramebufferCreateDesc& desc) override;
 		virtual GraphicsResource* CreateResourceCore(const GraphicsResourceCreateDesc& desc) override;
+		virtual Pipeline* CreatePipelineCore(const PipelineCreateDesc& desc) override;
 
 		virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) override;
 		virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) override;
@@ -31,6 +32,9 @@ namespace Felix
 		HGLRC _context;
 		HDC _windowDeviceContext;
 #endif
+
+
+		
 
 	};
 }

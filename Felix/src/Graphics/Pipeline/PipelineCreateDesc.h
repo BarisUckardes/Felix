@@ -4,7 +4,7 @@
 #include <Graphics/Pipeline/BlendingStateDesc.h>
 #include <Graphics/Pipeline/ResourceStateDesc.h>
 #include <Graphics/Pipeline/ShaderPassDesc.h>
-#include <Graphics/Pipeline/VertexLayoutDesc.h>
+#include <Graphics/Pipeline/InputLayoutDesc.h>
 #include <Graphics/Pipeline/OutputDesc.h>
 #include <Graphics/Pipeline/PipelineType.h>
 
@@ -18,7 +18,7 @@ namespace Felix
 		RasterizerStateDesc RasterizerDesc;
 		DepthStencilStateDesc DepthStencilDesc;
 		BlendingStateDesc BlendingDesc;
-		VertexLayoutDesc InputLayoutDesc;
+		InputLayoutDesc InputLayoutDesc;
 		ShadingPassDesc ShadingPass;
 		OutputDesc OutputDesc;
 		PipelineType Type;
