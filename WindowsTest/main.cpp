@@ -2,6 +2,8 @@
 #include <Window/Window.h>
 #include <Graphics/Device/GraphicsDevice.h>
 #include <Graphics/Command/CommandBuffer.h>
+#include <Graphics/Pipeline/Pipeline.h>
+
 using namespace std;
 
 int main()
@@ -33,6 +35,17 @@ int main()
 	Felix::CommandBuffer* pCmdBuffer = pDevice->CreateCommandBuffer(cmdBufferDesc);
 
 	/*
+	* Create pipeline
+	*/
+	Felix::PipelineCreateDesc pipelineDesc = {};
+	Felix::Pipeline* pPipeline = pDevice->CreatePipeline(pipelineDesc);
+
+	/*
+	* Create framebuffer
+	*/
+	Felix::Framebuffer* pSwapchainFramebuffer = pDevice->GetSwapchainFramebuffer();
+
+	/*
 	* Loop
 	*/
 	pWindow->Show();
@@ -41,9 +54,9 @@ int main()
 		pWindow->PollInputEvents();
 
 		pCmdBuffer->Lock();
-
+		pCmdBuffer->BindPipeline(pPipeline);
+		pCmdBuffer->BindFramebuffer(pSwapchainFramebuffer);
 		pCmdBuffer->ClearColor(1, 0, 0, 1);
-
 		pCmdBuffer->Unlock();
 
 		pDevice->Swapbuffers();

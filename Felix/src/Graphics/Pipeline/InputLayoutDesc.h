@@ -11,6 +11,7 @@ namespace Felix
 		{
 			CalculateStride();
 		}
+		InputLayoutDesc() : _stride(0) {}
 
 		FORCEINLINE std::vector<InputElementDesc> GetElements() const noexcept { return _elements; }
 		FORCEINLINE unsigned int GetStride() const noexcept { return _stride; }

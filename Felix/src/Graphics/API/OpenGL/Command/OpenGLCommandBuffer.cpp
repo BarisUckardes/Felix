@@ -22,6 +22,14 @@ namespace Felix
 		glClearStencil(stencil);
 		glClear(GL_STENCIL_BUFFER_BIT);
 	}
+	void OpenGLCommandBuffer::BindPipelineCore(Pipeline* pPipeline)
+	{
+
+	}
+	void OpenGLCommandBuffer::BindFramebufferCore(Framebuffer* pFramebuffer)
+	{
+
+	}
 	void OpenGLCommandBuffer::LockCore()
 	{
 

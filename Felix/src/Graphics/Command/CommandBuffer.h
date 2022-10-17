@@ -26,6 +26,9 @@ namespace Felix
 		FORCEINLINE void Lock();
 		FORCEINLINE void Unlock();
 
+		FORCEINLINE void BindPipeline(Pipeline* pPipeline);
+		FORCEINLINE void BindFramebuffer(Framebuffer* pFramebuffer);
+
 		FORCEINLINE void ClearColor(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a);
 		FORCEINLINE void ClearDepth(const unsigned char depth);
 		FORCEINLINE void ClearStencil(const int stencil);
@@ -33,6 +36,9 @@ namespace Felix
 	protected:
 		FORCEINLINE virtual void LockCore() = 0;
 		FORCEINLINE virtual void UnlockCore() = 0;
+
+		FORCEINLINE virtual void BindPipelineCore(Pipeline* pPipeline) = 0;
+		FORCEINLINE virtual void BindFramebufferCore(Framebuffer* pFramebuffer) = 0;
 
 		FORCEINLINE virtual void ClearColorCore(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a) = 0;
 		FORCEINLINE virtual void ClearDepthCore(const unsigned char depth) = 0;

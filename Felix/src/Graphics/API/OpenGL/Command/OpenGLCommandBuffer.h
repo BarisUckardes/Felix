@@ -18,9 +18,15 @@ namespace Felix
 		virtual void LockCore() override final;
 		virtual void UnlockCore() override final;
 
+		virtual void BindPipelineCore(Pipeline* pPipeline) override;
+		virtual void BindFramebufferCore(Framebuffer* pFramebuffer) override;
+
 		virtual void ClearColorCore(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a) override final;
 		virtual void ClearDepthCore(const unsigned char depth) override final;
 		virtual void ClearStencilCore(const int stencil) override;
+
+
+		
 
 	};
 }

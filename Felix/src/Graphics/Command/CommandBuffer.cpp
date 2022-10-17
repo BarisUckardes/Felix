@@ -19,6 +19,23 @@ namespace Felix
 
 		_locked = false;
 	}
+	void CommandBuffer::BindPipeline(Pipeline* pPipeline)
+	{
+		CheckLock();
+
+		_boundPipeline = pPipeline;
+
+		BindPipelineCore(pPipeline);
+	}
+	void CommandBuffer::BindFramebuffer(Framebuffer* pFramebuffer)
+	{
+		CheckLock();
+		CheckBoundPipeline();
+
+		_boundFramebuffer = pFramebuffer;
+
+		BindFramebufferCore(pFramebuffer);
+	}
 	void CommandBuffer::ClearColor(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a)
 	{
 		CheckLock();
@@ -53,7 +70,7 @@ namespace Felix
 
 	void CommandBuffer::CheckLock()
 	{
-		ASSERT(!_locked, "CommandBuffer", "You cannot submit commands before locking the command buffer");
+		ASSERT(_locked, "CommandBuffer", "You cannot submit commands before locking the command buffer");
 	}
 	void CommandBuffer::CheckBoundPipeline()
 	{
