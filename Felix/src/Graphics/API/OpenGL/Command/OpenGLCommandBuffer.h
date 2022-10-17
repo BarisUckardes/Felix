@@ -21,12 +21,16 @@ namespace Felix
 		virtual void BindPipelineCore(Pipeline* pPipeline) override;
 		virtual void BindFramebufferCore(Framebuffer* pFramebuffer) override;
 
+		virtual void SetViewportCore(const ViewportDesc& desc) override;
+		virtual void SetScissorsCore(const ScissorsDesc& desc) override;
+
+		virtual void SetVertexBufferCore(GraphicsBuffer* pBuffer) override;
+		virtual void SetIndexBufferCore(GraphicsBuffer* pBuffer) override;
+
 		virtual void ClearColorCore(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a) override final;
 		virtual void ClearDepthCore(const unsigned char depth) override final;
 		virtual void ClearStencilCore(const int stencil) override;
 
-
-		
-
+		virtual void DrawIndexedCore(const unsigned int indexCount) override;
 	};
 }

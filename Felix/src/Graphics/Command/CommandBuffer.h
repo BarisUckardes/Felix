@@ -9,6 +9,7 @@ namespace Felix
 {
 	class Pipeline;
 	class Framebuffer;
+	class GraphicsBuffer;
 
 	/// <summary>
 	/// A graphics device object which records the rendering commands and playbacks the list
@@ -29,9 +30,17 @@ namespace Felix
 		FORCEINLINE void BindPipeline(Pipeline* pPipeline);
 		FORCEINLINE void BindFramebuffer(Framebuffer* pFramebuffer);
 
+		FORCEINLINE void SetViewport(const ViewportDesc& desc);
+		FORCEINLINE void SetScissors(const ScissorsDesc& desc);
+
 		FORCEINLINE void ClearColor(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a);
 		FORCEINLINE void ClearDepth(const unsigned char depth);
 		FORCEINLINE void ClearStencil(const int stencil);
+
+		FORCEINLINE void SetVertexBuffer(GraphicsBuffer* pBuffer);
+		FORCEINLINE void SetIndexBuffer(GraphicsBuffer* pBuffer);
+
+		FORCEINLINE void DrawIndexed(const unsigned int indexCount);
 
 	protected:
 		FORCEINLINE virtual void LockCore() = 0;
@@ -40,10 +49,17 @@ namespace Felix
 		FORCEINLINE virtual void BindPipelineCore(Pipeline* pPipeline) = 0;
 		FORCEINLINE virtual void BindFramebufferCore(Framebuffer* pFramebuffer) = 0;
 
+		FORCEINLINE virtual void SetViewportCore(const ViewportDesc& desc) = 0;
+		FORCEINLINE virtual void SetScissorsCore(const ScissorsDesc& desc) = 0;
+
 		FORCEINLINE virtual void ClearColorCore(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a) = 0;
 		FORCEINLINE virtual void ClearDepthCore(const unsigned char depth) = 0;
 		FORCEINLINE virtual void ClearStencilCore(const int stencil) = 0;
 
+		FORCEINLINE virtual void SetVertexBufferCore(GraphicsBuffer* pBuffer) = 0;
+		FORCEINLINE virtual void SetIndexBufferCore(GraphicsBuffer* pBuffer) = 0;
+
+		FORCEINLINE virtual void DrawIndexedCore(const unsigned int indexCount) = 0;
 	private:
 		FORCEINLINE void CheckBoundPipeline();
 		FORCEINLINE void CheckBoundFramebuffer();

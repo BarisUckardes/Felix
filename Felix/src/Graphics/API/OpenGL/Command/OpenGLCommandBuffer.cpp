@@ -1,4 +1,5 @@
 #include "OpenGLCommandBuffer.h"
+#include <Graphics/API/OpenGL/Device/OpenGLDeviceObjects.h>
 #include <GLAD/glad.h>
 
 namespace Felix
@@ -22,12 +23,45 @@ namespace Felix
 		glClearStencil(stencil);
 		glClear(GL_STENCIL_BUFFER_BIT);
 	}
+	void OpenGLCommandBuffer::SetViewportCore(const ViewportDesc& desc)
+	{
+		glViewport(desc.PositionX, desc.PositionY, desc.Width, desc.Height);
+		glDepthRange(desc.MinDepth, desc.MaxDepth);
+	}
+	void OpenGLCommandBuffer::SetScissorsCore(const ScissorsDesc& desc)
+	{
+		glScissor(desc.PositionX, desc.PositionY, desc.Width, desc.Height);
+	}
+	void OpenGLCommandBuffer::SetVertexBufferCore(GraphicsBuffer* pBuffer)
+	{
+		const OpenGLBuffer* pGLBuffer = (const OpenGLBuffer*)pBuffer;
+
+		glBindBuffer(GL_ARRAY_BUFFER, pGLBuffer->GetGLHandle());
+	}
+	void OpenGLCommandBuffer::SetIndexBufferCore(GraphicsBuffer* pBuffer)
+	{
+		const OpenGLBuffer* pGLBuffer = (const OpenGLBuffer*)pBuffer;
+
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pGLBuffer->GetGLHandle());
+	}
+	void OpenGLCommandBuffer::DrawIndexedCore(const unsigned int indexCount)
+	{
+
+	}
 	void OpenGLCommandBuffer::BindPipelineCore(Pipeline* pPipeline)
 	{
 
 	}
 	void OpenGLCommandBuffer::BindFramebufferCore(Framebuffer* pFramebuffer)
 	{
+		unsigned int handle = 0;
+		if (!pFramebuffer->IsSwapchain())
+		{
+			const OpenGLFramebuffer* pGLFramebuffer = (const OpenGLFramebuffer*)pFramebuffer;
+			handle = pGLFramebuffer->GetGLHandle();
+		}
+
+		glBindFramebuffer(GL_FRAMEBUFFER, handle);
 
 	}
 	void OpenGLCommandBuffer::LockCore()

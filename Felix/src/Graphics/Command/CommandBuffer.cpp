@@ -1,4 +1,5 @@
 #include "CommandBuffer.h"
+#include <Graphics/Buffer/GraphicsBuffer.h>
 
 namespace Felix
 {
@@ -36,6 +37,26 @@ namespace Felix
 
 		BindFramebufferCore(pFramebuffer);
 	}
+	void CommandBuffer::SetViewport(const ViewportDesc& desc)
+	{
+		CheckLock();
+		CheckBoundPipeline();
+		CheckBoundFramebuffer();
+
+		SetViewportCore(desc);
+
+		_boundViewport = desc;
+	}
+	void CommandBuffer::SetScissors(const ScissorsDesc& desc)
+	{
+		CheckLock();
+		CheckBoundPipeline();
+		CheckBoundFramebuffer();
+
+		SetScissorsCore(desc);
+
+		_boundScissors = desc;
+	}
 	void CommandBuffer::ClearColor(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a)
 	{
 		CheckLock();
@@ -58,6 +79,26 @@ namespace Felix
 		ClearStencilCore(stencil);
 	}
 
+	void CommandBuffer::SetVertexBuffer(GraphicsBuffer* pBuffer)
+	{
+		ASSERT(pBuffer->GetBufferType() == GraphicsBufferType::VertexBuffer, "CommandBuffer", "The specified buffer is not VertexBuffer");
+
+		SetVertexBufferCore(pBuffer);
+	}
+	void CommandBuffer::SetIndexBuffer(GraphicsBuffer* pBuffer)
+	{
+		ASSERT(pBuffer->GetBufferType() == GraphicsBufferType::IndexBuffer, "CommandBuffer", "The specified buffer is not IndexBuffer");
+
+		SetIndexBufferCore(pBuffer);
+	}
+	void CommandBuffer::DrawIndexed(const unsigned int indexCount)
+	{
+		CheckLock();
+		CheckBoundPipeline();
+		CheckBoundFramebuffer();
+
+		DrawIndexedCore(indexCount);
+	}
 	void CommandBuffer::ClearCachedState()
 	{
 		_boundFramebuffer = nullptr;
