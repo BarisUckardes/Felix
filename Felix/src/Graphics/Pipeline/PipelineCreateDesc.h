@@ -1,7 +1,7 @@
 #pragma once
 #include <Graphics/Pipeline/DepthStencilStateDesc.h>
 #include <Graphics/Pipeline/RasterizerStateDesc.h>
-#include <Graphics/Pipeline/BlendingStateCreateDesc.h>
+#include <Graphics/Pipeline/BlendingStateDesc.h>
 #include <Graphics/Pipeline/ResourceStateDesc.h>
 #include <Graphics/Pipeline/ShaderPassDesc.h>
 #include <Graphics/Pipeline/VertexLayoutDesc.h>
@@ -17,7 +17,7 @@ namespace Felix
 	{
 		RasterizerStateDesc RasterizerDesc;
 		DepthStencilStateDesc DepthStencilDesc;
-		BlendingStateCreateDesc BlendingDesc;
+		BlendingStateDesc BlendingDesc;
 		VertexLayoutDesc InputLayoutDesc;
 		ShadingPassDesc ShadingPass;
 		OutputDesc OutputDesc;

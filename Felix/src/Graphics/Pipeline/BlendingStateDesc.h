@@ -7,7 +7,7 @@ namespace Felix
 	/// <summary>
 	/// Required information to create the blending state of the pipeline
 	/// </summary>
-	struct EXPORT BlendingStateCreateDesc
+	struct EXPORT BlendingStateDesc
 	{
 		BlendingFactor SourceColorFactor;
 		BlendingFactor DestinationColorFactor;
