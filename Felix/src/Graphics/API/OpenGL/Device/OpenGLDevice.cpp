@@ -107,6 +107,10 @@ namespace Felix
     {
         return new OpenGLBuffer(desc);
     }
+    Shader* OpenGLDevice::CreateShaderCore(const ShaderCreateDesc& desc)
+    {
+        return new OpenGLShader(desc);
+    }
     Texture* OpenGLDevice::CreateTextureCore(const TextureCreateDesc& desc)
     {
         return new OpenGLTexture(desc);

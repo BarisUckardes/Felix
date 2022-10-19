@@ -18,6 +18,7 @@ namespace Felix
 
 		virtual CommandBuffer* CreateCommandBufferCore(const CommandBufferCreateDesc& desc) override;
 		virtual GraphicsBuffer* CreateBufferCore(const GraphicsBufferCreateDesc& desc) override;
+		virtual Shader* CreateShaderCore(const ShaderCreateDesc& desc) override;
 		virtual Texture* CreateTextureCore(const TextureCreateDesc& desc) override;
 		virtual Framebuffer* CreateFramebufferCore(const FramebufferCreateDesc& desc) override;
 		virtual Framebuffer* CreateSwapchainFramebufferCore(const SwapchainFramebufferCreateDesc& desc) override;

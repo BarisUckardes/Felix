@@ -6,3 +6,4 @@
 #include <Graphics/API/OpenGL/Framebuffer/OpenGLSwapchainFramebuffer.h>
 #include <Graphics/API/OpenGL/Resource/OpenGLGraphicsResource.h>
 #include <Graphics/API/OpenGL/Pipeline/OpenGLPipeline.h>
+#include <Graphics/API/OpenGL/Shader/OpenGLShader.h>

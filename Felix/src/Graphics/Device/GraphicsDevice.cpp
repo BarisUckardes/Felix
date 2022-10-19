@@ -3,6 +3,7 @@
 #include <Graphics/Device/WindowGraphicsDeviceCreateDesc.h>
 #include <Graphics/API/OpenGL/Device/OpenGLDevice.h>
 #include <Graphics/Device/GraphicsDeviceObjects.h>
+#include <Window/WindowDeviceAdapter.h>
 
 namespace Felix
 {
@@ -54,32 +55,28 @@ namespace Felix
         GraphicsDevice* pDevice = nullptr;
         switch (requestedAPI)
         {
-        case Felix::GraphicsAPI::OpenGL:
-        {
-            pDevice = new OpenGLDevice(pOwnerWindow);
-            break;
+            case Felix::GraphicsAPI::OpenGL:
+            {
+                pDevice = new OpenGLDevice(pOwnerWindow);
+                break;
+            }
+            case Felix::GraphicsAPI::OpenGLES:
+                break;
+            case Felix::GraphicsAPI::Directx11:
+                break;
+            case Felix::GraphicsAPI::Directx12:
+                break;
+            case Felix::GraphicsAPI::Vulkan:
+                break;
+            case Felix::GraphicsAPI::Metal:
+                break;
+            case Felix::GraphicsAPI::GNM:
+                break;
+            case Felix::GraphicsAPI::GNMX:
+                break;
+            default:
+                break;
         }
-        case Felix::GraphicsAPI::OpenGLES:
-            break;
-        case Felix::GraphicsAPI::Directx11:
-            break;
-        case Felix::GraphicsAPI::Directx12:
-            break;
-        case Felix::GraphicsAPI::Vulkan:
-            break;
-        case Felix::GraphicsAPI::Metal:
-            break;
-        case Felix::GraphicsAPI::GNM:
-            break;
-        case Felix::GraphicsAPI::GNMX:
-            break;
-        default:
-            break;
-        }
-
-        /*
-        * Bind device to the window
-        */
 
         /*
         * Create swapchain framebuffer
@@ -108,6 +105,14 @@ namespace Felix
     GraphicsBuffer* GraphicsDevice::CreateBuffer(const GraphicsBufferCreateDesc& desc)
     {
         GraphicsBuffer* pObject = CreateBufferCore(desc);
+
+        RegisterDeviceObject(pObject);
+
+        return pObject;
+    }
+    Shader* GraphicsDevice::CreateShader(const ShaderCreateDesc& desc)
+    {
+        Shader* pObject = CreateShaderCore(desc);
 
         RegisterDeviceObject(pObject);
 

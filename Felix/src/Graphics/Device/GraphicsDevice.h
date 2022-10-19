@@ -33,6 +33,9 @@ namespace Felix
 	class Pipeline;
 	struct PipelineCreateDesc;
 
+	class Shader;
+	struct ShaderCreateDesc;
+
 	class EXPORT GraphicsDevice
 	{
 	public:
@@ -48,6 +51,7 @@ namespace Felix
 
 		CommandBuffer* CreateCommandBuffer(const CommandBufferCreateDesc& desc);
 		GraphicsBuffer* CreateBuffer(const GraphicsBufferCreateDesc& desc);
+		Shader* CreateShader(const ShaderCreateDesc& desc);
 		Texture* CreateTexture(const TextureCreateDesc& desc);
 		Framebuffer* CreateFramebuffer(const FramebufferCreateDesc& desc);
 		GraphicsResource* CreateResource(const GraphicsResourceCreateDesc& desc);
@@ -67,6 +71,7 @@ namespace Felix
 
 		virtual CommandBuffer* CreateCommandBufferCore(const CommandBufferCreateDesc& desc) = 0;
 		virtual GraphicsBuffer* CreateBufferCore(const GraphicsBufferCreateDesc& desc) = 0;
+		virtual Shader* CreateShaderCore(const ShaderCreateDesc& desc) = 0;
 		virtual Texture* CreateTextureCore(const TextureCreateDesc& desc) = 0;
 		virtual Framebuffer* CreateFramebufferCore(const FramebufferCreateDesc& desc) = 0;
 		virtual Framebuffer* CreateSwapchainFramebufferCore(const SwapchainFramebufferCreateDesc& desc) = 0;

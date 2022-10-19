@@ -12,7 +12,6 @@ namespace Felix
 		GraphicsBufferType Type;
 		GraphicsBufferUsage Usage;
 		const unsigned char* pInitialData;
-		unsigned long Size;
 		unsigned int SubItemSize;
 		unsigned int SubItemCount;
 	};

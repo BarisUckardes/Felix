@@ -22,7 +22,12 @@ namespace Felix
 
 		FORCEINLINE bool IsAsyncSubmissionSupported() const noexcept { return _asyncSubmission; }
 		FORCEINLINE bool IsLocked() const noexcept { return _locked; }
-
+		FORCEINLINE Pipeline* GetBoundPipeline() const noexcept { return _boundPipeline; }
+		FORCEINLINE Framebuffer* GetBoundFramebuffer() const noexcept { return _boundFramebuffer; }
+		FORCEINLINE ViewportDesc GetBoundViewport() const noexcept { return _boundViewport; }
+		FORCEINLINE ScissorsDesc GetScissors() const noexcept { return _boundScissors; }
+		FORCEINLINE unsigned int GetBoundTextureCount() const noexcept { return _boundTextureCount; }
+		FORCEINLINE unsigned int GetBoundContantBufferCount() const noexcept { return _boundConstantBufferCount; }
 
 		FORCEINLINE void Lock();
 		FORCEINLINE void Unlock();

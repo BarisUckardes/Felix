@@ -30,7 +30,7 @@ namespace Felix
 		glGetShaderiv(_handle, GL_COMPILE_STATUS, &state);
 		if (state == GL_FALSE)
 		{
-			GLint maxLength = 255;
+			GLint maxLength = FELIX_OPENGL_MAX_ERROR_LENGTH;
 			glGetShaderiv(_handle, GL_INFO_LOG_LENGTH, &maxLength);
 
 			char* errorLog = new char[FELIX_OPENGL_MAX_ERROR_LENGTH];

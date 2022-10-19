@@ -21,7 +21,7 @@ namespace Felix
 		FORCEINLINE unsigned int GetBufferCount() const noexcept { return _bufferCount; }
 
 	protected:
-		SwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, const FramebufferCreateDesc& framebufferDesc, Window* pOwnerWindow) : Framebuffer(framebufferDesc, false),
+		SwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, const FramebufferCreateDesc& framebufferDesc, Window* pOwnerWindow) : Framebuffer(framebufferDesc, true),
 			_ownerWindow(pOwnerWindow), _colorFormat(swapchainDesc.Format), _depthStencilFormat(swapchainDesc.DepthStencilFormat), _bufferCount(swapchainDesc.BufferCount)
 		{
 

@@ -1,5 +1,7 @@
 #include "OpenGLCommandBuffer.h"
 #include <Graphics/API/OpenGL/Device/OpenGLDeviceObjects.h>
+#include <Graphics/API/OpenGL/Pipeline/OpenGLPipelineUtils.h>
+#include <Graphics/Pipeline/InputElementUtils.h>
 #include <GLAD/glad.h>
 
 namespace Felix
@@ -36,7 +38,43 @@ namespace Felix
 	{
 		const OpenGLBuffer* pGLBuffer = (const OpenGLBuffer*)pBuffer;
 
-		glBindBuffer(GL_ARRAY_BUFFER, pGLBuffer->GetGLHandle());
+		/*
+		* Revalidate vertex buffer
+		*/
+		const unsigned int vertexBufferHandle = pGLBuffer->GetGLHandle();
+		if (_currentVertexArray != 0)
+			glDeleteVertexArrays(1, &_currentVertexArray);
+
+		/*
+		* Create new vertex array object
+		*/
+		glGenVertexArrays(1, &_currentVertexArray);
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBufferHandle);
+		const InputLayoutDesc inputLayout = GetBoundPipeline()->GetInputLayoutDesc();
+		const std::vector<InputElementDesc> inputElements = inputLayout.GetElements();
+
+		glBindVertexArray(_currentVertexArray);
+		unsigned int offset = 0;
+		for (unsigned int i = 0; i < inputElements.size(); i++)
+		{
+			const InputElementDesc& elementDesc = inputElements[i];
+
+			glEnableVertexAttribArray(i);
+
+			glVertexAttribPointer(i,
+				OpenGLPipelineUtils::GetInputElementComponentCount(elementDesc.DataType),
+				OpenGLPipelineUtils::GetInputElementDataType(elementDesc.DataType),
+				elementDesc.bNormalize,
+				inputLayout.GetStride(),
+				(const void*)(offset)
+			);
+
+			offset += InputElementUtils::GetElementSize(elementDesc.DataType);
+		}
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
+
+		glBindVertexArray(_currentVertexArray);
 	}
 	void OpenGLCommandBuffer::SetIndexBufferCore(GraphicsBuffer* pBuffer)
 	{
@@ -46,11 +84,13 @@ namespace Felix
 	}
 	void OpenGLCommandBuffer::DrawIndexedCore(const unsigned int indexCount)
 	{
-
+		glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, nullptr);
 	}
 	void OpenGLCommandBuffer::BindPipelineCore(Pipeline* pPipeline)
 	{
+		const OpenGLPipeline* pGLPipeline = (const OpenGLPipeline*)pPipeline;
 
+		glUseProgram(pGLPipeline->GetGLProgramHandle());
 	}
 	void OpenGLCommandBuffer::BindFramebufferCore(Framebuffer* pFramebuffer)
 	{

@@ -6,7 +6,7 @@ namespace Felix
 	OpenGLBuffer::OpenGLBuffer(const GraphicsBufferCreateDesc& desc) : GraphicsBuffer(desc)
 	{
 		glCreateBuffers(1, &_handle);
-		glNamedBufferData(_handle, desc.Size, desc.pInitialData, OpenGLBufferUtils::GetBufferUsage(desc.Usage));
+		glNamedBufferData(_handle, desc.SubItemSize*desc.SubItemCount, desc.pInitialData, OpenGLBufferUtils::GetBufferUsage(desc.Usage));
 
 	}
 	OpenGLBuffer::~OpenGLBuffer()

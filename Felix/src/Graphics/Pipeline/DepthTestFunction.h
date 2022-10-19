@@ -6,7 +6,7 @@ namespace Felix
 	/// <summary>
 	/// Supported depth test functions
 	/// </summary>
-	enum class EXPORT DepthFunction
+	enum class EXPORT DepthTestFunction
 	{
 		Always,
 		Never,

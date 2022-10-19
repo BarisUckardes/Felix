@@ -10,8 +10,6 @@ namespace Felix
 		virtual ~OpenGLBuffer();
 
 		FORCEINLINE unsigned int GetGLHandle() const noexcept { return _handle; }
-
-		virtual GraphicsBufferType GetBufferType() const noexcept override { return GraphicsBufferType::VertexBuffer; }
 	private:
 		unsigned int _handle;
 	};
