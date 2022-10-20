@@ -184,6 +184,10 @@ namespace Felix
                 break;
         }
     }
+    TextureSampler* OpenGLDevice::CreateTextureSamplerCore(const TextureSamplerCreateDesc& desc)
+    {
+        return new OpenGLTextureSampler(desc);
+    }
     Pipeline* OpenGLDevice::CreatePipelineCore(const PipelineCreateDesc& desc)
     {
         return new OpenGLPipeline(desc);

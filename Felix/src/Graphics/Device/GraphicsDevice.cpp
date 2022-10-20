@@ -161,6 +161,14 @@ namespace Felix
 
         return pObject;
     }
+    TextureSampler* GraphicsDevice::CreateTextureSampler(const TextureSamplerCreateDesc& desc)
+    {
+        TextureSampler* pObject = CreateTextureSamplerCore(desc);
+
+        RegisterDeviceObject(pObject);
+
+        return pObject;
+    }
     void GraphicsDevice::UpdateBuffer(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc)
     {
         UpdateBufferCore(pBuffer, desc);

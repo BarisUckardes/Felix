@@ -36,6 +36,12 @@ namespace Felix
 	class Shader;
 	struct ShaderCreateDesc;
 
+	class TextureSampler;
+	struct TextureSamplerCreateDesc;
+
+	/// <summary>
+	/// Represents both physical and logical graphics device of a system gpu
+	/// </summary>
 	class EXPORT GraphicsDevice
 	{
 	public:
@@ -55,7 +61,8 @@ namespace Felix
 		Texture* CreateTexture(const TextureCreateDesc& desc);
 		Framebuffer* CreateFramebuffer(const FramebufferCreateDesc& desc);
 		GraphicsResource* CreateResource(const GraphicsResourceCreateDesc& desc);
-		virtual Pipeline* CreatePipeline(const PipelineCreateDesc& desc);
+		Pipeline* CreatePipeline(const PipelineCreateDesc& desc);
+		TextureSampler* CreateTextureSampler(const TextureSamplerCreateDesc& desc);
 
 		void UpdateBuffer(GraphicsBuffer* pBuffer,const GraphicsBufferUpdateDesc& desc);
 		void UpdateTexture(Texture* pTexture,const TextureUpdateDesc& desc);
@@ -77,6 +84,7 @@ namespace Felix
 		virtual Framebuffer* CreateSwapchainFramebufferCore(const SwapchainFramebufferCreateDesc& desc) = 0;
 		virtual GraphicsResource* CreateResourceCore(const GraphicsResourceCreateDesc& desc) = 0;
 		virtual Pipeline* CreatePipelineCore(const PipelineCreateDesc& desc) = 0;
+		virtual TextureSampler* CreateTextureSamplerCore(const TextureSamplerCreateDesc& desc) = 0;
 
 		virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) = 0;
 		virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) = 0;
