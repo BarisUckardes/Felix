@@ -17,5 +17,7 @@ namespace Felix
 		FORCEINLINE static unsigned int GetShadingMode(const PolygonShadingMode mode);
 		FORCEINLINE static unsigned int GetInputElementComponentCount(const InputElementDataType type);
 		FORCEINLINE static unsigned int GetInputElementDataType(const InputElementDataType type);
+		FORCEINLINE static unsigned int GetStencilOperation(const StencilOperation operation);
+		FORCEINLINE static unsigned int GetStencilFunction(const StencilFunction function);
 	};
 }

@@ -9,6 +9,17 @@ namespace Felix
 	class EXPORT OpenGLPipeline : public Pipeline
 	{
 	public:
+		struct StencilGLFaceDesc
+		{
+			unsigned int StencilReferenceValue;
+			unsigned int StencilWriteMask;
+			unsigned int StencilReadMask;
+			unsigned int Function;
+			unsigned int FailOperation;
+			unsigned int PassOperation;
+			unsigned int DepthFailOperation;
+		};
+	public:
 		OpenGLPipeline(const PipelineCreateDesc& desc);
 		virtual ~OpenGLPipeline() override;
 
@@ -18,6 +29,8 @@ namespace Felix
 		FORCEINLINE unsigned int GetGLCullFace() const noexcept { return _cullFace; }
 		FORCEINLINE unsigned int GetGLDepthFunction() const noexcept { return _depthFunction; }
 		FORCEINLINE unsigned int GetGLShadingMode() const noexcept { return _shadingMode; }
+		FORCEINLINE StencilGLFaceDesc GetGLStencilFrontDesc() const noexcept { return _stencilFrontFace; }
+		FORCEINLINE StencilGLFaceDesc GetGLStencilBackDesc() const noexcept { return _stencilBackFace; }
 	private:
 		unsigned int _programHandle;
 		unsigned int _primitives;
@@ -25,6 +38,7 @@ namespace Felix
 		unsigned int _cullFace;
 		unsigned int _depthFunction;
 		unsigned int _shadingMode;
-
+		StencilGLFaceDesc _stencilFrontFace;
+		StencilGLFaceDesc _stencilBackFace;
 	};
 }

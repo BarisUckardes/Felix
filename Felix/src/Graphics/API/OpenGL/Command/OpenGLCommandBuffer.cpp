@@ -146,6 +146,16 @@ namespace Felix
 
 		_currentPrimitives = pGLPipeline->GetGLPrimitives();
 
+		const OpenGLPipeline::StencilGLFaceDesc& stencilFrontDesc = pGLPipeline->GetGLStencilFrontDesc();
+		const OpenGLPipeline::StencilGLFaceDesc& stencilBackDesc = pGLPipeline->GetGLStencilBackDesc();
+
+		glStencilMaskSeparate(GL_FRONT, stencilFrontDesc.StencilWriteMask);
+		glStencilFuncSeparate(GL_FRONT,stencilFrontDesc.Function,stencilFrontDesc.StencilReferenceValue,stencilFrontDesc.StencilReadMask);
+		glStencilOpSeparate(GL_FRONT, stencilFrontDesc.FailOperation, stencilFrontDesc.DepthFailOperation, stencilFrontDesc.PassOperation);
+
+		glStencilMaskSeparate(GL_BACK, stencilBackDesc.StencilWriteMask);
+		glStencilFuncSeparate(GL_BACK, stencilBackDesc.Function, stencilBackDesc.StencilReferenceValue, stencilBackDesc.StencilReadMask);
+		glStencilOpSeparate(GL_BACK, stencilBackDesc.FailOperation, stencilBackDesc.DepthFailOperation, stencilBackDesc.PassOperation);
 	}
 	void OpenGLCommandBuffer::BindFramebufferCore(Framebuffer* pFramebuffer)
 	{
@@ -157,7 +167,6 @@ namespace Felix
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, handle);
-
 	}
 	void OpenGLCommandBuffer::LockCore()
 	{

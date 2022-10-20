@@ -8,13 +8,13 @@ namespace Felix
 	/// </summary>
 	enum class EXPORT StencilOperation
 	{
-		Never,
-		Less,
-		Equal,
-		LessEqual,
-		Greater,
-		NotEqual,
-		GreaterEqual,
-		Always
+		Keep,
+		Zero,
+		Replace,
+		Increment,
+		IncrementWrap,
+		Decrement,
+		DecrementWrap,
+		Invert
 	};
 }

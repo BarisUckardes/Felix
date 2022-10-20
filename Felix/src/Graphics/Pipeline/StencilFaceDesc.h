@@ -11,6 +11,7 @@ namespace Felix
 	{
 		int StencilReferenceValue;
 		int StencilWriteMask;
+		unsigned int StencilReadMask;
 		StencilFunction Function;
 		StencilOperation FailOperation;
 		StencilOperation PassOperation;

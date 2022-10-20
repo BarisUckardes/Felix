@@ -156,4 +156,54 @@ namespace Felix
 		}
 
 	}
+	unsigned int OpenGLPipelineUtils::GetStencilOperation(const StencilOperation operation)
+	{
+		switch (operation)
+		{
+		case Felix::StencilOperation::Keep:
+			return GL_KEEP;
+		case Felix::StencilOperation::Zero:
+			return GL_ZERO;
+		case Felix::StencilOperation::Replace:
+			return GL_REPLACE;
+		case Felix::StencilOperation::Increment:
+			return GL_INCR;
+		case Felix::StencilOperation::IncrementWrap:
+			return GL_INCR_WRAP;
+		case Felix::StencilOperation::Decrement:
+			return GL_DECR;
+		case Felix::StencilOperation::DecrementWrap:
+			return GL_DECR_WRAP;
+		case Felix::StencilOperation::Invert:
+			return GL_INVERT;
+		default:
+			ASSERT(false, "OpenGLPipelineUtils", "Invalid StencilOperation");
+			break;
+		}
+	}
+	unsigned int OpenGLPipelineUtils::GetStencilFunction(const StencilFunction function)
+	{
+		switch (function)
+		{
+			case Felix::StencilFunction::Never:
+				return GL_NEVER;
+			case Felix::StencilFunction::Less:
+				return GL_LESS;
+			case Felix::StencilFunction::Equal:
+				return GL_EQUAL;
+			case Felix::StencilFunction::LessEqual:
+				return GL_LEQUAL;
+			case Felix::StencilFunction::Greater:
+				return GL_GREATER;
+			case Felix::StencilFunction::NotEqual:
+				return GL_NOTEQUAL;
+			case Felix::StencilFunction::GreaterEqual:
+				return GL_GEQUAL;
+			case Felix::StencilFunction::Always:
+				return GL_ALWAYS;
+			default:
+				ASSERT(false, "OpenGLPipelineUtils", "Invalid StencilFunction");
+				break;
+		}
+	}
 }

@@ -47,6 +47,28 @@ namespace Felix
 		_cullFace = OpenGLPipelineUtils::GetCullFace(desc.RasterizerDesc.CulledFace);
 		_depthFunction = OpenGLPipelineUtils::GetDepthFunction(desc.DepthStencilDesc.TestFunction);
 		_shadingMode = OpenGLPipelineUtils::GetShadingMode(desc.RasterizerDesc.ShadingMode);
+
+		StencilGLFaceDesc stencilFrontFace = {};
+		stencilFrontFace.StencilReferenceValue = desc.DepthStencilDesc.StencilFrontFace.StencilReferenceValue;
+		stencilFrontFace.StencilWriteMask = desc.DepthStencilDesc.StencilFrontFace.StencilWriteMask;
+		stencilFrontFace.StencilReadMask = desc.DepthStencilDesc.StencilFrontFace.StencilReadMask;
+		stencilFrontFace.PassOperation = OpenGLPipelineUtils::GetStencilOperation(desc.DepthStencilDesc.StencilFrontFace.PassOperation);
+		stencilFrontFace.FailOperation = OpenGLPipelineUtils::GetStencilOperation(desc.DepthStencilDesc.StencilFrontFace.FailOperation);
+		stencilFrontFace.DepthFailOperation = OpenGLPipelineUtils::GetStencilOperation(desc.DepthStencilDesc.StencilFrontFace.DepthFailOperation);
+		stencilFrontFace.Function = OpenGLPipelineUtils::GetStencilFunction(desc.DepthStencilDesc.StencilFrontFace.Function);
+
+		StencilGLFaceDesc stencilBackFace = {};
+		stencilBackFace.StencilReferenceValue = desc.DepthStencilDesc.StencilBackFace.StencilReferenceValue;
+		stencilBackFace.StencilWriteMask = desc.DepthStencilDesc.StencilBackFace.StencilWriteMask;
+		stencilBackFace.StencilReadMask = desc.DepthStencilDesc.StencilFrontFace.StencilReadMask;
+		stencilBackFace.PassOperation = OpenGLPipelineUtils::GetStencilOperation(desc.DepthStencilDesc.StencilBackFace.PassOperation);
+		stencilBackFace.FailOperation = OpenGLPipelineUtils::GetStencilOperation(desc.DepthStencilDesc.StencilBackFace.FailOperation);
+		stencilBackFace.DepthFailOperation = OpenGLPipelineUtils::GetStencilOperation(desc.DepthStencilDesc.StencilBackFace.DepthFailOperation);
+		stencilBackFace.Function = OpenGLPipelineUtils::GetStencilFunction(desc.DepthStencilDesc.StencilBackFace.Function);
+
+		_stencilFrontFace = stencilFrontFace;
+		_stencilBackFace = stencilBackFace;
+
 	}
 	OpenGLPipeline::~OpenGLPipeline()
 	{
