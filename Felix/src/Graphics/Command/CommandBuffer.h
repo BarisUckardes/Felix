@@ -45,6 +45,8 @@ namespace Felix
 		FORCEINLINE void SetVertexBuffer(GraphicsBuffer* pBuffer);
 		FORCEINLINE void SetIndexBuffer(GraphicsBuffer* pBuffer);
 
+		FORCEINLINE void CommitResource(const unsigned int slotIndex, GraphicsResource* pResource);
+
 		FORCEINLINE void DrawIndexed(const unsigned int indexCount);
 
 	protected:
@@ -63,6 +65,8 @@ namespace Felix
 
 		FORCEINLINE virtual void SetVertexBufferCore(GraphicsBuffer* pBuffer) = 0;
 		FORCEINLINE virtual void SetIndexBufferCore(GraphicsBuffer* pBuffer) = 0;
+
+		FORCEINLINE virtual void CommitResourceCore(const unsigned int slotIndex, GraphicsResource* pResource) = 0;
 
 		FORCEINLINE virtual void DrawIndexedCore(const unsigned int indexCount) = 0;
 

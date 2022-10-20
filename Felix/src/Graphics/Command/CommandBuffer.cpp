@@ -1,5 +1,7 @@
 #include "CommandBuffer.h"
 #include <Graphics/Buffer/GraphicsBuffer.h>
+#include <Graphics/Resource/GraphicsResource.h>
+#include <Graphics/Pipeline/Pipeline.h>
 
 namespace Felix
 {
@@ -95,6 +97,27 @@ namespace Felix
 		ASSERT(pBuffer->GetBufferType() == GraphicsBufferType::IndexBuffer, "CommandBuffer", "The specified buffer is not IndexBuffer");
 
 		SetIndexBufferCore(pBuffer);
+	}
+	void CommandBuffer::CommitResource(const unsigned int slotIndex, GraphicsResource* pResource)
+	{
+		CheckBoundPipeline();
+
+		/*
+		* Validate resource
+		*/
+		const ResourceStateDesc& resourceStateDesc = GetBoundPipeline()->GetResourceStateDesc();
+
+		ASSERT(resourceStateDesc.SlotDescriptions[slotIndex].Type == pResource->GetResourceType(), "CommandBuffer", "Commited resource has no match in the given pipeline resource slots");
+
+		CommitResourceCore(slotIndex, pResource);
+
+		/*
+		* Validate resources
+		*/
+		if (pResource->GetResourceType() == GraphicsResourceType::ConstantBuffer)
+		{
+			_boundConstantBufferCount++;
+		}
 	}
 	void CommandBuffer::DrawIndexed(const unsigned int indexCount)
 	{
