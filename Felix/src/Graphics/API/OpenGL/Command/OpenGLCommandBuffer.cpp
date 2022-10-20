@@ -90,6 +90,26 @@ namespace Felix
 	{
 		_currentPrimitives = 0;
 	}
+	void OpenGLCommandBuffer::CommitResourceCore(const unsigned int slotIndex, GraphicsResource* pResource)
+	{
+		const OpenGLPipeline* pPipeline = (const OpenGLPipeline*)GetBoundPipeline();
+		const OpenGLPipeline::PipelineResource resource = pPipeline->GetGLResources()[slotIndex];
+
+		switch (pResource->GetResourceType())
+		{
+		case Felix::GraphicsResourceType::TextureSampler:
+			break;
+		case Felix::GraphicsResourceType::ConstantBuffer:
+		{
+			const OpenGLBuffer* pConstantBuffer = (const OpenGLBuffer*)pResource->GetResource();
+			glBindBufferBase(GL_UNIFORM_BUFFER, resource.UniformBlockBindingPoint, pConstantBuffer->GetGLHandle());
+			LOG("OpenGLCommandBuffer", "Commit constant buffer");
+			break;
+		}
+		default:
+			break;
+		}
+	}
 	void OpenGLCommandBuffer::BindPipelineCore(Pipeline* pPipeline)
 	{
 		const OpenGLPipeline* pGLPipeline = (const OpenGLPipeline*)pPipeline;

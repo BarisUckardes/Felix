@@ -10,6 +10,7 @@ namespace Felix
 	class Pipeline;
 	class Framebuffer;
 	class GraphicsBuffer;
+	class GraphicsResource;
 
 	/// <summary>
 	/// A graphics device object which records the rendering commands and playbacks the list

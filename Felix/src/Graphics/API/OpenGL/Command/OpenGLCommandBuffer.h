@@ -31,6 +31,8 @@ namespace Felix
 		virtual void ClearDepthCore(const unsigned char depth) override final;
 		virtual void ClearStencilCore(const int stencil) override;
 
+		virtual void CommitResourceCore(const unsigned int slotIndex, GraphicsResource* pResource) override;
+
 		virtual void DrawIndexedCore(const unsigned int indexCount) override;
 
 		virtual void ClearCachedStateCore() override;
@@ -39,5 +41,7 @@ namespace Felix
 		unsigned int _currentPrimitives;
 
 		
+
+
 	};
 }

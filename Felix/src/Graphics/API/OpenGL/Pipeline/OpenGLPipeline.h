@@ -19,10 +19,17 @@ namespace Felix
 			unsigned int PassOperation;
 			unsigned int DepthFailOperation;
 		};
+		struct PipelineResource
+		{
+			unsigned int UniformIndex;
+			unsigned int UniformBlockBindingPoint;
+			unsigned int UniformBlockIndex;
+		};
 	public:
 		OpenGLPipeline(const PipelineCreateDesc& desc);
 		virtual ~OpenGLPipeline() override;
 
+		FORCEINLINE std::vector<PipelineResource> GetGLResources() const noexcept { return _resources; }
 		FORCEINLINE unsigned int GetGLProgramHandle() const noexcept { return _programHandle; }
 		FORCEINLINE unsigned int GetGLPrimitives() const noexcept { return _primitives; }
 		FORCEINLINE unsigned int GetGLFrontFace() const noexcept { return _frontFace; }
@@ -39,6 +46,8 @@ namespace Felix
 		FORCEINLINE unsigned int GetDestinationAlphaFactor() const noexcept { return _destinationAlphaFactor; }
 
 	private:
+		std::vector<PipelineResource> _resources;
+		unsigned int _uniformBlockCount;
 		unsigned int _programHandle;
 		unsigned int _primitives;
 		unsigned int _frontFace;

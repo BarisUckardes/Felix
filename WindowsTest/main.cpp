@@ -193,8 +193,7 @@ int main()
 	pipelineDesc.BlendingDesc = blendingStateDesc;
 	
 	Felix::ResourceStateDesc resourceStateDesc = {};
-	std::vector<Felix::ResourceSlotDesc> resourceSlots;
-	resourceSlots.push_back({"MyConstantBuffer",Felix::GraphicsResourceType::ConstantBuffer,Felix::ShaderType::Fragment});
+	resourceStateDesc.SlotDescriptions.push_back({"MyConstantBuffer",Felix::GraphicsResourceType::ConstantBuffer,Felix::ShaderType::Fragment});
 	pipelineDesc.ResourceStateDesc = resourceStateDesc;
 
 	Felix::Pipeline* pPipeline = pDevice->CreatePipeline(pipelineDesc);
@@ -230,7 +229,7 @@ int main()
 		pCmdBuffer->ClearColor(1, 0, 0, 1);
 		pCmdBuffer->SetVertexBuffer(pVertexBuffer);
 		pCmdBuffer->SetIndexBuffer(pIndexBuffer);
-		
+		pCmdBuffer->CommitResource(0, pConstantBufferResource);
 		pCmdBuffer->DrawIndexed(6);
 		pCmdBuffer->Unlock();
 

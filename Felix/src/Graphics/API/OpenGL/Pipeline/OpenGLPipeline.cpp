@@ -75,6 +75,41 @@ namespace Felix
 		_destinationColorFactor = OpenGLPipelineUtils::GetBlendingColorFactor(desc.BlendingDesc.DestinationColorFactor);
 		_sourceAlphaFactor = OpenGLPipelineUtils::GetBlendingAlphaFactor(desc.BlendingDesc.SourceColorFactor);
 		_destinationAlphaFactor = OpenGLPipelineUtils::GetBlendingAlphaFactor(desc.BlendingDesc.DestinationAlphaFactor);
+
+		/*
+		* Create resource state
+		*/
+		_uniformBlockCount = 0;
+		for (unsigned int i = 0; i < desc.ResourceStateDesc.SlotDescriptions.size(); i++)
+		{
+			const ResourceSlotDesc& slotDesc = desc.ResourceStateDesc.SlotDescriptions[i];
+			PipelineResource resource = {};
+
+			switch (slotDesc.Type)
+			{
+				case Felix::GraphicsResourceType::TextureSampler:
+				{
+					break;
+				}
+				case Felix::GraphicsResourceType::ConstantBuffer:
+				{
+					const unsigned int glUniformBlockIndex = glGetUniformBlockIndex(_programHandle, slotDesc.Name.c_str());
+					glUniformBlockBinding(_programHandle, glUniformBlockIndex, _uniformBlockCount);
+
+					resource.UniformIndex = 0;
+					resource.UniformBlockBindingPoint = _uniformBlockCount;
+					resource.UniformBlockIndex = glUniformBlockIndex;
+					_uniformBlockCount++;
+
+					LOG("OpenGLPipeline", "Create pre-resource constant buffer!");
+					break;
+				}
+				default:
+					break;
+			}
+			
+			_resources.push_back(resource);
+		}
 	}
 	OpenGLPipeline::~OpenGLPipeline()
 	{
