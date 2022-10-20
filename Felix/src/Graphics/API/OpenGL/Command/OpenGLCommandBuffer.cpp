@@ -103,7 +103,6 @@ namespace Felix
 		{
 			const OpenGLBuffer* pConstantBuffer = (const OpenGLBuffer*)pResource->GetResource();
 			glBindBufferBase(GL_UNIFORM_BUFFER, resource.UniformBlockBindingPoint, pConstantBuffer->GetGLHandle());
-			LOG("OpenGLCommandBuffer", "Commit constant buffer");
 			break;
 		}
 		default:
