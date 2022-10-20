@@ -8,7 +8,7 @@ namespace Felix
 {
 	OpenGLCommandBuffer::OpenGLCommandBuffer(const CommandBufferCreateDesc& desc) : CommandBuffer(desc)
 	{
-
+		_currentPrimitives = GL_NONE;
 	}
 	void OpenGLCommandBuffer::ClearColorCore(const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a)
 	{
@@ -84,13 +84,68 @@ namespace Felix
 	}
 	void OpenGLCommandBuffer::DrawIndexedCore(const unsigned int indexCount)
 	{
-		glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, nullptr);
+		glDrawElements(_currentPrimitives, indexCount, GL_UNSIGNED_INT, nullptr);
+	}
+	void OpenGLCommandBuffer::ClearCachedStateCore()
+	{
+		_currentPrimitives = 0;
 	}
 	void OpenGLCommandBuffer::BindPipelineCore(Pipeline* pPipeline)
 	{
 		const OpenGLPipeline* pGLPipeline = (const OpenGLPipeline*)pPipeline;
 
+		/*
+		* Set program
+		*/
 		glUseProgram(pGLPipeline->GetGLProgramHandle());
+
+		/*
+		* Set rasterizer state
+		*/
+		const RasterizerStateDesc& rasterizerState = pPipeline->GetRasterizerDesc();
+
+		if(rasterizerState.bEnableScissorTest)
+			glEnable(GL_SCISSOR_TEST);
+		else
+			glDisable(GL_SCISSOR_TEST);
+
+		if (rasterizerState.bEnableDepthClip)
+			glEnable(GL_DEPTH_CLAMP);
+		else
+			glDisable(GL_DEPTH_CLAMP);
+
+		glFrontFace(pGLPipeline->GetGLFrontFace());
+
+		if (rasterizerState.CulledFace == CullMode::None)
+			glDisable(GL_CULL_FACE);
+		else
+			glEnable(GL_CULL_FACE);
+
+		glCullFace(pGLPipeline->GetGLCullFace());
+
+		glPolygonMode(GL_FRONT_AND_BACK, pGLPipeline->GetGLShadingMode());
+
+		/*
+		* Set depth&stencil state
+		*/
+		const DepthStencilStateDesc& depthStencilState = pPipeline->GetDepthStencilDesc();
+
+		if (depthStencilState.bEnableDepthTest)
+			glEnable(GL_DEPTH_TEST);
+		else
+			glDisable(GL_DEPTH_TEST);
+
+		glDepthFunc(pGLPipeline->GetGLDepthFunction());
+
+		glDepthMask(depthStencilState.bEnableDeptWrite);
+
+		if (depthStencilState.bEnableStencilTest)
+			glEnable(GL_STENCIL_TEST);
+		else
+			glDisable(GL_STENCIL_TEST);
+
+		_currentPrimitives = pGLPipeline->GetGLPrimitives();
+
 	}
 	void OpenGLCommandBuffer::BindFramebufferCore(Framebuffer* pFramebuffer)
 	{

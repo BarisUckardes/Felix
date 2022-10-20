@@ -65,6 +65,8 @@ namespace Felix
 		FORCEINLINE virtual void SetIndexBufferCore(GraphicsBuffer* pBuffer) = 0;
 
 		FORCEINLINE virtual void DrawIndexedCore(const unsigned int indexCount) = 0;
+
+		FORCEINLINE virtual void ClearCachedStateCore() = 0;
 	private:
 		FORCEINLINE void CheckBoundPipeline();
 		FORCEINLINE void CheckBoundFramebuffer();

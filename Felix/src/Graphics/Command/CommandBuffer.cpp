@@ -5,7 +5,12 @@ namespace Felix
 {
 	CommandBuffer::CommandBuffer(const CommandBufferCreateDesc& desc)
 	{
-		ClearCachedState();
+		_boundFramebuffer = nullptr;
+		_boundPipeline = nullptr;
+		_boundScissors = {};
+		_boundViewport = {};
+		_boundTextureCount = 0;
+		_boundConstantBufferCount = 0;
 	}
 	void CommandBuffer::Lock()
 	{
@@ -107,6 +112,8 @@ namespace Felix
 		_boundViewport = {};
 		_boundTextureCount = 0;
 		_boundConstantBufferCount = 0;
+
+		ClearCachedStateCore();
 	}
 
 	void CommandBuffer::CheckLock()

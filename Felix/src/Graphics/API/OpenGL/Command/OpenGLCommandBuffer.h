@@ -32,7 +32,12 @@ namespace Felix
 		virtual void ClearStencilCore(const int stencil) override;
 
 		virtual void DrawIndexedCore(const unsigned int indexCount) override;
+
+		virtual void ClearCachedStateCore() override;
 	private:
 		unsigned int _currentVertexArray;
+		unsigned int _currentPrimitives;
+
+		
 	};
 }

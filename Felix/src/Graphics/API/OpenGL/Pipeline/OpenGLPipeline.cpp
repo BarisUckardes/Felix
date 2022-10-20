@@ -1,6 +1,6 @@
 #include "OpenGLPipeline.h"
 #include <Graphics/API/OpenGL/Device/OpenGLDeviceObjects.h>
-
+#include <Graphics/API/OpenGL/Pipeline/OpenGLPipelineUtils.h>
 #include <GLAD/glad.h>
 
 namespace Felix
@@ -38,6 +38,15 @@ namespace Felix
 				delete[] pErrorLog;
 			}
 		}
+
+		/*
+		* Create pipeline state variables for OpenGL
+		*/
+		_primitives = OpenGLPipelineUtils::GetPrimitiveTopology(desc.RasterizerDesc.Topology);
+		_frontFace = OpenGLPipelineUtils::GetFrontFace(desc.RasterizerDesc.FrontFace);
+		_cullFace = OpenGLPipelineUtils::GetCullFace(desc.RasterizerDesc.CulledFace);
+		_depthFunction = OpenGLPipelineUtils::GetDepthFunction(desc.DepthStencilDesc.TestFunction);
+		_shadingMode = OpenGLPipelineUtils::GetShadingMode(desc.RasterizerDesc.ShadingMode);
 	}
 	OpenGLPipeline::~OpenGLPipeline()
 	{

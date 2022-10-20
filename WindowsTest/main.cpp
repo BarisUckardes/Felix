@@ -112,6 +112,22 @@ int main()
 	Felix::InputLayoutDesc inputLayoutDesc(inputElements);
 	pipelineDesc.InputLayoutDesc = inputLayoutDesc;
 
+	Felix::RasterizerStateDesc rasterizerStateDesc = {};
+	rasterizerStateDesc.bEnableDepthClip = false;
+	rasterizerStateDesc.bEnableScissorTest = false;
+	rasterizerStateDesc.CulledFace = Felix::CullMode::Back;
+	rasterizerStateDesc.FrontFace = Felix::FrontFaceMode::CounterClockWise;
+	rasterizerStateDesc.ShadingMode = Felix::PolygonShadingMode::Solid;
+	rasterizerStateDesc.Topology = Felix::PrimitiveTopology::TriangleList;
+	pipelineDesc.RasterizerDesc = rasterizerStateDesc;
+
+	Felix::DepthStencilStateDesc depthStencilStateDesc = {};
+	depthStencilStateDesc.bEnableDepthTest = false;
+	depthStencilStateDesc.bEnableDeptWrite = false;
+	depthStencilStateDesc.bEnableStencilTest = false;
+	depthStencilStateDesc.TestFunction = Felix::DepthTestFunction::GreatEqual;
+	pipelineDesc.DepthStencilDesc = depthStencilStateDesc;
+
 	Felix::Pipeline* pPipeline = pDevice->CreatePipeline(pipelineDesc);
 
 	/*
