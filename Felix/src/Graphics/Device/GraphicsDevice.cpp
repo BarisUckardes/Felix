@@ -58,7 +58,7 @@ namespace Felix
         {
             case Felix::GraphicsAPI::OpenGL:
             {
-                pDevice = new OpenGLDevice(pOwnerWindow);
+                pDevice = new OpenGLDevice(desc,pOwnerWindow);
                 break;
             }
             case Felix::GraphicsAPI::OpenGLES:

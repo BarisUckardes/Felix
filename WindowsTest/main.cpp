@@ -153,11 +153,11 @@ int main()
 	pipelineDesc.DepthStencilDesc = depthStencilStateDesc;
 
 	Felix::BlendingStateDesc blendingStateDesc = {};
-	blendingStateDesc.bEnable = true;
+	blendingStateDesc.bEnable = false;
 	blendingStateDesc.AlphaFunction = Felix::BlendingFunction::Add;
 	blendingStateDesc.SourceAlphaFactor = Felix::BlendingFactor::One;
 	blendingStateDesc.DestinationAlphaFactor = Felix::BlendingFactor::One;
-	blendingStateDesc.ColorFunction = Felix::BlendingFunction::Subtract;
+	blendingStateDesc.ColorFunction = Felix::BlendingFunction::Add;
 	blendingStateDesc.SourceColorFactor = Felix::BlendingFactor::One;
 	blendingStateDesc.DestinationColorFactor = Felix::BlendingFactor::One;
 

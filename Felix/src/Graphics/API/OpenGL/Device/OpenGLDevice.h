@@ -10,7 +10,7 @@ namespace Felix
 	class EXPORT OpenGLDevice : public GraphicsDevice
 	{
 	public:
-		OpenGLDevice(Window* pOwnerWindow);
+		OpenGLDevice(const WindowGraphicsDeviceCreateDesc& desc ,Window* pOwnerWindow);
 		virtual ~OpenGLDevice() override;
 
 	protected:

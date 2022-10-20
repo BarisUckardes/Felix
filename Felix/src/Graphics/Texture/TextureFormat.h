@@ -10,6 +10,7 @@ namespace Felix
 	{
 		None = 0,
 		RGB8,
-		RGBA8
+		RGBA8,
+		Depth24Stencil8
 	};
 }

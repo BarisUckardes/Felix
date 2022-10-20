@@ -3,11 +3,12 @@
 #include <Graphics/API/OpenGL/Device/OpenGLDeviceObjects.h>
 #include <Graphics/Buffer/GraphicsBufferUpdateDesc.h>
 #include <Graphics/Texture/TextureUpdateDesc.h>
+#include <Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.h>
+#include <Graphics/API/OpenGL/Texture/OpenGLTextureUtils.h>
 
 #ifdef FELIX_OS_WINDOWS
 #include <Platform/Windows/Window/WindowsWindow.h>
-#include <Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.h>
-#include <Graphics/API/OpenGL/Texture/OpenGLTextureUtils.h>
+#include <Graphics/API/OpenGL/Device/OpenGLDeviceUtilsWin32.h>
 typedef HGLRC(WINAPI* PFNWGLCREATECONTEXTATTRIBSARBPROC) (HDC hDC, HGLRC hShareContext, const int* attribList);
 typedef const char* (WINAPI* PFNWGLGETEXTENSIONSSTRINGEXTPROC)(void);
 typedef BOOL(WINAPI* PFNWGLSWAPINTERVALEXTPROC)(int);
@@ -21,7 +22,7 @@ typedef int (WINAPI* PFNWGLGETSWAPINTERVALEXTPROC) (void);
 
 namespace Felix
 {
-    OpenGLDevice::OpenGLDevice(Window* pOwnerWindow) : GraphicsDevice(pOwnerWindow)
+    OpenGLDevice::OpenGLDevice(const WindowGraphicsDeviceCreateDesc& desc,Window* pOwnerWindow) : GraphicsDevice(pOwnerWindow)
     {
 
 #ifdef FELIX_OS_WINDOWS
@@ -39,10 +40,11 @@ namespace Felix
         pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
         pfd.iPixelType = PFD_TYPE_RGBA;
         pfd.nVersion = 1;
-        pfd.cColorBits = 32;
-        pfd.cAlphaBits = 8;
-        pfd.cDepthBits = 24;
-        pfd.cStencilBits = 8;
+        pfd.cColorBits = OpenGLDeviceUtilsWin32::GetColorBits(desc.SwapchainBufferFormat);
+        pfd.cAlphaBits = OpenGLDeviceUtilsWin32::GetAlphaBits(desc.SwapchainBufferFormat);
+        pfd.cDepthBits = OpenGLDeviceUtilsWin32::GetDepthBits(desc.SwapchainDepthStencilBufferFormat);
+        pfd.cStencilBits = OpenGLDeviceUtilsWin32::GetStencilBits(desc.SwapchainDepthStencilBufferFormat);
+        pfd.cAuxBuffers = 3;
         pfd.iLayerType = PFD_MAIN_PLANE;
 
         const int pixelFormatIndex = ChoosePixelFormat(windowDeviceContext, &pfd);
