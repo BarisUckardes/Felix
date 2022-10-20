@@ -69,6 +69,12 @@ namespace Felix
 		_stencilFrontFace = stencilFrontFace;
 		_stencilBackFace = stencilBackFace;
 
+		_colorBlendingFunction = OpenGLPipelineUtils::GetBlendingFunction(desc.BlendingDesc.ColorFunction);
+		_alphaBlendingFunction = OpenGLPipelineUtils::GetBlendingFunction(desc.BlendingDesc.AlphaFunction);
+		_sourceColorFactor = OpenGLPipelineUtils::GetBlendingColorFactor(desc.BlendingDesc.SourceColorFactor);
+		_destinationColorFactor = OpenGLPipelineUtils::GetBlendingColorFactor(desc.BlendingDesc.DestinationColorFactor);
+		_sourceAlphaFactor = OpenGLPipelineUtils::GetBlendingAlphaFactor(desc.BlendingDesc.SourceColorFactor);
+		_destinationAlphaFactor = OpenGLPipelineUtils::GetBlendingAlphaFactor(desc.BlendingDesc.DestinationAlphaFactor);
 	}
 	OpenGLPipeline::~OpenGLPipeline()
 	{

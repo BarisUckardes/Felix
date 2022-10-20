@@ -19,5 +19,8 @@ namespace Felix
 		FORCEINLINE static unsigned int GetInputElementDataType(const InputElementDataType type);
 		FORCEINLINE static unsigned int GetStencilOperation(const StencilOperation operation);
 		FORCEINLINE static unsigned int GetStencilFunction(const StencilFunction function);
+		FORCEINLINE static unsigned int GetBlendingFunction(const BlendingFunction function);
+		FORCEINLINE static unsigned int GetBlendingColorFactor(const BlendingFactor factor);
+		FORCEINLINE static unsigned int GetBlendingAlphaFactor(const BlendingFactor factor);
 	};
 }

@@ -126,7 +126,40 @@ int main()
 	depthStencilStateDesc.bEnableDeptWrite = false;
 	depthStencilStateDesc.bEnableStencilTest = false;
 	depthStencilStateDesc.TestFunction = Felix::DepthTestFunction::GreatEqual;
+
+	Felix::StencilFaceDesc stencilFrontDesc = {};
+	stencilFrontDesc.StencilReferenceValue = 1;
+	stencilFrontDesc.StencilReadMask = 0;
+	stencilFrontDesc.StencilWriteMask = 1;
+	stencilFrontDesc.Function = Felix::StencilFunction::Always;
+	stencilFrontDesc.DepthFailOperation = Felix::StencilOperation::Keep;
+	stencilFrontDesc.FailOperation = Felix::StencilOperation::Keep;
+	stencilFrontDesc.PassOperation = Felix::StencilOperation::Keep;
+	depthStencilStateDesc.StencilFrontFace = stencilFrontDesc;
+
+	Felix::StencilFaceDesc stencilBackFace = {};
+	stencilBackFace.StencilReferenceValue = 1;
+	stencilBackFace.StencilReadMask = 0;
+	stencilBackFace.StencilWriteMask = 1;
+	stencilBackFace.Function = Felix::StencilFunction::Always;
+	stencilBackFace.DepthFailOperation = Felix::StencilOperation::Keep;
+	stencilBackFace.FailOperation = Felix::StencilOperation::Keep;
+	stencilBackFace.PassOperation = Felix::StencilOperation::Keep;
+	depthStencilStateDesc.StencilBackFace = stencilBackFace;
+
 	pipelineDesc.DepthStencilDesc = depthStencilStateDesc;
+
+	Felix::BlendingStateDesc blendingStateDesc = {};
+	blendingStateDesc.bEnable = true;
+	blendingStateDesc.AlphaFunction = Felix::BlendingFunction::Add;
+	blendingStateDesc.SourceAlphaFactor = Felix::BlendingFactor::One;
+	blendingStateDesc.DestinationAlphaFactor = Felix::BlendingFactor::One;
+	blendingStateDesc.ColorFunction = Felix::BlendingFunction::Subtract;
+	blendingStateDesc.SourceColorFactor = Felix::BlendingFactor::One;
+	blendingStateDesc.DestinationColorFactor = Felix::BlendingFactor::One;
+
+	pipelineDesc.BlendingDesc = blendingStateDesc;
+	
 
 	Felix::Pipeline* pPipeline = pDevice->CreatePipeline(pipelineDesc);
 

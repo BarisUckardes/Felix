@@ -31,6 +31,13 @@ namespace Felix
 		FORCEINLINE unsigned int GetGLShadingMode() const noexcept { return _shadingMode; }
 		FORCEINLINE StencilGLFaceDesc GetGLStencilFrontDesc() const noexcept { return _stencilFrontFace; }
 		FORCEINLINE StencilGLFaceDesc GetGLStencilBackDesc() const noexcept { return _stencilBackFace; }
+		FORCEINLINE unsigned int GetColorBlendingFunction() const noexcept { return _colorBlendingFunction; }
+		FORCEINLINE unsigned int GetAlphaBlendingFunction() const noexcept { return _alphaBlendingFunction; }
+		FORCEINLINE unsigned int GetSourceColorFactor() const noexcept { return _sourceColorFactor; }
+		FORCEINLINE unsigned int GetDestinationColorFactor() const noexcept { return _destinationColorFactor; }
+		FORCEINLINE unsigned int GetSourceAlphaFactor() const noexcept { return _sourceAlphaFactor; }
+		FORCEINLINE unsigned int GetDestinationAlphaFactor() const noexcept { return _destinationAlphaFactor; }
+
 	private:
 		unsigned int _programHandle;
 		unsigned int _primitives;
@@ -40,5 +47,11 @@ namespace Felix
 		unsigned int _shadingMode;
 		StencilGLFaceDesc _stencilFrontFace;
 		StencilGLFaceDesc _stencilBackFace;
+		unsigned int _colorBlendingFunction;
+		unsigned int _alphaBlendingFunction;
+		unsigned int _sourceColorFactor;
+		unsigned int _destinationColorFactor;
+		unsigned int _sourceAlphaFactor;
+		unsigned int _destinationAlphaFactor;
 	};
 }

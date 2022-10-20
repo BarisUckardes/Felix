@@ -206,4 +206,73 @@ namespace Felix
 				break;
 		}
 	}
+	unsigned int OpenGLPipelineUtils::GetBlendingFunction(const BlendingFunction function)
+	{
+		switch (function)
+		{
+			case Felix::BlendingFunction::Add:
+				return GL_FUNC_ADD;
+			case Felix::BlendingFunction::Subtract:
+				return GL_FUNC_SUBTRACT;
+			case Felix::BlendingFunction::ReverseSubtract:
+				return GL_FUNC_REVERSE_SUBTRACT;
+			case Felix::BlendingFunction::Min:
+				return GL_MIN;
+			case Felix::BlendingFunction::Max:
+				return GL_MAX;
+			default:
+				ASSERT(false, "OpenGLPipelineUtils", "Invalid BlendingFunction!");
+				break;
+		}
+	}
+	unsigned int OpenGLPipelineUtils::GetBlendingColorFactor(const BlendingFactor factor)
+	{
+		switch (factor)
+		{
+			case Felix::BlendingFactor::Zero:
+				return GL_ZERO;
+			case Felix::BlendingFactor::One:
+				return GL_ONE;
+			case Felix::BlendingFactor::Source:
+				return GL_SRC_COLOR;
+			case Felix::BlendingFactor::OneMinusSource:
+				return GL_ONE_MINUS_SRC_COLOR;
+			case Felix::BlendingFactor::Destination:
+				return GL_DST_COLOR;
+			case Felix::BlendingFactor::OneMinusDestination:
+				return GL_ONE_MINUS_DST_COLOR;
+			case Felix::BlendingFactor::Constant:
+				return GL_CONSTANT_COLOR;
+			case Felix::BlendingFactor::OneMinusConstant:
+				return GL_ONE_MINUS_CONSTANT_COLOR;
+			default:
+				ASSERT(false, "OpenGLPipelineUtils", "Invalid BlendingFactor!");
+				break;
+		}
+	}
+	unsigned int OpenGLPipelineUtils::GetBlendingAlphaFactor(const BlendingFactor factor)
+	{
+		switch (factor)
+		{
+		case Felix::BlendingFactor::Zero:
+			return GL_ZERO;
+		case Felix::BlendingFactor::One:
+			return GL_ONE;
+		case Felix::BlendingFactor::Source:
+			return GL_SRC_ALPHA;
+		case Felix::BlendingFactor::OneMinusSource:
+			return GL_ONE_MINUS_SRC_ALPHA;
+		case Felix::BlendingFactor::Destination:
+			return GL_DST_ALPHA;
+		case Felix::BlendingFactor::OneMinusDestination:
+			return GL_ONE_MINUS_DST_ALPHA;
+		case Felix::BlendingFactor::Constant:
+			return GL_CONSTANT_ALPHA;
+		case Felix::BlendingFactor::OneMinusConstant:
+			return GL_ONE_MINUS_CONSTANT_ALPHA;
+		default:
+			ASSERT(false, "OpenGLPipelineUtils", "Invalid BlendingFactor!");
+			break;
+		}
+	}
 }

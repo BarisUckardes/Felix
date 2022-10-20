@@ -16,5 +16,7 @@ namespace Felix
 		BlendingFactor SourceAlphaFactor;
 		BlendingFactor DestinationAlphaFactor;
 		BlendingFunction AlphaFunction;
+
+		bool bEnable;
 	};
 }

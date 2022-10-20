@@ -10,8 +10,11 @@ namespace Felix
 	{
 		Zero,
 		One,
-		SourceColor,
-		OneMinusSourceColor,
-		DestinationColor
+		Source,
+		OneMinusSource,
+		Destination,
+		OneMinusDestination,
+		Constant,
+		OneMinusConstant
 	};
 }

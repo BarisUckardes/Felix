@@ -156,6 +156,19 @@ namespace Felix
 		glStencilMaskSeparate(GL_BACK, stencilBackDesc.StencilWriteMask);
 		glStencilFuncSeparate(GL_BACK, stencilBackDesc.Function, stencilBackDesc.StencilReferenceValue, stencilBackDesc.StencilReadMask);
 		glStencilOpSeparate(GL_BACK, stencilBackDesc.FailOperation, stencilBackDesc.DepthFailOperation, stencilBackDesc.PassOperation);
+
+		/*
+		* Set blending state
+		*/
+		const BlendingStateDesc& blendingState = pPipeline->GetBlendingDesc();
+
+		if (blendingState.bEnable)
+			glEnable(GL_BLEND);
+		else
+			glDisable(GL_BLEND);
+
+		glBlendEquationSeparate(pGLPipeline->GetColorBlendingFunction(),pGLPipeline->GetAlphaBlendingFunction());
+		glBlendFuncSeparate(pGLPipeline->GetSourceColorFactor(),pGLPipeline->GetDestinationColorFactor(),pGLPipeline->GetSourceAlphaFactor(),pGLPipeline->GetDestinationAlphaFactor());
 	}
 	void OpenGLCommandBuffer::BindFramebufferCore(Framebuffer* pFramebuffer)
 	{
