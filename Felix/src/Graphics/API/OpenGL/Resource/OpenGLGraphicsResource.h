@@ -8,7 +8,5 @@ namespace Felix
 	public:
 		OpenGLGraphicsResource(const GraphicsResourceCreateDesc& desc) : GraphicsResource(desc) {}
 		virtual ~OpenGLGraphicsResource() override {}
-
-	private:
 	};
 }

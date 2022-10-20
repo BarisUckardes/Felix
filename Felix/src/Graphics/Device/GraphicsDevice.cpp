@@ -147,6 +147,11 @@ namespace Felix
     }
     GraphicsResource* GraphicsDevice::CreateResource(const GraphicsResourceCreateDesc& desc)
     {
+        /*
+        * Validate if resource is nullptr
+        */
+        ASSERT(desc.pDeviceObject != nullptr, "GraphicsDevice", "Targer resource object cannot be nullptr!");
+
         GraphicsResource* pObject = CreateResourceCore(desc);
 
         RegisterDeviceObject(pObject);

@@ -39,6 +39,9 @@ namespace Felix
 	class TextureSampler;
 	struct TextureSamplerCreateDesc;
 
+	class GraphicsResource;
+	struct GraphicsResourceCreateDesc;
+
 	/// <summary>
 	/// Represents both physical and logical graphics device of a system gpu
 	/// </summary>

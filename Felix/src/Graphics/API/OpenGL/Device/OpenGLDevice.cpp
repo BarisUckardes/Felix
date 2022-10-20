@@ -194,7 +194,26 @@ namespace Felix
     }
     GraphicsResource* OpenGLDevice::CreateResourceCore(const GraphicsResourceCreateDesc& desc)
     {
-        return new OpenGLGraphicsResource(desc);
+        GraphicsResourceType resourceType = desc.Type;
+
+        GraphicsResource* pResource = nullptr;
+        switch (resourceType)
+        {
+            case Felix::GraphicsResourceType::TextureSampler:
+            {
+                const OpenGLTextureSampler* pSampler = (const OpenGLTextureSampler*)desc.pDeviceObject;
+                pResource = new OpenGLTextureSamplerResource(pSampler->GetGLHandle(), desc);
+                break;
+            }
+            case Felix::GraphicsResourceType::ConstantBuffer:
+            {
+                break;
+            }
+            default:
+                break;
+        }
+
+        return pResource;
     }
     Framebuffer* OpenGLDevice::CreateFramebufferCore(const FramebufferCreateDesc& desc)
     {
