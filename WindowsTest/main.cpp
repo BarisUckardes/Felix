@@ -42,9 +42,12 @@ int main()
 	* Create graphics device
 	*/
 	Felix::WindowGraphicsDeviceCreateDesc deviceDesc = {};
-	Felix::SwapchainFramebufferCreateDesc swapchainDesc = {};
+	deviceDesc.PreferredAPI = Felix::GraphicsAPI::OpenGL;
+	deviceDesc.SwapchainBufferCount = 3;
+	deviceDesc.SwapchainBufferFormat = Felix::TextureFormat::RGBA8;
+	deviceDesc.SwapchainDepthStencilBufferFormat = Felix::TextureFormat::None;
 
-	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,swapchainDesc,pWindow);
+	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,pWindow);
 
 	/*
 	* Create command buffer
@@ -160,7 +163,6 @@ int main()
 
 	pipelineDesc.BlendingDesc = blendingStateDesc;
 	
-
 	Felix::Pipeline* pPipeline = pDevice->CreatePipeline(pipelineDesc);
 
 	/*

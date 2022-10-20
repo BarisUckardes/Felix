@@ -4,6 +4,7 @@
 #include <Graphics/API/OpenGL/Device/OpenGLDevice.h>
 #include <Graphics/Device/GraphicsDeviceObjects.h>
 #include <Window/WindowDeviceAdapter.h>
+#include <Window/Window.h>
 
 namespace Felix
 {
@@ -45,7 +46,7 @@ namespace Felix
 
         return pDevice;
     }
-    GraphicsDevice* GraphicsDevice::CreateWindowDevice(const WindowGraphicsDeviceCreateDesc& desc, const SwapchainFramebufferCreateDesc& swapchainDesc, Window* pOwnerWindow, const GraphicsDeviceCapabilities& requiredCapabilities)
+    GraphicsDevice* GraphicsDevice::CreateWindowDevice(const WindowGraphicsDeviceCreateDesc& desc,Window* pOwnerWindow, const GraphicsDeviceCapabilities& requiredCapabilities)
     {
         /*
         * Get requested api
@@ -79,9 +80,19 @@ namespace Felix
         }
 
         /*
+        * Create swapchain desc
+        */
+        SwapchainFramebufferCreateDesc swapchainFramebufferDesc = {};
+        swapchainFramebufferDesc.Width = pOwnerWindow->GetWidth();
+        swapchainFramebufferDesc.Height = pOwnerWindow->GetHeight();
+        swapchainFramebufferDesc.Format = desc.SwapchainBufferFormat;
+        swapchainFramebufferDesc.DepthStencilFormat = desc.SwapchainDepthStencilBufferFormat;
+        swapchainFramebufferDesc.BufferCount = desc.SwapchainBufferCount;
+
+        /*
         * Create swapchain framebuffer
         */
-        pDevice->CreateSwapchainFramebuffer(swapchainDesc);
+        pDevice->CreateSwapchainFramebuffer(swapchainFramebufferDesc);
 
         return pDevice;
     }
