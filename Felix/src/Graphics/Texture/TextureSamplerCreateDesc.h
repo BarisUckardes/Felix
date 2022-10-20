@@ -14,5 +14,7 @@ namespace Felix
 		TextureSamplerMagFilter MagFilter;
 		TextureSamplerWrapMode WrappingS;
 		TextureSamplerWrapMode WrappingT;
+		TextureSamplerWrapMode WrappingR;
+		unsigned int MaxAnisotropy;
 	};
 }
