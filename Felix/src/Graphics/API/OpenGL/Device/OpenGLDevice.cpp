@@ -207,6 +207,8 @@ namespace Felix
             }
             case Felix::GraphicsResourceType::ConstantBuffer:
             {
+                const OpenGLBuffer* pBuffer = (const OpenGLBuffer*)desc.pDeviceObject;
+                pResource = new OpenGLConstantBufferResource(pBuffer->GetGLHandle(),desc);
                 break;
             }
             default:

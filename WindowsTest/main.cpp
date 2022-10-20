@@ -17,10 +17,16 @@ const std::string vShader = R"(
 const std::string fShader = R"(
 	#version 450 core
 
+
+	layout(std140) uniform MyConstantBuffer
+    {
+		vec3 MyColor;
+    };
+
 	out vec4 ColorOut;
 	void main()
 	{
-		ColorOut = vec4(0,1,0,0);
+		ColorOut = vec4(MyColor,0);
 	}
 )";
 
@@ -76,13 +82,19 @@ int main()
 		float X;
 		float Y;
 	};
+	struct ConstantBufferData
+	{
+		float R;
+		float G;
+		float B;
+	};
 
 	/*
 	* Create buffers
 	*/
 	std::vector<Vertex> vertexes = { {1,-1},{-1,-1},{0,1} };
-
 	std::vector<unsigned int> indexes = { 0,1,2,0,2,1 };
+	ConstantBufferData constantBufferData = { 0,0,1 };
 
 	Felix::GraphicsBufferCreateDesc vertexBufferDesc = {};
 	vertexBufferDesc.Type = Felix::GraphicsBufferType::VertexBuffer;
@@ -98,8 +110,25 @@ int main()
 	indexBufferDesc.SubItemSize = sizeof(unsigned int);
 	indexBufferDesc.pInitialData = (const unsigned char*)indexes.data();
 
+	Felix::GraphicsBufferCreateDesc constantBufferDesc = {};
+	constantBufferDesc.Type = Felix::GraphicsBufferType::ConstantBuffer;
+	constantBufferDesc.Usage = Felix::GraphicsBufferUsage::Dynamic;
+	constantBufferDesc.SubItemCount = 1;
+	constantBufferDesc.SubItemSize = sizeof(ConstantBufferData);
+	constantBufferDesc.pInitialData = (const unsigned char*)&constantBufferData;
+
 	Felix::GraphicsBuffer* pVertexBuffer = pDevice->CreateBuffer(vertexBufferDesc);
 	Felix::GraphicsBuffer* pIndexBuffer = pDevice->CreateBuffer(indexBufferDesc);
+	Felix::GraphicsBuffer* pConstantBuffer = pDevice->CreateBuffer(constantBufferDesc);
+
+	/*
+	* Create resource
+	*/
+	Felix::GraphicsResourceCreateDesc constantBufferResourcDesc = {};
+	constantBufferResourcDesc.Type = Felix::GraphicsResourceType::ConstantBuffer;
+	constantBufferResourcDesc.pDeviceObject = pConstantBuffer;
+
+	Felix::GraphicsResource* pConstantBufferResource = pDevice->CreateResource(constantBufferResourcDesc);
 
 	/*
 	* Create pipeline
@@ -163,6 +192,11 @@ int main()
 
 	pipelineDesc.BlendingDesc = blendingStateDesc;
 	
+	Felix::ResourceStateDesc resourceStateDesc = {};
+	std::vector<Felix::ResourceSlotDesc> resourceSlots;
+	resourceSlots.push_back({"MyConstantBuffer",Felix::GraphicsResourceType::ConstantBuffer,Felix::ShaderType::Fragment});
+	pipelineDesc.ResourceStateDesc = resourceStateDesc;
+
 	Felix::Pipeline* pPipeline = pDevice->CreatePipeline(pipelineDesc);
 
 	/*

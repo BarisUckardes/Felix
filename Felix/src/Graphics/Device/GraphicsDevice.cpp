@@ -197,6 +197,7 @@ namespace Felix
 
     void GraphicsDevice::RegisterDeviceObject(GraphicsDeviceObject* pDeviceObject)
     {
+        pDeviceObject->_SetOwnerDevice(this);
         _objects.push_back(pDeviceObject);
     }
     void GraphicsDevice::CreateSwapchainFramebuffer(const SwapchainFramebufferCreateDesc& desc)

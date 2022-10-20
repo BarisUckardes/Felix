@@ -9,3 +9,4 @@
 #include <Graphics/API/OpenGL/Shader/OpenGLShader.h>
 #include <Graphics/API/OpenGL/Texture/OpenGLTextureSampler.h>
 #include <Graphics/API/OpenGL/Resource/OpenGLTextureSamplerResource.h>
+#include <Graphics/API/OpenGL/Resource/OpenGLConstantBufferResource.h>

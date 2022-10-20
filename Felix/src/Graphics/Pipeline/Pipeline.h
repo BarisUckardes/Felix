@@ -16,6 +16,7 @@ namespace Felix
 		FORCEINLINE InputLayoutDesc GetInputLayoutDesc() const noexcept { return _inputLayoutDesc; }
 		FORCEINLINE ShadingPassDesc GetShadingPassDesc() const noexcept { return _shadingPassDesc; }
 		FORCEINLINE OutputDesc GetOutputDesc() const noexcept { return _outputDesc; }
+		FORCEINLINE ResourceStateDesc GetResourceStateDesc() const noexcept { return _resourceStateDesc; }
 		FORCEINLINE PipelineType GetPipelineType() const noexcept { return _type; }
 
 
@@ -27,6 +28,7 @@ namespace Felix
 			_inputLayoutDesc(desc.InputLayoutDesc),
 			_shadingPassDesc(desc.ShadingPass),
 			_outputDesc(desc.OutputDesc),
+			_resourceStateDesc(desc.ResourceStateDesc),
 			_type(desc.Type)
 		{}
 		virtual ~Pipeline() {}
@@ -40,6 +42,7 @@ namespace Felix
 		const InputLayoutDesc _inputLayoutDesc;
 		const ShadingPassDesc _shadingPassDesc;
 		const OutputDesc _outputDesc;
+		const ResourceStateDesc _resourceStateDesc;
 		const PipelineType _type;
 	};
 }

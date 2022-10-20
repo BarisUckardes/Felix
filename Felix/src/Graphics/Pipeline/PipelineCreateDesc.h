@@ -21,6 +21,7 @@ namespace Felix
 		InputLayoutDesc InputLayoutDesc;
 		ShadingPassDesc ShadingPass;
 		OutputDesc OutputDesc;
+		ResourceStateDesc ResourceStateDesc;
 		PipelineType Type;
 	};
 }
