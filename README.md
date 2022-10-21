@@ -19,7 +19,7 @@ Supported platforms
 
 Supported graphics APIs:
 
-- [ ] OpenGL
+- [X] OpenGL
 - [ ] OpenGL-ES
 - [ ] Directx 11
 - [ ] Directx 12
