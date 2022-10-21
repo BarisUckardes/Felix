@@ -20,7 +20,7 @@ endif()
 
 #include
 include_directories("src")
-include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/OpenGL/GLAD/include)
+include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/OpenGL/include)
 include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/Stbi/include)
 
 #linker

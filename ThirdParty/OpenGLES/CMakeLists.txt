@@ -1,0 +1,1 @@
+add_library(OpenGLES "src/gles2.c" )

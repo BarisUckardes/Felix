@@ -242,7 +242,7 @@ int main()
 	pipelineDesc.BlendingDesc = blendingStateDesc;
 	
 	Felix::ResourceStateDesc resourceStateDesc = {};
-	resourceStateDesc.SlotDescriptions.push_back({"MyConstantBuffer",Felix::GraphicsResourceType::ConstantBuffer,Felix::ShaderType::Fragment});
+	resourceStateDesc.SlotDescriptions.push_back({ "MyConstantBuffer",Felix::GraphicsResourceType::ConstantBuffer,Felix::ShaderType::Fragment});
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::Texture,Felix::ShaderType::Fragment });
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::TextureSampler,Felix::ShaderType::Fragment });
 

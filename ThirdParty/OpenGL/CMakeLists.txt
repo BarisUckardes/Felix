@@ -1,1 +1,1 @@
-add_library(OpenGL "GLAD/src/glad.c")
+add_library(OpenGL "src/glad.c" )
