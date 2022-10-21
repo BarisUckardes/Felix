@@ -24,7 +24,7 @@ include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/OpenGL/include)
 include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/Stbi/include)
 
 #linker
-link_directories(${CMAKE_SOURCE_DIR}/ThirdParty/OpenGL/WGL/lib)
+link_directories(${CMAKE_SOURCE_DIR}/ThirdParty/WGL/lib)
 
 target_link_libraries(Felix Stbi)
 target_link_libraries(Felix OpenGL)

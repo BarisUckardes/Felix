@@ -1,6 +1,7 @@
 #pragma once
 #include <Graphics/Device/GraphicsDeviceObject.h>
 #include <Graphics/Buffer/GraphicsBufferCreateDesc.h>
+#include <Graphics/Buffer/GraphicsBufferUpdateDesc.h>
 namespace Felix
 {
 	/// <summary>

@@ -34,7 +34,7 @@ const std::string fShader = R"(
 	out vec4 ColorOut;
 	void main()
 	{
-		ColorOut = texture2D(fTexture,fUv);
+		ColorOut = texture2D(fTexture,fUv)*vec4(MyColor,1);
 	}
 )";
 
@@ -105,7 +105,6 @@ int main()
 	std::vector<Vertex> vertexes = { {1,-1,1,0},{-1,-1,0,0},{0,1,0.5,1} };
 	std::vector<unsigned int> indexes = { 0,1,2,0,2,1 };
 	ConstantBufferData constantBufferData = { 0,1,0.0 };
-	ConstantBufferData constantBufferData2 = { 0,0,1 };
 
 	Felix::GraphicsBufferCreateDesc vertexBufferDesc = {};
 	vertexBufferDesc.Type = Felix::GraphicsBufferType::VertexBuffer;
@@ -126,12 +125,21 @@ int main()
 	constantBufferDesc.Usage = Felix::GraphicsBufferUsage::Dynamic;
 	constantBufferDesc.SubItemCount = 1;
 	constantBufferDesc.SubItemSize = sizeof(ConstantBufferData); // must multiples of 16 bytes for std140
-	constantBufferDesc.pInitialData = (const unsigned char*)&constantBufferData;
+	constantBufferDesc.pInitialData = nullptr;
 
 	Felix::GraphicsBuffer* pVertexBuffer = pDevice->CreateBuffer(vertexBufferDesc);
 	Felix::GraphicsBuffer* pIndexBuffer = pDevice->CreateBuffer(indexBufferDesc);
 	Felix::GraphicsBuffer* pConstantBuffer = pDevice->CreateBuffer(constantBufferDesc);
 
+	/*
+	* Update buffer
+	*/
+	Felix::GraphicsBufferUpdateDesc constantBufferUpdateDesc = {};
+	constantBufferUpdateDesc.Offset = 0;
+	constantBufferUpdateDesc.Size = sizeof(ConstantBufferData);
+	//constantBufferUpdateDesc.pData = (const unsigned char*)&constantBufferData;
+
+	pDevice->UpdateBuffer(pConstantBuffer, constantBufferUpdateDesc);
 	/*
 	* Create textures
 	*/

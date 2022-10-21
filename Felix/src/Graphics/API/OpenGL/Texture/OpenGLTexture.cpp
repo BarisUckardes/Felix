@@ -25,6 +25,7 @@ namespace Felix
 			case Felix::TextureType::Texture1D:
 			{
 				glTextureStorage1D(_handle, mipmaps, internalFormat, desc.Width);
+				glTextureSubImage1D(_handle, 0, 0, desc.Width, format, dataType, desc.pInitialData);
 				break;
 			}
 			case Felix::TextureType::Texture2D:
@@ -36,6 +37,7 @@ namespace Felix
 			case Felix::TextureType::Texture3D:
 			{
 				glTextureStorage3D(_handle, mipmaps, internalFormat, desc.Width,desc.Height,desc.Depth);
+				glTextureSubImage3D(_handle, 0, 0,0,0, desc.Width,desc.Height,desc.Depth, format, dataType, desc.pInitialData);
 				break;
 			}
 			case Felix::TextureType::CubeTexture:
@@ -47,20 +49,8 @@ namespace Felix
 				break;
 		}
 
-		/*
-		* Generate texture parameters
-		*/
-		/*glTextureParameteri(_handle, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTextureParameteri(_handle, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-		glTextureParameteri(_handle, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTextureParameteri(_handle, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		glTextureParameteri(_handle, GL_TEXTURE_MAX_LEVEL, 0);
-		glTextureParameteri(_handle, GL_TEXTURE_MAX_LEVEL, mipmaps - 1);
-
 		if(desc.bGenerateMipmaps)
-			glGenerateTextureMipmap(_handle);*/
+			glGenerateTextureMipmap(_handle);
 	}
 	OpenGLTexture::~OpenGLTexture()
 	{
