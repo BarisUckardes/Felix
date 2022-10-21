@@ -1,13 +1,13 @@
 cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_executable (WindowsTest "main.cpp")
+add_executable (Sample "main.cpp")
 
 #include
 include_directories(${CMAKE_SOURCE_DIR}/Felix/src)
 
 #link
-target_link_libraries(WindowsTest PUBLIC Felix)
+target_link_libraries(Sample PUBLIC Felix)
 
 if (WIN32)
 add_compile_definitions(FELIX_OS_WINDOWS)

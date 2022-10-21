@@ -4,12 +4,12 @@
 cmake_minimum_required (VERSION 3.8)
 
 project ("Felix")
-project ("WindowsTest")
+project ("Sample")
 project ("OpenGL")
 project ("Stbi")
 
 # Include sub-projects.
 add_subdirectory ("Felix")
-add_subdirectory("WindowsTest")
+add_subdirectory("Sample")
 add_subdirectory("ThirdParty/OpenGL")
 add_subdirectory("ThirdParty/Stbi")
