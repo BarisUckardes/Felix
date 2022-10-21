@@ -7,3 +7,4 @@
 #include <Graphics/Shader/Shader.h>
 #include <Graphics/Resource/GraphicsResource.h>
 #include <Graphics/Pipeline/Pipeline.h>
+#include <Graphics/Texture/TextureSampler.h>

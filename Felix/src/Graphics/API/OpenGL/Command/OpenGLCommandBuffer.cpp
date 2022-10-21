@@ -97,7 +97,7 @@ namespace Felix
 
 		switch (pResource->GetResourceType())
 		{
-		case Felix::GraphicsResourceType::Texture:
+		case Felix::GraphicsResourceType::TextureSampler:
 			break;
 		case Felix::GraphicsResourceType::ConstantBuffer:
 		{

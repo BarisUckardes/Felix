@@ -6,7 +6,7 @@ namespace Felix
 	/// <summary>
 	/// Supported texture magnification filters
 	/// </summary>
-	enum class EXPORT TextureMagFilter
+	enum class EXPORT TextureSamplerMagFilter
 	{
 		Nearest,
 		Linear

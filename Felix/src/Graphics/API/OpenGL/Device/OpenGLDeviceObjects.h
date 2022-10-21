@@ -7,5 +7,6 @@
 #include <Graphics/API/OpenGL/Resource/OpenGLGraphicsResource.h>
 #include <Graphics/API/OpenGL/Pipeline/OpenGLPipeline.h>
 #include <Graphics/API/OpenGL/Shader/OpenGLShader.h>
+#include <Graphics/API/OpenGL/Texture/OpenGLTextureSampler.h>
+#include <Graphics/API/OpenGL/Resource/OpenGLTextureSamplerResource.h>
 #include <Graphics/API/OpenGL/Resource/OpenGLConstantBufferResource.h>
-#include <Graphics/API/OpenGL/Resource/OpenGLTextureResource.h>

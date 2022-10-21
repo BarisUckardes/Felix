@@ -24,6 +24,7 @@ namespace Felix
 		virtual Framebuffer* CreateSwapchainFramebufferCore(const SwapchainFramebufferCreateDesc& desc) override;
 		virtual GraphicsResource* CreateResourceCore(const GraphicsResourceCreateDesc& desc) override;
 		virtual Pipeline* CreatePipelineCore(const PipelineCreateDesc& desc) override;
+		virtual TextureSampler* CreateTextureSamplerCore(const TextureSamplerCreateDesc& desc) override;
 
 		virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) override;
 		virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) override;
