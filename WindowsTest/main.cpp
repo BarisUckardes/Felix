@@ -8,10 +8,13 @@ using namespace std;
 const std::string vShader = R"(
 	#version 450 core
 	layout(location = 0) in vec2 aPosition;
+	layout(location = 1) in vec2 aUv;
 
+	out vec2 fUv;
 	void main()
 	{
 		gl_Position = vec4(aPosition,0,1.0f);
+		fUv = aUv;
 	}
 )";
 const std::string fShader = R"(
@@ -28,10 +31,11 @@ const std::string fShader = R"(
 		vec3 MyColor2;
     };
 
+	in vec2 fUv;
 	out vec4 ColorOut;
 	void main()
 	{
-		ColorOut = vec4((MyColor+MyColor2)/2.0f,0);
+		ColorOut = vec4(fUv,0,0);
 	}
 )";
 
@@ -86,6 +90,8 @@ int main()
 	{
 		float X;
 		float Y;
+		float U;
+		float V;
 	};
 	struct ConstantBufferData
 	{
@@ -97,7 +103,7 @@ int main()
 	/*
 	* Create buffers
 	*/
-	std::vector<Vertex> vertexes = { {1,-1},{-1,-1},{0,1} };
+	std::vector<Vertex> vertexes = { {1,-1,1,0},{-1,-1,0,0},{0,1,0.5,1} };
 	std::vector<unsigned int> indexes = { 0,1,2,0,2,1 };
 	ConstantBufferData constantBufferData = { 0,1,0.0 };
 	ConstantBufferData constantBufferData2 = { 0,0,1 };
@@ -159,6 +165,7 @@ int main()
 
 	std::vector<Felix::InputElementDesc> inputElements;
 	inputElements.push_back(Felix::InputElementDesc({"Vertex",Felix::InputElementDataType::Float2,false}));
+	inputElements.push_back(Felix::InputElementDesc({ "UV",Felix::InputElementDataType::Float2,false }));
 	Felix::InputLayoutDesc inputLayoutDesc(inputElements);
 	pipelineDesc.InputLayoutDesc = inputLayoutDesc;
 
