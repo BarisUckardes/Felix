@@ -1,5 +1,6 @@
 #include "OpenGLDevice.h"
 #include <GLAD/glad.h>
+#include <KHR/khrplatform.h>
 #include <Graphics/API/OpenGL/Device/OpenGLDeviceObjects.h>
 #include <Graphics/Buffer/GraphicsBufferUpdateDesc.h>
 #include <Graphics/Texture/TextureUpdateDesc.h>
@@ -69,7 +70,7 @@ namespace Felix
             WGL_CONTEXT_PROFILE_MASK_ARB,
             WGL_CONTEXT_COREPROFILE_BIT_ARB,0
         };
-
+        
         HGLRC gladContext = wglCreateContextAttribsARB(windowDeviceContext, NULL, attribList);
 
         wglMakeCurrent(NULL, NULL);
@@ -184,10 +185,7 @@ namespace Felix
                 break;
         }
     }
-    TextureSampler* OpenGLDevice::CreateTextureSamplerCore(const TextureSamplerCreateDesc& desc)
-    {
-        return new OpenGLTextureSampler(desc);
-    }
+   
     Pipeline* OpenGLDevice::CreatePipelineCore(const PipelineCreateDesc& desc)
     {
         return new OpenGLPipeline(desc);
@@ -199,10 +197,10 @@ namespace Felix
         GraphicsResource* pResource = nullptr;
         switch (resourceType)
         {
-            case Felix::GraphicsResourceType::TextureSampler:
+            case Felix::GraphicsResourceType::Texture:
             {
-                const OpenGLTextureSampler* pSampler = (const OpenGLTextureSampler*)desc.pDeviceObject;
-                pResource = new OpenGLTextureSamplerResource(pSampler->GetGLHandle(), desc);
+                const OpenGLTexture* pTexture = (const OpenGLTexture*)desc.pDeviceObject;
+                pResource = new OpenGLTextureResource(pTexture->GetGLHandle(), desc);
                 break;
             }
             case Felix::GraphicsResourceType::ConstantBuffer:

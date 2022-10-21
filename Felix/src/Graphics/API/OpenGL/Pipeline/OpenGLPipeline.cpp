@@ -87,7 +87,7 @@ namespace Felix
 
 			switch (slotDesc.Type)
 			{
-				case Felix::GraphicsResourceType::TextureSampler:
+				case Felix::GraphicsResourceType::Texture:
 				{
 					break;
 				}

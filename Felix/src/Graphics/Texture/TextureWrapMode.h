@@ -6,7 +6,7 @@ namespace Felix
 	/// <summary>
 	/// Supported texture sampler uv wrapping modes
 	/// </summary>
-	enum class EXPORT TextureSamplerWrapMode
+	enum class EXPORT TextureWrapMode
 	{
 		ClampToEdge,
 		MirroredRepeat,

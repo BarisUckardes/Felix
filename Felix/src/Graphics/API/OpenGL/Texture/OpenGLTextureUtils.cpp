@@ -82,4 +82,53 @@ namespace Felix
 				break;
 		}
 	}
+	unsigned int OpenGLTextureUtils::GetWrapMode(const TextureWrapMode mode)
+	{
+		switch (mode)
+		{
+		case Felix::TextureWrapMode::ClampToEdge:
+			return GL_CLAMP_TO_EDGE;
+		case Felix::TextureWrapMode::MirroredRepeat:
+			return GL_MIRRORED_REPEAT;
+		case Felix::TextureWrapMode::Repeat:
+			return GL_REPEAT;
+		default:
+			ASSERT(false, "OpenGLTextureSamplerResourceUtils", "Invalid TextureSamplerWrapMode!");
+			break;
+		}
+	}
+	unsigned int OpenGLTextureUtils::GetMinFilter(const TextureMinFilter filter)
+	{
+		switch (filter)
+		{
+		case Felix::TextureMinFilter::Nearest:
+			return GL_NEAREST;
+		case Felix::TextureMinFilter::Linear:
+			return GL_LINEAR;
+		case Felix::TextureMinFilter::NearestMipmapNearest:
+			return GL_NEAREST_MIPMAP_NEAREST;
+		case Felix::TextureMinFilter::LinearMipmapNearest:
+			return GL_LINEAR_MIPMAP_NEAREST;
+		case Felix::TextureMinFilter::NearestMipmapLinear:
+			return GL_NEAREST_MIPMAP_LINEAR;
+		case Felix::TextureMinFilter::LinearMipmapLinear:
+			return GL_LINEAR_MIPMAP_LINEAR;
+		default:
+			ASSERT(false, "OpenGLTextureSamplerResourceUtils", "Invalid TextureSamplerMinFilter!");
+			break;
+		}
+	}
+	unsigned int OpenGLTextureUtils::GetMagFilter(TextureMagFilter filter)
+	{
+		switch (filter)
+		{
+		case Felix::TextureMagFilter::Nearest:
+			return GL_NEAREST;
+		case Felix::TextureMagFilter::Linear:
+			return GL_LINEAR;
+		default:
+			ASSERT(false, "OpenGLTextureSamplerResourceUtils", "Invalid TextureSamplerMagFilter!");
+			break;
+		}
+	}
 }

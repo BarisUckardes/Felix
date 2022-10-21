@@ -8,7 +8,7 @@ namespace Felix
 	/// </summary>
 	enum class EXPORT GraphicsResourceType
 	{
-		TextureSampler,
+		Texture,
 		ConstantBuffer
 	};
 }

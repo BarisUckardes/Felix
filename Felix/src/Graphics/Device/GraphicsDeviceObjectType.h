@@ -9,7 +9,6 @@ namespace Felix
 	enum class EXPORT GraphicsDeviceObjectType
 	{
 		Texture = 0,
-		TextureSampler,
 		Buffer,
 		Shader,
 		Framebuffer,

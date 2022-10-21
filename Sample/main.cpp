@@ -2,11 +2,13 @@
 #include <Window/Window.h>
 #include <Graphics/Device/GraphicsDevice.h>
 #include <Graphics/Device/GraphicsDeviceObjects.h>
+#include <Graphics/Texture/TextureLoader.h>
+#include <Graphics/Texture/TextureLoadResult.h>
 
 using namespace std;
 
 const std::string vShader = R"(
-	#version 450 core
+	#version 450
 	layout(location = 0) in vec2 aPosition;
 	layout(location = 1) in vec2 aUv;
 
@@ -18,7 +20,7 @@ const std::string vShader = R"(
 	}
 )";
 const std::string fShader = R"(
-	#version 450 core
+	#version 450
 
 
 	layout(std140) uniform MyConstantBuffer
@@ -30,12 +32,13 @@ const std::string fShader = R"(
     {
 		vec3 MyColor2;
     };
+	
 
 	in vec2 fUv;
 	out vec4 ColorOut;
 	void main()
 	{
-		ColorOut = vec4(fUv,0,0);
+		ColorOut = vec4(fUv,0,1);
 	}
 )";
 
@@ -142,6 +145,23 @@ int main()
 	Felix::GraphicsBuffer* pConstantBuffer2 = pDevice->CreateBuffer(constantBufferDesc2);
 
 	/*
+	* Create textures
+	*/
+	Felix::TextureLoadResult textureLoadResult = {};
+	Felix::TextureLoader::LoadTextureFromDisk("D:/Resources/Textures/discordIcon.png", textureLoadResult);
+
+	Felix::TextureCreateDesc textureDesc = {};
+	textureDesc.Width = textureLoadResult.Width;
+	textureDesc.Height = textureLoadResult.Height;
+	textureDesc.Depth = textureLoadResult.Depth;
+	textureDesc.Format = textureLoadResult.Format;
+	textureDesc.Usage = Felix::TextureUsage::Immutable;
+	textureDesc.Type = Felix::TextureType::Texture2D;
+	textureDesc.bGenerateMipmaps = false;
+	textureDesc.pInitialData = textureLoadResult.pData;
+	Felix::Texture* pTexture = pDevice->CreateTexture(textureDesc);
+
+	/*
 	* Create resource
 	*/
 	Felix::GraphicsResourceCreateDesc constantBufferResourcDesc = {};
@@ -150,9 +170,13 @@ int main()
 	Felix::GraphicsResourceCreateDesc constantBufferResourcDesc2 = {};
 	constantBufferResourcDesc2.Type = Felix::GraphicsResourceType::ConstantBuffer;
 	constantBufferResourcDesc2.pDeviceObject = pConstantBuffer2;
+	Felix::GraphicsResourceCreateDesc textureResourceDesc = {};
+	textureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
+	textureResourceDesc.pDeviceObject = pTexture;
 
 	Felix::GraphicsResource* pConstantBufferResource = pDevice->CreateResource(constantBufferResourcDesc);
 	Felix::GraphicsResource* pConstantBufferResource2 = pDevice->CreateResource(constantBufferResourcDesc2);
+	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
 
 	/*
 	* Create pipeline

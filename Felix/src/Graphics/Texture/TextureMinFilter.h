@@ -6,7 +6,7 @@ namespace Felix
 	/// <summary>
 	/// Supported minification filtering
 	/// </summary>
-	enum class EXPORT TextureSamplerMinFilter
+	enum class EXPORT TextureMinFilter
 	{
 		Nearest,
 		Linear,
