@@ -23,19 +23,13 @@ const std::string fShader = R"(
 	#version 450 core
 
 
-	layout(std140) uniform MyConstantBuffer
-    {
-		vec3 MyColor;
-    };
-
 	uniform sampler2D fTexture;
-	uniform sampler2D fFramebufferTexture;
 
 	in vec2 fUv;
 	out vec4 ColorOut;
 	void main()
 	{
-		ColorOut = texture2D(fFramebufferTexture,fUv);
+		ColorOut = texture2D(fTexture,fUv);
 	}
 )";
 
@@ -93,38 +87,12 @@ int main()
 		float U;
 		float V;
 	};
-	struct ConstantBufferData
-	{
-		float R;
-		float G;
-		float B;
-	};
-
-	/*
-	* Create framebuffers
-	*/
-	Felix::TextureCreateDesc framebufferTextureDesc = {};
-	framebufferTextureDesc.Type = Felix::TextureType::Texture2D;
-	framebufferTextureDesc.Usage = Felix::TextureUsage::RenderTarget;
-	framebufferTextureDesc.Width = 1024;
-	framebufferTextureDesc.Height = 1024;
-	framebufferTextureDesc.Depth = 0;
-	framebufferTextureDesc.Format = Felix::TextureFormat::RGBA32F;
-	framebufferTextureDesc.pInitialData = nullptr;
-	Felix::Texture* pFramebufferTexture = pDevice->CreateTexture(framebufferTextureDesc);
-
-	Felix::FramebufferCreateDesc framebufferDesc = {};
-	framebufferDesc.Width = 1024;
-	framebufferDesc.Height = 1024;
-	framebufferDesc.Attachments.push_back(pFramebufferTexture);
-	Felix::Framebuffer* pFramebuffer = pDevice->CreateFramebuffer(framebufferDesc);
 
 	/*
 	* Create buffers
 	*/
 	std::vector<Vertex> vertexes = { {1,-1,1,0},{-1,-1,0,0},{0,1,0.5,1} };
 	std::vector<unsigned int> indexes = { 0,1,2,0,2,1 };
-	ConstantBufferData constantBufferData = { 0,1,0.0 };
 
 	Felix::GraphicsBufferCreateDesc vertexBufferDesc = {};
 	vertexBufferDesc.Type = Felix::GraphicsBufferType::VertexBuffer;
@@ -140,26 +108,8 @@ int main()
 	indexBufferDesc.SubItemSize = sizeof(unsigned int);
 	indexBufferDesc.pInitialData = (const unsigned char*)indexes.data();
 
-	Felix::GraphicsBufferCreateDesc constantBufferDesc = {};
-	constantBufferDesc.Type = Felix::GraphicsBufferType::ConstantBuffer;
-	constantBufferDesc.Usage = Felix::GraphicsBufferUsage::Dynamic;
-	constantBufferDesc.SubItemCount = 1;
-	constantBufferDesc.SubItemSize = sizeof(ConstantBufferData); // must multiples of 16 bytes for std140
-	constantBufferDesc.pInitialData = nullptr;
-
 	Felix::GraphicsBuffer* pVertexBuffer = pDevice->CreateBuffer(vertexBufferDesc);
 	Felix::GraphicsBuffer* pIndexBuffer = pDevice->CreateBuffer(indexBufferDesc);
-	Felix::GraphicsBuffer* pConstantBuffer = pDevice->CreateBuffer(constantBufferDesc);
-
-	/*
-	* Update buffer
-	*/
-	Felix::GraphicsBufferUpdateDesc constantBufferUpdateDesc = {};
-	constantBufferUpdateDesc.Offset = 0;
-	constantBufferUpdateDesc.Size = sizeof(ConstantBufferData);
-	constantBufferUpdateDesc.pData = (const unsigned char*)&constantBufferData;
-
-	pDevice->UpdateBuffer(pConstantBuffer, constantBufferUpdateDesc);
 
 	/*
 	* Create textures
@@ -193,23 +143,15 @@ int main()
 	/*
 	* Create resource
 	*/
-	Felix::GraphicsResourceCreateDesc constantBufferResourcDesc = {};
-	constantBufferResourcDesc.Type = Felix::GraphicsResourceType::ConstantBuffer;
-	constantBufferResourcDesc.pDeviceObject = pConstantBuffer;
 	Felix::GraphicsResourceCreateDesc textureResourceDesc = {};
 	textureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
 	textureResourceDesc.pDeviceObject = pTexture;
 	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
 	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
 	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
-	Felix::GraphicsResourceCreateDesc framebufferTextureResourceDesc = {};
-	framebufferTextureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
-	framebufferTextureResourceDesc.pDeviceObject = pFramebufferTexture;
 
-	Felix::GraphicsResource* pConstantBufferResource = pDevice->CreateResource(constantBufferResourcDesc);
 	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
 	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
-	Felix::GraphicsResource* pFramebufferTextureResource = pDevice->CreateResource(framebufferTextureResourceDesc);
 
 	/*
 	* Create pipeline
@@ -275,10 +217,8 @@ int main()
 	pipelineDesc.BlendingDesc = blendingStateDesc;
 	
 	Felix::ResourceStateDesc resourceStateDesc = {};
-	resourceStateDesc.SlotDescriptions.push_back({ "MyConstantBuffer",Felix::GraphicsResourceType::ConstantBuffer,Felix::ShaderType::Fragment});
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::Texture,Felix::ShaderType::Fragment });
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::TextureSampler,Felix::ShaderType::Fragment });
-	resourceStateDesc.SlotDescriptions.push_back({ "fFramebufferTexture",Felix::GraphicsResourceType::Texture,Felix::ShaderType::Fragment });
 
 	pipelineDesc.ResourceStateDesc = resourceStateDesc;
 
@@ -311,21 +251,14 @@ int main()
 		pCmdBuffer->Lock();
 
 		pCmdBuffer->BindPipeline(pPipeline);
-		pCmdBuffer->BindFramebuffer(pFramebuffer);
-		pCmdBuffer->SetViewport(viewport);
-		pCmdBuffer->ClearColor(0, 0, 1, 1);
-
-		pCmdBuffer->BindPipeline(pPipeline);
 		pCmdBuffer->BindFramebuffer(pSwapchainFramebuffer);
 		pCmdBuffer->SetViewport(viewport);
 		pCmdBuffer->ClearColor(1, 0, 0, 1);
 		pCmdBuffer->SetVertexBuffer(pVertexBuffer);
 		pCmdBuffer->SetIndexBuffer(pIndexBuffer);
 
-		pCmdBuffer->CommitResource(0, pConstantBufferResource);
-		pCmdBuffer->CommitResource(1, pTextureResource);
-		pCmdBuffer->CommitResource(2, pSamplerResource);
-		pCmdBuffer->CommitResource(3, pFramebufferTextureResource);
+		pCmdBuffer->CommitResource(0, pTextureResource);
+		pCmdBuffer->CommitResource(1, pSamplerResource);
 
 		pCmdBuffer->DrawIndexed(6);
 		pCmdBuffer->Unlock();

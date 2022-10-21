@@ -24,19 +24,19 @@ namespace Felix
 			case Felix::TextureType::Texture1D:
 			{
 				glTextureStorage1D(_handle, 1, internalFormat, desc.Width);
-				glTextureSubImage1D(_handle, 1, 0, desc.Width, format, dataType, desc.pInitialData);
+				glTextureSubImage1D(_handle, 0, 0, desc.Width, format, dataType, desc.pInitialData);
 				break;
 			}
 			case Felix::TextureType::Texture2D:
 			{
 				glTextureStorage2D(_handle, 1, internalFormat, desc.Width,desc.Height);
-				glTextureSubImage2D(_handle, 1, 0, 0, desc.Width, desc.Height,format, dataType, desc.pInitialData);
+				glTextureSubImage2D(_handle, 0, 0, 0, desc.Width, desc.Height,format, dataType, desc.pInitialData);
 				break;
 			}
 			case Felix::TextureType::Texture3D:
 			{
 				glTextureStorage3D(_handle, 1, internalFormat, desc.Width,desc.Height,desc.Depth);
-				glTextureSubImage3D(_handle, 1, 0,0,0, desc.Width,desc.Height,desc.Depth, format, dataType, desc.pInitialData);
+				glTextureSubImage3D(_handle, 0, 0,0,0, desc.Width,desc.Height,desc.Depth, format, dataType, desc.pInitialData);
 				break;
 			}
 			case Felix::TextureType::CubeTexture:
