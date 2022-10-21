@@ -87,8 +87,15 @@ namespace Felix
 
 			switch (slotDesc.Type)
 			{
+				case Felix::GraphicsResourceType::Texture:
+				{
+					resource.UniformIndex = glGetUniformLocation(_programHandle, slotDesc.Name.c_str());
+					LOG("OpenGLPipeline", "Create pre-resource texture!");
+					break;
+				}
 				case Felix::GraphicsResourceType::TextureSampler:
 				{
+					LOG("OpenGLPipeline", "Create pre-resource texture sampler!");
 					break;
 				}
 				case Felix::GraphicsResourceType::ConstantBuffer:

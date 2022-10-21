@@ -12,8 +12,9 @@ namespace Felix
 		glCreateTextures(OpenGLTextureUtils::GetTextureType(desc.Type), 1, &_handle);
 
 		const TextureType type = desc.Type;
-		const unsigned int format = OpenGLTextureUtils::GetTextureFormat(desc.Format);
 		const unsigned int internalFormat = OpenGLTextureUtils::GetTextureInternalFormat(desc.Format);
+		const unsigned int format = OpenGLTextureUtils::GetTextureFormat(desc.Format);
+		const unsigned int dataType = OpenGLTextureUtils::GetDataType(desc.Format);
 		const unsigned int mipmaps = 1;
 
 		/*
@@ -29,6 +30,7 @@ namespace Felix
 			case Felix::TextureType::Texture2D:
 			{
 				glTextureStorage2D(_handle, mipmaps, internalFormat, desc.Width,desc.Height);
+				glTextureSubImage2D(_handle, 0, 0, 0, desc.Width, desc.Height,format, dataType, desc.pInitialData);
 				break;
 			}
 			case Felix::TextureType::Texture3D:
@@ -48,7 +50,7 @@ namespace Felix
 		/*
 		* Generate texture parameters
 		*/
-		glTextureParameteri(_handle, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		/*glTextureParameteri(_handle, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTextureParameteri(_handle, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 		glTextureParameteri(_handle, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -57,7 +59,8 @@ namespace Felix
 		glTextureParameteri(_handle, GL_TEXTURE_MAX_LEVEL, 0);
 		glTextureParameteri(_handle, GL_TEXTURE_MAX_LEVEL, mipmaps - 1);
 
-		glGenerateTextureMipmap(_handle);
+		if(desc.bGenerateMipmaps)
+			glGenerateTextureMipmap(_handle);*/
 	}
 	OpenGLTexture::~OpenGLTexture()
 	{

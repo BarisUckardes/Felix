@@ -1,18 +1,19 @@
 #include "OpenGLTextureSampler.h"
+#include <Graphics/API/OpenGL/Texture/OpenGLTextureSamplerUtils.h>
 #include <GLAD/glad.h>
 
 namespace Felix
 {
 	OpenGLTextureSampler::OpenGLTextureSampler(const TextureSamplerCreateDesc& desc) : TextureSampler(desc)
 	{
-		glCreateSamplers(1, &_handle);
+		glGenSamplers(1, &_handle);
 
-		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_S, 0);
-		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_T, 0);
-		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_R, 0);
+		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_S, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingS));
+		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_T, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingT));
+		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_R, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingR));
 
-		glSamplerParameteri(_handle, GL_TEXTURE_MAG_FILTER, 0);
-		glSamplerParameteri(_handle, GL_TEXTURE_MIN_FILTER, 0);
+		glSamplerParameteri(_handle, GL_TEXTURE_MAG_FILTER, OpenGLTextureSamplerUtils::GetMinFilter(desc.MinFilter));
+		glSamplerParameteri(_handle, GL_TEXTURE_MIN_FILTER, OpenGLTextureSamplerUtils::GetMagFilter(desc.MagFilter));
 		glSamplerParameteri(_handle, GL_TEXTURE_MAX_ANISOTROPY, desc.MaxAnisotropy);
 	}
 	OpenGLTextureSampler::~OpenGLTextureSampler()

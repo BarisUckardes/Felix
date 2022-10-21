@@ -94,19 +94,39 @@ namespace Felix
 	{
 		const OpenGLPipeline* pPipeline = (const OpenGLPipeline*)GetBoundPipeline();
 		const OpenGLPipeline::PipelineResource resource = pPipeline->GetGLResources()[slotIndex];
+		const ResourceSlotDesc slotDesc = pPipeline->GetResourceStateDesc().SlotDescriptions[slotIndex];
 
 		switch (pResource->GetResourceType())
 		{
-		case Felix::GraphicsResourceType::TextureSampler:
-			break;
-		case Felix::GraphicsResourceType::ConstantBuffer:
-		{
-			const OpenGLBuffer* pConstantBuffer = (const OpenGLBuffer*)pResource->GetResource();
-			glBindBufferBase(GL_UNIFORM_BUFFER, resource.UniformBlockBindingPoint, pConstantBuffer->GetGLHandle());
-			break;
-		}
-		default:
-			break;
+			case Felix::GraphicsResourceType::Texture:
+			{
+				const OpenGLTextureResource * pTexture = (const OpenGLTextureResource*)pResource;
+				const unsigned int currentTextureSlot = GL_TEXTURE0 + GetBoundTextureCount();
+
+				glActiveTexture(currentTextureSlot);
+				glBindTexture(GL_TEXTURE_2D, pTexture->GetGLHandle());
+				glUniform1i(resource.UniformIndex, GetBoundTextureCount());
+
+				break;
+			}
+			case Felix::GraphicsResourceType::TextureSampler:
+			{
+				const OpenGLTextureSamplerResource* pSampler = (const OpenGLTextureSamplerResource*)pResource;
+
+				GLuint texture_unit = GetBoundTextureCount();
+				glBindSampler(texture_unit, pSampler->GetGLHandle());
+
+				break;
+			}
+			case Felix::GraphicsResourceType::ConstantBuffer:
+			{
+				const OpenGLBuffer* pConstantBuffer = (const OpenGLBuffer*)pResource->GetResource();
+
+				glBindBufferBase(GL_UNIFORM_BUFFER, resource.UniformBlockBindingPoint, pConstantBuffer->GetGLHandle());
+				break;
+			}
+			default:
+				break;
 		}
 	}
 	void OpenGLCommandBuffer::BindPipelineCore(Pipeline* pPipeline)

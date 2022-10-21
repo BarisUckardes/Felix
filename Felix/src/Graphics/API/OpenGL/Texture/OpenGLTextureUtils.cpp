@@ -10,7 +10,7 @@ namespace Felix
 			case Felix::TextureFormat::None:
 				return GL_NONE;
 			case Felix::TextureFormat::RGB8:
-				return GL_RGB8;
+				return GL_RGB;
 			case Felix::TextureFormat::RGBA8:
 				return GL_RGBA8;
 			default:
@@ -25,9 +25,9 @@ namespace Felix
 			case Felix::TextureFormat::None:
 				return GL_NONE;
 			case Felix::TextureFormat::RGB8:
-				return GL_RGB;
+				return GL_RGB8;
 			case Felix::TextureFormat::RGBA8:
-				return GL_RGBA;
+				return GL_RGBA8;
 			default:
 				ASSERT(false,"OpenGLTextureUtils","Invalid TextureFormat!");
 				break;

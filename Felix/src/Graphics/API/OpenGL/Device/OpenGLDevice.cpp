@@ -199,6 +199,12 @@ namespace Felix
         GraphicsResource* pResource = nullptr;
         switch (resourceType)
         {
+            case Felix::GraphicsResourceType::Texture:
+            {
+                const OpenGLTexture* pTexture = (const OpenGLTexture*)desc.pDeviceObject;
+                pResource = new OpenGLTextureResource(pTexture->GetGLHandle(),desc);
+                break;
+            }
             case Felix::GraphicsResourceType::TextureSampler:
             {
                 const OpenGLTextureSampler* pSampler = (const OpenGLTextureSampler*)desc.pDeviceObject;
