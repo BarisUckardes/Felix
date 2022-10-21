@@ -13,6 +13,8 @@ namespace Felix
 				return GL_RGB;
 			case Felix::TextureFormat::RGBA8:
 				return GL_RGBA8;
+			case Felix::TextureFormat::RGBA32F:
+				return GL_RGBA;
 			default:
 				ASSERT(false, "OpenGLTextureUtils", "Invalid TextureFormat!");
 				break;
@@ -28,6 +30,8 @@ namespace Felix
 				return GL_RGB8;
 			case Felix::TextureFormat::RGBA8:
 				return GL_RGBA8;
+			case Felix::TextureFormat::RGBA32F:
+				return GL_RGBA32F;
 			default:
 				ASSERT(false,"OpenGLTextureUtils","Invalid TextureFormat!");
 				break;
@@ -77,6 +81,8 @@ namespace Felix
 				return GL_UNSIGNED_BYTE;
 			case Felix::TextureFormat::RGBA8:
 				return GL_UNSIGNED_BYTE;
+			case Felix::TextureFormat::RGBA32F:
+				return GL_FLOAT;
 			default:
 				ASSERT(false, "OpenGLTextureUtils", "Invalid TextureFormat!");
 				break;

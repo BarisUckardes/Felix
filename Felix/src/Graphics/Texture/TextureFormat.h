@@ -11,6 +11,7 @@ namespace Felix
 		None = 0,
 		RGB8,
 		RGBA8,
+		RGBA32F,
 		Depth24Stencil8
 	};
 }

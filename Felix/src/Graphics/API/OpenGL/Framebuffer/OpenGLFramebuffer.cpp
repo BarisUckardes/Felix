@@ -10,7 +10,7 @@ namespace Felix
 		/*
 		* Create framebuffer
 		*/
-		glCreateFramebuffers(1, &_handle);
+		glGenFramebuffers(1, &_handle);
 		glBindFramebuffer(GL_FRAMEBUFFER, _handle);
 
 		std::vector<unsigned int> drawBuffers;
@@ -22,13 +22,13 @@ namespace Felix
 
 			if (pAttachment->GetUsage() | TextureUsage::RenderTarget)
 			{
-				glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentSlot, textureHandle, GL_TEXTURE_2D, 0);
+				glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentSlot, GL_TEXTURE_2D, textureHandle, 0);
 				drawBuffers.push_back(attachmentSlot);
 				attachmentSlot++;
 			}
-			else if (pAttachment->GetUsage() == TextureUsage::DepthStencilTarget)
+			else if (pAttachment->GetUsage() | TextureUsage::DepthStencilTarget)
 			{
-				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, textureHandle, GL_TEXTURE_2D, 0);
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,GL_TEXTURE_2D, textureHandle, 0);
 			}
 		}
 		glDrawBuffers(drawBuffers.size(), drawBuffers.data());

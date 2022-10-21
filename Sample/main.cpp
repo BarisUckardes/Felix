@@ -29,12 +29,13 @@ const std::string fShader = R"(
     };
 
 	uniform sampler2D fTexture;
+	uniform sampler2D fFramebufferTexture;
 
 	in vec2 fUv;
 	out vec4 ColorOut;
 	void main()
 	{
-		ColorOut = texture2D(fTexture,fUv)*vec4(MyColor,1);
+		ColorOut = texture2D(fFramebufferTexture,fUv);
 	}
 )";
 
@@ -100,6 +101,25 @@ int main()
 	};
 
 	/*
+	* Create framebuffers
+	*/
+	Felix::TextureCreateDesc framebufferTextureDesc = {};
+	framebufferTextureDesc.Type = Felix::TextureType::Texture2D;
+	framebufferTextureDesc.Usage = Felix::TextureUsage::RenderTarget;
+	framebufferTextureDesc.Width = 1024;
+	framebufferTextureDesc.Height = 1024;
+	framebufferTextureDesc.Depth = 0;
+	framebufferTextureDesc.Format = Felix::TextureFormat::RGBA32F;
+	framebufferTextureDesc.pInitialData = nullptr;
+	Felix::Texture* pFramebufferTexture = pDevice->CreateTexture(framebufferTextureDesc);
+
+	Felix::FramebufferCreateDesc framebufferDesc = {};
+	framebufferDesc.Width = 1024;
+	framebufferDesc.Height = 1024;
+	framebufferDesc.Attachments.push_back(pFramebufferTexture);
+	Felix::Framebuffer* pFramebuffer = pDevice->CreateFramebuffer(framebufferDesc);
+
+	/*
 	* Create buffers
 	*/
 	std::vector<Vertex> vertexes = { {1,-1,1,0},{-1,-1,0,0},{0,1,0.5,1} };
@@ -137,9 +157,10 @@ int main()
 	Felix::GraphicsBufferUpdateDesc constantBufferUpdateDesc = {};
 	constantBufferUpdateDesc.Offset = 0;
 	constantBufferUpdateDesc.Size = sizeof(ConstantBufferData);
-	//constantBufferUpdateDesc.pData = (const unsigned char*)&constantBufferData;
+	constantBufferUpdateDesc.pData = (const unsigned char*)&constantBufferData;
 
 	pDevice->UpdateBuffer(pConstantBuffer, constantBufferUpdateDesc);
+
 	/*
 	* Create textures
 	*/
@@ -181,10 +202,14 @@ int main()
 	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
 	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
 	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
+	Felix::GraphicsResourceCreateDesc framebufferTextureResourceDesc = {};
+	framebufferTextureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
+	framebufferTextureResourceDesc.pDeviceObject = pFramebufferTexture;
 
 	Felix::GraphicsResource* pConstantBufferResource = pDevice->CreateResource(constantBufferResourcDesc);
 	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
 	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
+	Felix::GraphicsResource* pFramebufferTextureResource = pDevice->CreateResource(framebufferTextureResourceDesc);
 
 	/*
 	* Create pipeline
@@ -253,6 +278,7 @@ int main()
 	resourceStateDesc.SlotDescriptions.push_back({ "MyConstantBuffer",Felix::GraphicsResourceType::ConstantBuffer,Felix::ShaderType::Fragment});
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::Texture,Felix::ShaderType::Fragment });
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::TextureSampler,Felix::ShaderType::Fragment });
+	resourceStateDesc.SlotDescriptions.push_back({ "fFramebufferTexture",Felix::GraphicsResourceType::Texture,Felix::ShaderType::Fragment });
 
 	pipelineDesc.ResourceStateDesc = resourceStateDesc;
 
@@ -283,6 +309,12 @@ int main()
 		pWindow->PollInputEvents();
 
 		pCmdBuffer->Lock();
+
+		pCmdBuffer->BindPipeline(pPipeline);
+		pCmdBuffer->BindFramebuffer(pFramebuffer);
+		pCmdBuffer->SetViewport(viewport);
+		pCmdBuffer->ClearColor(0, 0, 1, 1);
+
 		pCmdBuffer->BindPipeline(pPipeline);
 		pCmdBuffer->BindFramebuffer(pSwapchainFramebuffer);
 		pCmdBuffer->SetViewport(viewport);
@@ -293,6 +325,7 @@ int main()
 		pCmdBuffer->CommitResource(0, pConstantBufferResource);
 		pCmdBuffer->CommitResource(1, pTextureResource);
 		pCmdBuffer->CommitResource(2, pSamplerResource);
+		pCmdBuffer->CommitResource(3, pFramebufferTextureResource);
 
 		pCmdBuffer->DrawIndexed(6);
 		pCmdBuffer->Unlock();
