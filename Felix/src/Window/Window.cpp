@@ -12,10 +12,9 @@ namespace Felix
 {
 	Window* Window::Create(const WindowCreateDesc& desc)
 	{
-        return nullptr;
-		//WindowsAbstraction* window = new WindowsAbstraction(desc);
+		WindowsAbstraction* window = new WindowsAbstraction(desc);
 
-		//return window;
+		return window;
 	}
 	void Window::Show()
 	{

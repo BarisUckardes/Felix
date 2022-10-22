@@ -3,12 +3,13 @@
 
 #ifdef FELIX_OS_WINDOWS
 #include <Windows.h>
+
 namespace Felix
 {
 	/// <summary>
 	/// Windows implementation of a window
 	/// </summary>
-	class WindowsWindow final : public Window
+	class EXPORT WindowsWindow final : public Window
 	{
 	private:
 		static LRESULT CALLBACK Win32WindowMessageProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
