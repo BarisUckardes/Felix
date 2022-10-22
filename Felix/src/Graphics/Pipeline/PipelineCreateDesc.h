@@ -18,10 +18,10 @@ namespace Felix
 		RasterizerStateDesc RasterizerDesc;
 		DepthStencilStateDesc DepthStencilDesc;
 		BlendingStateDesc BlendingDesc;
-		InputLayoutDesc InputLayoutDesc;
+		InputLayoutDesc InputLayout;
 		ShadingPassDesc ShadingPass;
-		OutputDesc OutputDesc;
-		ResourceStateDesc ResourceStateDesc;
+		OutputDesc Output;
+		ResourceStateDesc Resources;
 		PipelineType Type;
 	};
 }

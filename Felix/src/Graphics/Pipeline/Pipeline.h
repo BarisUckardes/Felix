@@ -25,10 +25,10 @@ namespace Felix
 			_rasterizerDesc(desc.RasterizerDesc),
 			_depthStencilDesc(desc.DepthStencilDesc),
 			_blendingDesc(desc.BlendingDesc),
-			_inputLayoutDesc(desc.InputLayoutDesc),
+			_inputLayoutDesc(desc.InputLayout),
 			_shadingPassDesc(desc.ShadingPass),
-			_outputDesc(desc.OutputDesc),
-			_resourceStateDesc(desc.ResourceStateDesc),
+			_outputDesc(desc.Output),
+			_resourceStateDesc(desc.Resources),
 			_type(desc.Type)
 		{}
 		virtual ~Pipeline() {}

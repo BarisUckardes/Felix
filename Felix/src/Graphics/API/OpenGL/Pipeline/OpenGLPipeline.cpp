@@ -80,9 +80,9 @@ namespace Felix
 		* Create resource state
 		*/
 		_uniformBlockCount = 0;
-		for (unsigned int i = 0; i < desc.ResourceStateDesc.SlotDescriptions.size(); i++)
+		for (unsigned int i = 0; i < desc.Resources.SlotDescriptions.size(); i++)
 		{
-			const ResourceSlotDesc& slotDesc = desc.ResourceStateDesc.SlotDescriptions[i];
+			const ResourceSlotDesc& slotDesc = desc.Resources.SlotDescriptions[i];
 			PipelineResource resource = {};
 
 			switch (slotDesc.Type)

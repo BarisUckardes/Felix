@@ -166,7 +166,7 @@ int main()
 	inputElements.push_back(Felix::InputElementDesc({"Vertex",Felix::InputElementDataType::Float2,false}));
 	inputElements.push_back(Felix::InputElementDesc({ "UV",Felix::InputElementDataType::Float2,false }));
 	Felix::InputLayoutDesc inputLayoutDesc(inputElements);
-	pipelineDesc.InputLayoutDesc = inputLayoutDesc;
+	pipelineDesc.InputLayout = inputLayoutDesc;
 
 	Felix::RasterizerStateDesc rasterizerStateDesc = {};
 	rasterizerStateDesc.bEnableDepthClip = false;
@@ -220,7 +220,7 @@ int main()
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::Texture,Felix::ShaderType::Fragment });
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::TextureSampler,Felix::ShaderType::Fragment });
 
-	pipelineDesc.ResourceStateDesc = resourceStateDesc;
+	pipelineDesc.Resources = resourceStateDesc;
 
 	Felix::Pipeline* pPipeline = pDevice->CreatePipeline(pipelineDesc);
 

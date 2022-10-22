@@ -1,7 +1,8 @@
 #pragma once
 #include <Window/Window.h>
-#include <Windows.h>
 
+#ifdef FELIX_OS_WINDOWS
+#include <Windows.h>
 namespace Felix
 {
 	/// <summary>
@@ -30,3 +31,5 @@ namespace Felix
 		HDC WindowDeviceContext;
 	};
 }
+#endif
+

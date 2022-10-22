@@ -1,0 +1,1016 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "Felix/libFelix.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"add_compile_definitions",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"Felix/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 37,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 30,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 31,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 32,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu++20"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "FELIX_COMPILER_GNU"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "FELIX_DEBUG"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "FELIX_OS_LINUX"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 7,
+					"path" : "/home/roveldo/CLionProjects/Felix/Felix/src"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/home/roveldo/CLionProjects/Felix/ThirdParty/OpenGL/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/home/roveldo/CLionProjects/Felix/ThirdParty/Stbi/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					0
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				5,
+				7,
+				22,
+				24,
+				30,
+				33,
+				39,
+				41,
+				48,
+				50,
+				55,
+				59,
+				60,
+				62,
+				64,
+				70,
+				72,
+				83,
+				84,
+				106,
+				108,
+				110,
+				117,
+				121,
+				124,
+				126,
+				128,
+				129
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "OpenGL::@004a7df5d3d2d81b97cc"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "Stbi::@4fc69595b9c843530d50"
+		}
+	],
+	"id" : "Felix::@bfa55f64c3cede684d6b",
+	"name" : "Felix",
+	"nameOnDisk" : "libFelix.a",
+	"paths" : 
+	{
+		"build" : "Felix",
+		"source" : "Felix"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				5,
+				7,
+				22,
+				24,
+				30,
+				33,
+				39,
+				41,
+				48,
+				50,
+				55,
+				59,
+				60,
+				62,
+				64,
+				70,
+				72,
+				83,
+				84,
+				106,
+				108,
+				110,
+				117,
+				121,
+				124,
+				126,
+				128,
+				129
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				6,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				23,
+				25,
+				26,
+				27,
+				28,
+				29,
+				31,
+				32,
+				34,
+				35,
+				36,
+				37,
+				38,
+				40,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				49,
+				51,
+				52,
+				53,
+				54,
+				56,
+				57,
+				58,
+				61,
+				63,
+				65,
+				66,
+				67,
+				68,
+				69,
+				71,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				107,
+				109,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				118,
+				119,
+				120,
+				122,
+				123,
+				125,
+				127
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/Felix.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/Felix.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/Window.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Core/Core.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/WindowCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Window/Window.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Platform/Windows/Window/WindowsWindow.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Platform/Windows/Window/WindowsWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/WindowEventType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/WindowEvent.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/Events/Window/WindowClosedEvent.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/WindowEvents.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/Events/Window/WindowMovedEvent.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/Events/Window/WindowResizedEvent.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Platform/PlatformType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/GraphicsAPI.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Device/GraphicsDevice.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Device/StandaloneGraphicsDeviceCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Device/WindowGraphicsDeviceCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureFormat.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Device/GraphicsDeviceCapabilities.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Platform/Windows/Assert/WindowsAssert.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/Device/GraphicsDevice.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Device/OpenGLDevice.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Device/OpenGLDevice.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Device/GraphicsDeviceObjectType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Device/GraphicsDeviceObject.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Command/CommandBuffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Command/CommandBufferCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Command/OpenGLCommandBuffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Command/OpenGLCommandBuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Device/GraphicsDeviceObjects.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Device/OpenGLDeviceObjects.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/Command/CommandBuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Buffer/GraphicsBuffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Buffer/GraphicsBufferType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Buffer/GraphicsBufferUsage.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Buffer/GraphicsBufferCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Buffer/OpenGLBuffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Buffer/OpenGLBuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureUsage.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Buffer/GraphicsBufferUpdateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/Texture.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Texture/OpenGLTextureUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Texture/OpenGLTextureUtils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Texture/OpenGLTexture.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Texture/OpenGLTexture.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureUpdateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Framebuffer/FramebufferCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Framebuffer/FramebufferAttachmentDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Framebuffer/Framebuffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/Framebuffer/Framebuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Framebuffer/SwapchainFramebufferCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Framebuffer/SwapchainFramebuffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Window/WindowDeviceAdapter.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Window/WindowDeviceAdapter.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/Framebuffer/SwapchainFramebuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Framebuffer/OpenGLFramebuffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Framebuffer/OpenGLFramebuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Framebuffer/OpenGLSwapchainFramebuffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Framebuffer/OpenGLSwapchainFramebuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Framebuffer/OpenGLFramebufferUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Shader/ShaderType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Shader/ShaderCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Shader/Shader.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Shader/OpenGLShaderUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Shader/OpenGLShaderUtils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Shader/OpenGLShader.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Shader/OpenGLShader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Resource/GraphicsResourceType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Resource/GraphicsResourceCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Resource/GraphicsResource.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Resource/OpenGLGraphicsResource.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/ViewportDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/ScissorsDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/InputElementDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/InputElementDataType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/InputLayoutDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/InputElementUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/Pipeline/InputElementUtils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/Pipeline/InputLayoutDesc.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/CullMode.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/FrontFaceMode.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/PolygonShadingMode.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/PrimitiveTopology.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/RasterizerStateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/DepthStencilStateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/DepthTestFunction.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/StencilFunction.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/StencilOperation.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/StencilFaceDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/OutputDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/ResourceSlotDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/ResourceStateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/ShaderPassDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/PipelineCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/BlendingFactor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/BlendingFunction.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/BlendingStateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/PipelineType.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Pipeline/Pipeline.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Pipeline/OpenGLPipeline.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Pipeline/OpenGLPipeline.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Pipeline/OpenGLPipelineUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Pipeline/OpenGLPipelineUtils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Device/OpenGLDeviceUtilsWin32.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Device/OpenGLDeviceUtilsWin32.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureSampler.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureSamplerMinFilter.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureSamplerMagFilter.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureSamplerWrapMode.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureSamplerCreateDesc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Texture/OpenGLTextureSampler.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Texture/OpenGLTextureSampler.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Texture/OpenGLTextureSamplerUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Resource/OpenGLTextureSamplerResource.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Resource/OpenGLConstantBufferResource.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Resource/OpenGLConstantBufferResource.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureLoadResult.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureLoader.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/Texture/TextureLoader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/Texture/TextureLoaderUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/Texture/TextureLoaderUtils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Felix/src/Graphics/API/OpenGL/Resource/OpenGLTextureResource.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Resource/OpenGLTextureResource.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Felix/src/Graphics/API/OpenGL/Texture/OpenGlTextureSamplerUtils.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

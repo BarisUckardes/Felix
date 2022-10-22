@@ -1,3 +1,4 @@
+#ifdef ZERO_OS_WINDOWS
 #include "WindowsWindow.h"
 #include <Window/WindowEvents.h>
 
@@ -158,3 +159,4 @@ namespace Felix
 		ShowWindow(WindowHandle, SW_HIDE);
 	}
 }
+#endif

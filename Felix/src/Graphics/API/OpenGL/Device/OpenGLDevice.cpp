@@ -99,7 +99,9 @@ namespace Felix
     }
     void OpenGLDevice::SwapbuffersCore()
     {
+#ifdef FELIX_OS_WINDOWS
         SwapBuffers(_windowDeviceContext);
+#endif
     }
     CommandBuffer* OpenGLDevice::CreateCommandBufferCore(const CommandBufferCreateDesc& desc)
     {
