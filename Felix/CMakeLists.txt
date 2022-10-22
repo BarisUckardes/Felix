@@ -10,12 +10,20 @@ add_library (Felix "Felix.cpp" "Felix.h" "src/Window/Window.h" "src/Core/Core.h"
 #compiler flags
 if (WIN32)
 add_compile_definitions(FELIX_OS_WINDOWS)
+elseif(LINUX)
+add_compile_definitions(FELIX_OS_LINUX)
 endif()
 
 set(CMAKE_CONFIGURATION_TYPES "Debug" CACHE STRING "" FORCE)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 add_compile_definitions(FELIX_DEBUG)
+endif()
+
+if(MSVC)
+add_compile_definitions(FELIX_COMPILER_MSVC)
+else()
+add_compile_definitions(FELIX_COMPILER_CLANG)
 endif()
 
 #include

@@ -3,12 +3,20 @@
 
 #ifdef FELIX_OS_WINDOWS
 #include <Platform/Windows/Assert/WindowsAssert.h>
+#define EXPORT __declspec(dllexport)
 #else
 #define ASSERT_IMPL
+#define EXPORT
 #endif
 
+#ifdef FELIX_COMPILER_MSVC
 #define FORCEINLINE __forceinline
-#define EXPORT __declspec(dllexport)
+#elif FELIX_COMPILER_CLANG
+#define FORCEINLINE
+#else 
+#define FORCEINLINE
+#endif
+
 
 
 #ifdef FELIX_DEBUG

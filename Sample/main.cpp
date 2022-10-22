@@ -57,7 +57,7 @@ int main()
 	deviceDesc.SwapchainDepthStencilBufferFormat = Felix::TextureFormat::None;
 
 	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,pWindow);
-
+	
 	/*
 	* Create command buffer
 	*/
