@@ -39,15 +39,24 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
+<<<<<<< Updated upstream
 cmake_ninja_workdir = /home/roveldo/CLionProjects/Felix/cmake-build-debug/
+=======
+cmake_ninja_workdir = C$:/Users/Baris/CLionProjects/Felix/cmake-build-debug/
+>>>>>>> Stashed changes
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/ccmake -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+>>>>>>> Stashed changes
   restat = 1
 
 build edit_cache: phony CMakeFiles/edit_cache.util
@@ -57,7 +66,11 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Baris\CLionProjects\Felix -BC:\Users\Baris\CLionProjects\Felix\cmake-build-debug"
+>>>>>>> Stashed changes
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -66,7 +79,11 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+<<<<<<< Updated upstream
 # /home/roveldo/CLionProjects/Felix/CMakeLists.txt
+=======
+# C:/Users/Baris/CLionProjects/Felix/CMakeLists.txt
+>>>>>>> Stashed changes
 # =============================================================================
 
 # =============================================================================
@@ -78,6 +95,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_Felix: phony || cmake_object_order_depends_target_OpenGL cmake_object_order_depends_target_Stbi
 
+<<<<<<< Updated upstream
 build Felix/CMakeFiles/Felix.dir/Felix.cpp.o: CXX_COMPILER__Felix_Debug /home/roveldo/CLionProjects/Felix/Felix/Felix.cpp || cmake_object_order_depends_target_Felix
   DEFINES = -DFELIX_COMPILER_GNU -DFELIX_DEBUG -DFELIX_OS_LINUX
   DEP_FILE = Felix/CMakeFiles/Felix.dir/Felix.cpp.o.d
@@ -309,6 +327,297 @@ build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGlTextureSa
   INCLUDES = -I/home/roveldo/CLionProjects/Felix/Felix/src -I/home/roveldo/CLionProjects/Felix/ThirdParty/OpenGL/include -I/home/roveldo/CLionProjects/Felix/ThirdParty/Stbi/include
   OBJECT_DIR = Felix/CMakeFiles/Felix.dir
   OBJECT_FILE_DIR = Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture
+=======
+build Felix/CMakeFiles/Felix.dir/Felix.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/Felix.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\Felix.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Window/Window.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Window/Window.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Window\Window.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Window
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Platform/Windows/Window/WindowsWindow.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Platform/Windows/Window/WindowsWindow.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Platform\Windows\Window\WindowsWindow.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Platform\Windows\Window
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/Device/GraphicsDevice.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/Device/GraphicsDevice.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\Device\GraphicsDevice.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\Device
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Device/OpenGLDevice.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Device/OpenGLDevice.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Device\OpenGLDevice.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Device
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Command/OpenGLCommandBuffer.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Command/OpenGLCommandBuffer.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Command\OpenGLCommandBuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Command
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/Command/CommandBuffer.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/Command/CommandBuffer.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\Command\CommandBuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\Command
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Buffer/OpenGLBuffer.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Buffer/OpenGLBuffer.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Buffer\OpenGLBuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Buffer
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Buffer\OpenGLBufferUtils.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Buffer
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTextureUtils.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Texture/OpenGLTextureUtils.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Texture\OpenGLTextureUtils.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Texture
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTexture.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Texture/OpenGLTexture.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Texture\OpenGLTexture.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Texture
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/Framebuffer/Framebuffer.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/Framebuffer/Framebuffer.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\Framebuffer\Framebuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\Framebuffer
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Window/WindowDeviceAdapter.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Window/WindowDeviceAdapter.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Window\WindowDeviceAdapter.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Window
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/Framebuffer/SwapchainFramebuffer.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/Framebuffer/SwapchainFramebuffer.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\Framebuffer\SwapchainFramebuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\Framebuffer
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Framebuffer/OpenGLFramebuffer.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Framebuffer/OpenGLFramebuffer.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Framebuffer\OpenGLFramebuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Framebuffer
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Framebuffer/OpenGLSwapchainFramebuffer.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Framebuffer/OpenGLSwapchainFramebuffer.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Framebuffer\OpenGLSwapchainFramebuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Framebuffer
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Shader/OpenGLShaderUtils.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Shader/OpenGLShaderUtils.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Shader\OpenGLShaderUtils.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Shader
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Shader/OpenGLShader.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Shader/OpenGLShader.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Shader\OpenGLShader.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Shader
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/Pipeline/InputElementUtils.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/Pipeline/InputElementUtils.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\Pipeline\InputElementUtils.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\Pipeline
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/Pipeline/InputLayoutDesc.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/Pipeline/InputLayoutDesc.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\Pipeline\InputLayoutDesc.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\Pipeline
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Pipeline/OpenGLPipeline.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Pipeline/OpenGLPipeline.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Pipeline\OpenGLPipeline.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Pipeline
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Pipeline/OpenGLPipelineUtils.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Pipeline/OpenGLPipelineUtils.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Pipeline\OpenGLPipelineUtils.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Pipeline
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Device/OpenGLDeviceUtilsWin32.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Device/OpenGLDeviceUtilsWin32.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Device\OpenGLDeviceUtilsWin32.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Device
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTextureSampler.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Texture/OpenGLTextureSampler.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Texture\OpenGLTextureSampler.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Texture
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Resource/OpenGLConstantBufferResource.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Resource/OpenGLConstantBufferResource.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Resource\OpenGLConstantBufferResource.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Resource
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/Texture/TextureLoader.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/Texture/TextureLoader.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\Texture\TextureLoader.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\Texture
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/Texture/TextureLoaderUtils.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/Texture/TextureLoaderUtils.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\Texture\TextureLoaderUtils.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\Texture
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Resource/OpenGLTextureResource.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Resource/OpenGLTextureResource.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Resource\OpenGLTextureResource.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Resource
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+
+build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGlTextureSamplerUtils.cpp.obj: CXX_COMPILER__Felix_Debug C$:/Users/Baris/CLionProjects/Felix/Felix/src/Graphics/API/OpenGL/Texture/OpenGlTextureSamplerUtils.cpp || cmake_object_order_depends_target_Felix
+  DEFINES = -DFELIX_DEBUG -DFELIX_OS_WINDOWS
+  DEP_FILE = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Texture\OpenGlTextureSamplerUtils.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/include -IC:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/include
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  OBJECT_FILE_DIR = Felix\CMakeFiles\Felix.dir\src\Graphics\API\OpenGL\Texture
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_PDB = Felix\libFelix.pdb
+>>>>>>> Stashed changes
 
 
 # =============================================================================
@@ -316,6 +625,7 @@ build Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGlTextureSa
 
 
 #############################################
+<<<<<<< Updated upstream
 # Link the static library Felix/libFelix.a
 
 build Felix/libFelix.a: CXX_STATIC_LIBRARY_LINKER__Felix_Debug Felix/CMakeFiles/Felix.dir/Felix.cpp.o Felix/CMakeFiles/Felix.dir/src/Window/Window.cpp.o Felix/CMakeFiles/Felix.dir/src/Platform/Windows/Window/WindowsWindow.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/Device/GraphicsDevice.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Device/OpenGLDevice.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Command/OpenGLCommandBuffer.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/Command/CommandBuffer.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Buffer/OpenGLBuffer.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTextureUtils.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTexture.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/Framebuffer/Framebuffer.cpp.o Felix/CMakeFiles/Felix.dir/src/Window/WindowDeviceAdapter.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/Framebuffer/SwapchainFramebuffer.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Framebuffer/OpenGLFramebuffer.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Framebuffer/OpenGLSwapchainFramebuffer.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Shader/OpenGLShaderUtils.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Shader/OpenGLShader.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/Pipeline/InputElementUtils.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/Pipeline/InputLayoutDesc.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Pipeline/OpenGLPipeline.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Pipeline/OpenGLPipelineUtils.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Device/OpenGLDeviceUtilsWin32.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTextureSampler.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Resource/OpenGLConstantBufferResource.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/Texture/TextureLoader.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/Texture/TextureLoaderUtils.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Resource/OpenGLTextureResource.cpp.o Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGlTextureSamplerUtils.cpp.o || ThirdParty/OpenGL/libOpenGL.a ThirdParty/Stbi/libStbi.a
@@ -325,15 +635,32 @@ build Felix/libFelix.a: CXX_STATIC_LIBRARY_LINKER__Felix_Debug Felix/CMakeFiles/
   PRE_LINK = :
   TARGET_FILE = Felix/libFelix.a
   TARGET_PDB = Felix.a.dbg
+=======
+# Link the static library Felix\libFelix.a
+
+build Felix/libFelix.a: CXX_STATIC_LIBRARY_LINKER__Felix_Debug Felix/CMakeFiles/Felix.dir/Felix.cpp.obj Felix/CMakeFiles/Felix.dir/src/Window/Window.cpp.obj Felix/CMakeFiles/Felix.dir/src/Platform/Windows/Window/WindowsWindow.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/Device/GraphicsDevice.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Device/OpenGLDevice.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Command/OpenGLCommandBuffer.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/Command/CommandBuffer.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Buffer/OpenGLBuffer.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTextureUtils.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTexture.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/Framebuffer/Framebuffer.cpp.obj Felix/CMakeFiles/Felix.dir/src/Window/WindowDeviceAdapter.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/Framebuffer/SwapchainFramebuffer.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Framebuffer/OpenGLFramebuffer.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Framebuffer/OpenGLSwapchainFramebuffer.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Shader/OpenGLShaderUtils.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Shader/OpenGLShader.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/Pipeline/InputElementUtils.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/Pipeline/InputLayoutDesc.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Pipeline/OpenGLPipeline.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Pipeline/OpenGLPipelineUtils.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Device/OpenGLDeviceUtilsWin32.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGLTextureSampler.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Resource/OpenGLConstantBufferResource.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/Texture/TextureLoader.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/Texture/TextureLoaderUtils.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Resource/OpenGLTextureResource.cpp.obj Felix/CMakeFiles/Felix.dir/src/Graphics/API/OpenGL/Texture/OpenGlTextureSamplerUtils.cpp.obj || ThirdParty/OpenGL/libOpenGL.a ThirdParty/Stbi/libStbi.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = Felix\CMakeFiles\Felix.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = Felix\CMakeFiles\Felix.dir\Felix.pdb
+  TARGET_FILE = Felix\libFelix.a
+  TARGET_PDB = Felix\libFelix.pdb
+>>>>>>> Stashed changes
 
 
 #############################################
 # Utility command for edit_cache
 
 build Felix/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/Felix && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/ccmake -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\Felix && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+>>>>>>> Stashed changes
   restat = 1
 
 build Felix/edit_cache: phony Felix/CMakeFiles/edit_cache.util
@@ -343,7 +670,11 @@ build Felix/edit_cache: phony Felix/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build Felix/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/Felix && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\Felix && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Baris\CLionProjects\Felix -BC:\Users\Baris\CLionProjects\Felix\cmake-build-debug"
+>>>>>>> Stashed changes
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -352,7 +683,11 @@ build Felix/rebuild_cache: phony Felix/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+<<<<<<< Updated upstream
 # /home/roveldo/CLionProjects/Felix/CMakeLists.txt
+=======
+# C:/Users/Baris/CLionProjects/Felix/CMakeLists.txt
+>>>>>>> Stashed changes
 # =============================================================================
 
 # =============================================================================
@@ -364,6 +699,7 @@ build Felix/rebuild_cache: phony Felix/CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_Sample: phony || cmake_object_order_depends_target_Felix cmake_object_order_depends_target_OpenGL cmake_object_order_depends_target_Stbi
 
+<<<<<<< Updated upstream
 build Sample/CMakeFiles/Sample.dir/main.cpp.o: CXX_COMPILER__Sample_Debug /home/roveldo/CLionProjects/Felix/Sample/main.cpp || cmake_object_order_depends_target_Sample
   DEFINES = -DFELIX_COMPILER_GNU -DFELIX_OS_LINUX
   DEP_FILE = Sample/CMakeFiles/Sample.dir/main.cpp.o.d
@@ -371,6 +707,17 @@ build Sample/CMakeFiles/Sample.dir/main.cpp.o: CXX_COMPILER__Sample_Debug /home/
   INCLUDES = -I/home/roveldo/CLionProjects/Felix/Felix/src
   OBJECT_DIR = Sample/CMakeFiles/Sample.dir
   OBJECT_FILE_DIR = Sample/CMakeFiles/Sample.dir
+=======
+build Sample/CMakeFiles/Sample.dir/main.cpp.obj: CXX_COMPILER__Sample_Debug C$:/Users/Baris/CLionProjects/Felix/Sample/main.cpp || cmake_object_order_depends_target_Sample
+  DEFINES = -DFELIX_OS_WINDOWS
+  DEP_FILE = Sample\CMakeFiles\Sample.dir\main.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Baris/CLionProjects/Felix/Felix/src
+  OBJECT_DIR = Sample\CMakeFiles\Sample.dir
+  OBJECT_FILE_DIR = Sample\CMakeFiles\Sample.dir
+  TARGET_COMPILE_PDB = Sample\CMakeFiles\Sample.dir\
+  TARGET_PDB = Sample\Sample.pdb
+>>>>>>> Stashed changes
 
 
 # =============================================================================
@@ -378,6 +725,7 @@ build Sample/CMakeFiles/Sample.dir/main.cpp.o: CXX_COMPILER__Sample_Debug /home/
 
 
 #############################################
+<<<<<<< Updated upstream
 # Link the executable Sample/Sample
 
 build Sample/Sample: CXX_EXECUTABLE_LINKER__Sample_Debug Sample/CMakeFiles/Sample.dir/main.cpp.o | Felix/libFelix.a ThirdParty/Stbi/libStbi.a ThirdParty/OpenGL/libOpenGL.a || Felix/libFelix.a ThirdParty/OpenGL/libOpenGL.a ThirdParty/Stbi/libStbi.a
@@ -388,15 +736,34 @@ build Sample/Sample: CXX_EXECUTABLE_LINKER__Sample_Debug Sample/CMakeFiles/Sampl
   PRE_LINK = :
   TARGET_FILE = Sample/Sample
   TARGET_PDB = Sample.dbg
+=======
+# Link the executable Sample\Sample.exe
+
+build Sample/Sample.exe: CXX_EXECUTABLE_LINKER__Sample_Debug Sample/CMakeFiles/Sample.dir/main.cpp.obj | Felix/libFelix.a ThirdParty/Stbi/libStbi.a ThirdParty/OpenGL/libOpenGL.a || Felix/libFelix.a ThirdParty/OpenGL/libOpenGL.a ThirdParty/Stbi/libStbi.a
+  FLAGS = -g
+  LINK_LIBRARIES = Felix/libFelix.a  ThirdParty/Stbi/libStbi.a  ThirdParty/OpenGL/libOpenGL.a  -lOpenGL32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = Sample\CMakeFiles\Sample.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = Sample\CMakeFiles\Sample.dir\
+  TARGET_FILE = Sample\Sample.exe
+  TARGET_IMPLIB = Sample\libSample.dll.a
+  TARGET_PDB = Sample\Sample.pdb
+>>>>>>> Stashed changes
 
 
 #############################################
 # Utility command for edit_cache
 
 build Sample/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/Sample && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/ccmake -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\Sample && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+>>>>>>> Stashed changes
   restat = 1
 
 build Sample/edit_cache: phony Sample/CMakeFiles/edit_cache.util
@@ -406,7 +773,11 @@ build Sample/edit_cache: phony Sample/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build Sample/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/Sample && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\Sample && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Baris\CLionProjects\Felix -BC:\Users\Baris\CLionProjects\Felix\cmake-build-debug"
+>>>>>>> Stashed changes
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -415,7 +786,11 @@ build Sample/rebuild_cache: phony Sample/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+<<<<<<< Updated upstream
 # /home/roveldo/CLionProjects/Felix/CMakeLists.txt
+=======
+# C:/Users/Baris/CLionProjects/Felix/CMakeLists.txt
+>>>>>>> Stashed changes
 # =============================================================================
 
 # =============================================================================
@@ -427,11 +802,21 @@ build Sample/rebuild_cache: phony Sample/CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_OpenGL: phony || ThirdParty/OpenGL/CMakeFiles/OpenGL.dir
 
+<<<<<<< Updated upstream
 build ThirdParty/OpenGL/CMakeFiles/OpenGL.dir/src/glad.c.o: C_COMPILER__OpenGL_Debug /home/roveldo/CLionProjects/Felix/ThirdParty/OpenGL/src/glad.c || cmake_object_order_depends_target_OpenGL
   DEP_FILE = ThirdParty/OpenGL/CMakeFiles/OpenGL.dir/src/glad.c.o.d
   FLAGS = -g
   OBJECT_DIR = ThirdParty/OpenGL/CMakeFiles/OpenGL.dir
   OBJECT_FILE_DIR = ThirdParty/OpenGL/CMakeFiles/OpenGL.dir/src
+=======
+build ThirdParty/OpenGL/CMakeFiles/OpenGL.dir/src/glad.c.obj: C_COMPILER__OpenGL_Debug C$:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGL/src/glad.c || cmake_object_order_depends_target_OpenGL
+  DEP_FILE = ThirdParty\OpenGL\CMakeFiles\OpenGL.dir\src\glad.c.obj.d
+  FLAGS = -g
+  OBJECT_DIR = ThirdParty\OpenGL\CMakeFiles\OpenGL.dir
+  OBJECT_FILE_DIR = ThirdParty\OpenGL\CMakeFiles\OpenGL.dir\src
+  TARGET_COMPILE_PDB = ThirdParty\OpenGL\CMakeFiles\OpenGL.dir\OpenGL.pdb
+  TARGET_PDB = ThirdParty\OpenGL\libOpenGL.pdb
+>>>>>>> Stashed changes
 
 
 # =============================================================================
@@ -439,6 +824,7 @@ build ThirdParty/OpenGL/CMakeFiles/OpenGL.dir/src/glad.c.o: C_COMPILER__OpenGL_D
 
 
 #############################################
+<<<<<<< Updated upstream
 # Link the static library ThirdParty/OpenGL/libOpenGL.a
 
 build ThirdParty/OpenGL/libOpenGL.a: C_STATIC_LIBRARY_LINKER__OpenGL_Debug ThirdParty/OpenGL/CMakeFiles/OpenGL.dir/src/glad.c.o
@@ -448,15 +834,32 @@ build ThirdParty/OpenGL/libOpenGL.a: C_STATIC_LIBRARY_LINKER__OpenGL_Debug Third
   PRE_LINK = :
   TARGET_FILE = ThirdParty/OpenGL/libOpenGL.a
   TARGET_PDB = OpenGL.a.dbg
+=======
+# Link the static library ThirdParty\OpenGL\libOpenGL.a
+
+build ThirdParty/OpenGL/libOpenGL.a: C_STATIC_LIBRARY_LINKER__OpenGL_Debug ThirdParty/OpenGL/CMakeFiles/OpenGL.dir/src/glad.c.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = ThirdParty\OpenGL\CMakeFiles\OpenGL.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = ThirdParty\OpenGL\CMakeFiles\OpenGL.dir\OpenGL.pdb
+  TARGET_FILE = ThirdParty\OpenGL\libOpenGL.a
+  TARGET_PDB = ThirdParty\OpenGL\libOpenGL.pdb
+>>>>>>> Stashed changes
 
 
 #############################################
 # Utility command for edit_cache
 
 build ThirdParty/OpenGL/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/OpenGL && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/ccmake -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\ThirdParty\OpenGL && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+>>>>>>> Stashed changes
   restat = 1
 
 build ThirdParty/OpenGL/edit_cache: phony ThirdParty/OpenGL/CMakeFiles/edit_cache.util
@@ -466,7 +869,11 @@ build ThirdParty/OpenGL/edit_cache: phony ThirdParty/OpenGL/CMakeFiles/edit_cach
 # Utility command for rebuild_cache
 
 build ThirdParty/OpenGL/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/OpenGL && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\ThirdParty\OpenGL && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Baris\CLionProjects\Felix -BC:\Users\Baris\CLionProjects\Felix\cmake-build-debug"
+>>>>>>> Stashed changes
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -475,7 +882,11 @@ build ThirdParty/OpenGL/rebuild_cache: phony ThirdParty/OpenGL/CMakeFiles/rebuil
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+<<<<<<< Updated upstream
 # /home/roveldo/CLionProjects/Felix/CMakeLists.txt
+=======
+# C:/Users/Baris/CLionProjects/Felix/CMakeLists.txt
+>>>>>>> Stashed changes
 # =============================================================================
 
 # =============================================================================
@@ -487,11 +898,21 @@ build ThirdParty/OpenGL/rebuild_cache: phony ThirdParty/OpenGL/CMakeFiles/rebuil
 
 build cmake_object_order_depends_target_OpenGLES: phony || ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir
 
+<<<<<<< Updated upstream
 build ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir/src/gles2.c.o: C_COMPILER__OpenGLES_Debug /home/roveldo/CLionProjects/Felix/ThirdParty/OpenGLES/src/gles2.c || cmake_object_order_depends_target_OpenGLES
   DEP_FILE = ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir/src/gles2.c.o.d
   FLAGS = -g
   OBJECT_DIR = ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir
   OBJECT_FILE_DIR = ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir/src
+=======
+build ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir/src/gles2.c.obj: C_COMPILER__OpenGLES_Debug C$:/Users/Baris/CLionProjects/Felix/ThirdParty/OpenGLES/src/gles2.c || cmake_object_order_depends_target_OpenGLES
+  DEP_FILE = ThirdParty\OpenGLES\CMakeFiles\OpenGLES.dir\src\gles2.c.obj.d
+  FLAGS = -g
+  OBJECT_DIR = ThirdParty\OpenGLES\CMakeFiles\OpenGLES.dir
+  OBJECT_FILE_DIR = ThirdParty\OpenGLES\CMakeFiles\OpenGLES.dir\src
+  TARGET_COMPILE_PDB = ThirdParty\OpenGLES\CMakeFiles\OpenGLES.dir\OpenGLES.pdb
+  TARGET_PDB = ThirdParty\OpenGLES\libOpenGLES.pdb
+>>>>>>> Stashed changes
 
 
 # =============================================================================
@@ -499,6 +920,7 @@ build ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir/src/gles2.c.o: C_COMPILER__Ope
 
 
 #############################################
+<<<<<<< Updated upstream
 # Link the static library ThirdParty/OpenGLES/libOpenGLES.a
 
 build ThirdParty/OpenGLES/libOpenGLES.a: C_STATIC_LIBRARY_LINKER__OpenGLES_Debug ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir/src/gles2.c.o
@@ -508,15 +930,32 @@ build ThirdParty/OpenGLES/libOpenGLES.a: C_STATIC_LIBRARY_LINKER__OpenGLES_Debug
   PRE_LINK = :
   TARGET_FILE = ThirdParty/OpenGLES/libOpenGLES.a
   TARGET_PDB = OpenGLES.a.dbg
+=======
+# Link the static library ThirdParty\OpenGLES\libOpenGLES.a
+
+build ThirdParty/OpenGLES/libOpenGLES.a: C_STATIC_LIBRARY_LINKER__OpenGLES_Debug ThirdParty/OpenGLES/CMakeFiles/OpenGLES.dir/src/gles2.c.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = ThirdParty\OpenGLES\CMakeFiles\OpenGLES.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = ThirdParty\OpenGLES\CMakeFiles\OpenGLES.dir\OpenGLES.pdb
+  TARGET_FILE = ThirdParty\OpenGLES\libOpenGLES.a
+  TARGET_PDB = ThirdParty\OpenGLES\libOpenGLES.pdb
+>>>>>>> Stashed changes
 
 
 #############################################
 # Utility command for edit_cache
 
 build ThirdParty/OpenGLES/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/OpenGLES && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/ccmake -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\ThirdParty\OpenGLES && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+>>>>>>> Stashed changes
   restat = 1
 
 build ThirdParty/OpenGLES/edit_cache: phony ThirdParty/OpenGLES/CMakeFiles/edit_cache.util
@@ -526,7 +965,11 @@ build ThirdParty/OpenGLES/edit_cache: phony ThirdParty/OpenGLES/CMakeFiles/edit_
 # Utility command for rebuild_cache
 
 build ThirdParty/OpenGLES/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/OpenGLES && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\ThirdParty\OpenGLES && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Baris\CLionProjects\Felix -BC:\Users\Baris\CLionProjects\Felix\cmake-build-debug"
+>>>>>>> Stashed changes
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -535,7 +978,11 @@ build ThirdParty/OpenGLES/rebuild_cache: phony ThirdParty/OpenGLES/CMakeFiles/re
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+<<<<<<< Updated upstream
 # /home/roveldo/CLionProjects/Felix/CMakeLists.txt
+=======
+# C:/Users/Baris/CLionProjects/Felix/CMakeLists.txt
+>>>>>>> Stashed changes
 # =============================================================================
 
 # =============================================================================
@@ -547,11 +994,21 @@ build ThirdParty/OpenGLES/rebuild_cache: phony ThirdParty/OpenGLES/CMakeFiles/re
 
 build cmake_object_order_depends_target_Stbi: phony || ThirdParty/Stbi/CMakeFiles/Stbi.dir
 
+<<<<<<< Updated upstream
 build ThirdParty/Stbi/CMakeFiles/Stbi.dir/src/stb_image.cpp.o: CXX_COMPILER__Stbi_Debug /home/roveldo/CLionProjects/Felix/ThirdParty/Stbi/src/stb_image.cpp || cmake_object_order_depends_target_Stbi
   DEP_FILE = ThirdParty/Stbi/CMakeFiles/Stbi.dir/src/stb_image.cpp.o.d
   FLAGS = -g
   OBJECT_DIR = ThirdParty/Stbi/CMakeFiles/Stbi.dir
   OBJECT_FILE_DIR = ThirdParty/Stbi/CMakeFiles/Stbi.dir/src
+=======
+build ThirdParty/Stbi/CMakeFiles/Stbi.dir/src/stb_image.cpp.obj: CXX_COMPILER__Stbi_Debug C$:/Users/Baris/CLionProjects/Felix/ThirdParty/Stbi/src/stb_image.cpp || cmake_object_order_depends_target_Stbi
+  DEP_FILE = ThirdParty\Stbi\CMakeFiles\Stbi.dir\src\stb_image.cpp.obj.d
+  FLAGS = -g
+  OBJECT_DIR = ThirdParty\Stbi\CMakeFiles\Stbi.dir
+  OBJECT_FILE_DIR = ThirdParty\Stbi\CMakeFiles\Stbi.dir\src
+  TARGET_COMPILE_PDB = ThirdParty\Stbi\CMakeFiles\Stbi.dir\Stbi.pdb
+  TARGET_PDB = ThirdParty\Stbi\libStbi.pdb
+>>>>>>> Stashed changes
 
 
 # =============================================================================
@@ -559,6 +1016,7 @@ build ThirdParty/Stbi/CMakeFiles/Stbi.dir/src/stb_image.cpp.o: CXX_COMPILER__Stb
 
 
 #############################################
+<<<<<<< Updated upstream
 # Link the static library ThirdParty/Stbi/libStbi.a
 
 build ThirdParty/Stbi/libStbi.a: CXX_STATIC_LIBRARY_LINKER__Stbi_Debug ThirdParty/Stbi/CMakeFiles/Stbi.dir/src/stb_image.cpp.o
@@ -568,15 +1026,32 @@ build ThirdParty/Stbi/libStbi.a: CXX_STATIC_LIBRARY_LINKER__Stbi_Debug ThirdPart
   PRE_LINK = :
   TARGET_FILE = ThirdParty/Stbi/libStbi.a
   TARGET_PDB = Stbi.a.dbg
+=======
+# Link the static library ThirdParty\Stbi\libStbi.a
+
+build ThirdParty/Stbi/libStbi.a: CXX_STATIC_LIBRARY_LINKER__Stbi_Debug ThirdParty/Stbi/CMakeFiles/Stbi.dir/src/stb_image.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = ThirdParty\Stbi\CMakeFiles\Stbi.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = ThirdParty\Stbi\CMakeFiles\Stbi.dir\Stbi.pdb
+  TARGET_FILE = ThirdParty\Stbi\libStbi.a
+  TARGET_PDB = ThirdParty\Stbi\libStbi.pdb
+>>>>>>> Stashed changes
 
 
 #############################################
 # Utility command for edit_cache
 
 build ThirdParty/Stbi/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/Stbi && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/ccmake -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\ThirdParty\Stbi && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+>>>>>>> Stashed changes
   restat = 1
 
 build ThirdParty/Stbi/edit_cache: phony ThirdParty/Stbi/CMakeFiles/edit_cache.util
@@ -586,7 +1061,11 @@ build ThirdParty/Stbi/edit_cache: phony ThirdParty/Stbi/CMakeFiles/edit_cache.ut
 # Utility command for rebuild_cache
 
 build ThirdParty/Stbi/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< Updated upstream
   COMMAND = cd /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/Stbi && /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/roveldo/CLionProjects/Felix -B/home/roveldo/CLionProjects/Felix/cmake-build-debug
+=======
+  COMMAND = cmd.exe /C "cd /D C:\Users\Baris\CLionProjects\Felix\cmake-build-debug\ThirdParty\Stbi && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Baris\CLionProjects\Felix -BC:\Users\Baris\CLionProjects\Felix\cmake-build-debug"
+>>>>>>> Stashed changes
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -602,7 +1081,13 @@ build OpenGL: phony ThirdParty/OpenGL/libOpenGL.a
 
 build OpenGLES: phony ThirdParty/OpenGLES/libOpenGLES.a
 
+<<<<<<< Updated upstream
 build Sample: phony Sample/Sample
+=======
+build Sample: phony Sample/Sample.exe
+
+build Sample.exe: phony Sample/Sample.exe
+>>>>>>> Stashed changes
 
 build Stbi: phony ThirdParty/Stbi/libStbi.a
 
@@ -620,42 +1105,68 @@ build libStbi.a: phony ThirdParty/Stbi/libStbi.a
 # =============================================================================
 
 #############################################
+<<<<<<< Updated upstream
 # Folder: /home/roveldo/CLionProjects/Felix/cmake-build-debug
+=======
+# Folder: C:/Users/Baris/CLionProjects/Felix/cmake-build-debug
+>>>>>>> Stashed changes
 
 build all: phony Felix/all Sample/all ThirdParty/OpenGL/all ThirdParty/OpenGLES/all ThirdParty/Stbi/all
 
 # =============================================================================
 
 #############################################
+<<<<<<< Updated upstream
 # Folder: /home/roveldo/CLionProjects/Felix/cmake-build-debug/Felix
+=======
+# Folder: C:/Users/Baris/CLionProjects/Felix/cmake-build-debug/Felix
+>>>>>>> Stashed changes
 
 build Felix/all: phony Felix/libFelix.a
 
 # =============================================================================
 
 #############################################
+<<<<<<< Updated upstream
 # Folder: /home/roveldo/CLionProjects/Felix/cmake-build-debug/Sample
 
 build Sample/all: phony Sample/Sample
+=======
+# Folder: C:/Users/Baris/CLionProjects/Felix/cmake-build-debug/Sample
+
+build Sample/all: phony Sample/Sample.exe
+>>>>>>> Stashed changes
 
 # =============================================================================
 
 #############################################
+<<<<<<< Updated upstream
 # Folder: /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/OpenGL
+=======
+# Folder: C:/Users/Baris/CLionProjects/Felix/cmake-build-debug/ThirdParty/OpenGL
+>>>>>>> Stashed changes
 
 build ThirdParty/OpenGL/all: phony ThirdParty/OpenGL/libOpenGL.a
 
 # =============================================================================
 
 #############################################
+<<<<<<< Updated upstream
 # Folder: /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/OpenGLES
+=======
+# Folder: C:/Users/Baris/CLionProjects/Felix/cmake-build-debug/ThirdParty/OpenGLES
+>>>>>>> Stashed changes
 
 build ThirdParty/OpenGLES/all: phony ThirdParty/OpenGLES/libOpenGLES.a
 
 # =============================================================================
 
 #############################################
+<<<<<<< Updated upstream
 # Folder: /home/roveldo/CLionProjects/Felix/cmake-build-debug/ThirdParty/Stbi
+=======
+# Folder: C:/Users/Baris/CLionProjects/Felix/cmake-build-debug/ThirdParty/Stbi
+>>>>>>> Stashed changes
 
 build ThirdParty/Stbi/all: phony ThirdParty/Stbi/libStbi.a
 
@@ -666,14 +1177,22 @@ build ThirdParty/Stbi/all: phony ThirdParty/Stbi/libStbi.a
 #############################################
 # Re-run CMake if any of its inputs changed.
 
+<<<<<<< Updated upstream
 build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../Felix/CMakeLists.txt ../Sample/CMakeLists.txt ../ThirdParty/OpenGL/CMakeLists.txt ../ThirdParty/OpenGLES/CMakeLists.txt ../ThirdParty/Stbi/CMakeLists.txt /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCInformation.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-C.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-CXX.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
+=======
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../Felix/CMakeLists.txt ../Sample/CMakeLists.txt ../ThirdParty/OpenGLES/CMakeLists.txt ../ThirdParty/OpenGL/CMakeLists.txt ../ThirdParty/Stbi/CMakeLists.txt C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCCompilerABI.c C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCompileFeatures.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeParseLibraryArchitecture.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeSystem.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeTestCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/LCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeRCCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
+>>>>>>> Stashed changes
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
+<<<<<<< Updated upstream
 build ../CMakeLists.txt ../Felix/CMakeLists.txt ../Sample/CMakeLists.txt ../ThirdParty/OpenGL/CMakeLists.txt ../ThirdParty/OpenGLES/CMakeLists.txt ../ThirdParty/Stbi/CMakeLists.txt /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCInformation.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-C.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-CXX.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux.cmake /home/roveldo/Downloads/clion-2022.2.4/bin/cmake/linux/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
+=======
+build ../CMakeLists.txt ../Felix/CMakeLists.txt ../Sample/CMakeLists.txt ../ThirdParty/OpenGLES/CMakeLists.txt ../ThirdParty/OpenGL/CMakeLists.txt ../ThirdParty/Stbi/CMakeLists.txt C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCCompilerABI.c C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCompileFeatures.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeParseLibraryArchitecture.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeSystem.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeTestCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/LCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeRCCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
+>>>>>>> Stashed changes
 
 
 #############################################
