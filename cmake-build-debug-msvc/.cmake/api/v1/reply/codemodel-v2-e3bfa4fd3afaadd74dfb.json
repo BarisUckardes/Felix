@@ -1,0 +1,176 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "Felix",
+					"jsonFile" : "directory-Felix-Debug-5203d006e73670213698.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Felix",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "Sample",
+					"jsonFile" : "directory-Sample-Debug-caed6328e2443eda527e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Sample",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "ThirdParty/OpenGL",
+					"jsonFile" : "directory-ThirdParty.OpenGL-Debug-ddf5213684707017d496.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ThirdParty/OpenGL",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "ThirdParty/OpenGLES",
+					"jsonFile" : "directory-ThirdParty.OpenGLES-Debug-2f90daee4bf149a46300.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ThirdParty/OpenGLES",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "ThirdParty/Stbi",
+					"jsonFile" : "directory-ThirdParty.Stbi-Debug-ab8531ecf6e13576ac42.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ThirdParty/Stbi",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"name" : "Stbi",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "Felix::@bfa55f64c3cede684d6b",
+					"jsonFile" : "target-Felix-Debug-855c71fe5a16fce48661.json",
+					"name" : "Felix",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "OpenGL::@004a7df5d3d2d81b97cc",
+					"jsonFile" : "target-OpenGL-Debug-a0ce392fc729cc32cc21.json",
+					"name" : "OpenGL",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "OpenGLES::@4f2af063c29c2091a60b",
+					"jsonFile" : "target-OpenGLES-Debug-de8e997eb082577f6bbf.json",
+					"name" : "OpenGLES",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "Sample::@a96ea2003bd90aafd97e",
+					"jsonFile" : "target-Sample-Debug-143309bd02316d8940f7.json",
+					"name" : "Sample",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "Stbi::@4fc69595b9c843530d50",
+					"jsonFile" : "target-Stbi-Debug-e8c2bebe14c7f7b04e13.json",
+					"name" : "Stbi",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Baris/CLionProjects/Felix/cmake-build-debug-msvc",
+		"source" : "C:/Users/Baris/CLionProjects/Felix"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
