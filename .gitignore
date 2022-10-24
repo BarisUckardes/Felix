@@ -14,3 +14,4 @@ out
 out-debug
 out-release
 .idea
+cmake-build-debug-msvc
