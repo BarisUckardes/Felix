@@ -5,14 +5,17 @@
 
 #ifdef FELIX_OS_WINDOWS
 #include <Platform/Windows/Window/WindowsWindow.h>
-typedef Felix::WindowsWindow WindowsAbstraction;
+typedef Felix::WindowsWindow WindowAbstraction;
+#elif FELIX_OS_LINUX
+#include <Platform/Linux/Window/LinuxWindow.h>
+typedef Felix::LinuxWindow WindowAbstraction;
 #endif
 
 namespace Felix
 {
 	Window* Window::Create(const WindowCreateDesc& desc)
 	{
-		WindowsAbstraction* window = new WindowsAbstraction(desc);
+        WindowAbstraction* window = new WindowAbstraction(desc);
 
 		return window;
 	}
