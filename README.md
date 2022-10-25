@@ -4,12 +4,12 @@ Felix is a cross-platform, graphics API-agnostic rendering and compute library f
 
 Supported compilers
 - [X] MSVC
-- [ ] GNU
+- [X] GNU
 - [ ] Clang
 
 Supported platforms
 - [X] Windows
-- [ ] Linux
+- [X] Linux
 - [ ] Mac
 - [ ] Android
 - [ ] IOS
