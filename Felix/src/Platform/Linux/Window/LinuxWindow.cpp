@@ -4,6 +4,7 @@
 
 #include "LinuxWindow.h"
 #include <Window/WindowEvents.h>
+#ifdef FELIX_OS_LINUX
 namespace Felix
 {
     Felix::LinuxWindow::LinuxWindow(const Felix::WindowCreateDesc &desc) : Window(desc)
@@ -129,3 +130,4 @@ namespace Felix
     }
 
 }
+#endif
