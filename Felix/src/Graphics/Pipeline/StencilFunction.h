@@ -15,6 +15,6 @@ namespace Felix
 		Greater,
 		NotEqual,
 		GreaterEqual,
-		Always0
+		Always
 	};
 }

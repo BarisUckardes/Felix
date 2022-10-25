@@ -199,7 +199,7 @@ namespace Felix
 				return GL_NOTEQUAL;
 			case Felix::StencilFunction::GreaterEqual:
 				return GL_GEQUAL;
-			case Felix::StencilFunction::Always0:
+			case Felix::StencilFunction::Always:
 				return GL_ALWAYS;
 			default:
 				ASSERT(false, "OpenGLPipelineUtils", "Invalid StencilFunction");

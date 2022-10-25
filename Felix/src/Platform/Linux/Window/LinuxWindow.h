@@ -7,7 +7,7 @@
 #define STBI_LINUXWINDOW_H
 
 #include <Window/Window.h>
-#include <X11/Xlib.h>
+#include <GLFW/glfw3.h>
 
 namespace Felix
 {
@@ -17,10 +17,7 @@ namespace Felix
         LinuxWindow(const WindowCreateDesc& desc);
         virtual ~LinuxWindow() override;
 
-        FORCEINLINE Display* GetXDisplay() const noexcept { return _display;}
-        FORCEINLINE Visual * GetXVisual() const noexcept { return _visual;}
-        FORCEINLINE XID GetXWindow() const noexcept { return _window;}
-        FORCEINLINE int GetXScreen() const noexcept { return _screen;}
+        FORCEINLINE GLFWwindow* GetGLFWWindow() const { return _window;}
     protected:
         void SetTitleCore(const std::string &title) override;
         void SetSizeCore(const unsigned short width, const unsigned short height) override;
@@ -29,10 +26,14 @@ namespace Felix
         void ShowCore() override;
         void HideCore() override;
     private:
-        Display* _display;
-        Visual * _visual;
-        XID  _window;
-        int _screen;
+        static void OnWindowClosed(GLFWwindow* pWindow);
+        static void OnKey(GLFWwindow* pWindow,int key,int scanCode,int action,int mods);
+        static void OnMouseButton(GLFWwindow* pWindow,int button,int action,int mods);
+        static void OnMouseMoved(GLFWwindow* pWindow,double  x,double y);
+        static void OnMouseWheel(GLFWwindow* pWindow,double x,double y);
+
+    private:
+        GLFWwindow* _window;
     };
 
 }

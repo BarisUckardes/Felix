@@ -2,65 +2,62 @@
 // Created by roveldo on 25.10.2022.
 //
 
-#include <X11/Xutil.h>
 #include "LinuxWindow.h"
+#include <Window/WindowEvents.h>
 namespace Felix
 {
     Felix::LinuxWindow::LinuxWindow(const Felix::WindowCreateDesc &desc) : Window(desc)
     {
-        _display = XOpenDisplay(NULL);
+        /* Initialize the library */
+        if (!glfwInit())
+            return;
 
-        ASSERT(_display != NULL,"LinuxWindow","Xlib display create failed!");
+#ifdef FELIX_DEBUG
+        glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
+#endif
 
-        _screen = DefaultScreen(_display);
+        /* Create a windowed mode window and its OpenGL context */
+        _window = glfwCreateWindow(desc.Width, desc.Height, desc.Title.c_str(), NULL, NULL);
 
-        _visual =  XDefaultVisual(_display,_screen);
+        glfwSetWindowPos(_window,desc.PositionX,desc.PositionY);
 
-        XSetWindowAttributes  windowAttribs;
-        windowAttribs.border_pixel = BlackPixel(_display,_screen);
-        windowAttribs.background_pixel = WhitePixel(_display,_screen);
-        windowAttribs.override_redirect = true;
-        windowAttribs.colormap = XCreateColormap(_display,RootWindow(_display,_screen),_visual,AllocNone);
-        windowAttribs.event_mask = ExposureMask;
+        ASSERT(_window != nullptr,"LinuxWindow","Couldnt create window")
 
-        _window = XCreateWindow(_display, RootWindow(_display,_screen),
-                                      desc.PositionX,desc.PositionY,desc.Width,desc.Height,
-                                      0,
-                                      DefaultDepth(_display,_screen),
-                                      InputOutput,
-                                      _visual,
-                                      CWBackPixel | CWColormap | CWBorderPixel | CWEventMask,&windowAttribs);
+        /* Make the window's context current */
+        glfwMakeContextCurrent(_window);
 
-        XSelectInput(_display,_window,ExposureMask | KeyPressMask);
+        /*
+         * Setup events
+         */
+        glfwSetWindowUserPointer(_window,this);
+        glfwSetWindowCloseCallback(_window,LinuxWindow::OnWindowClosed);
+        glfwSetKeyCallback(_window,LinuxWindow::OnKey);
+        glfwSetMouseButtonCallback(_window,LinuxWindow::OnMouseButton);
+        glfwSetCursorPosCallback(_window,LinuxWindow::OnMouseMoved);
+        glfwSetScrollCallback(_window,LinuxWindow::OnMouseWheel);
 
-        XMapWindow(_display,_window);
-
-        XStoreName(_display,_window,desc.Title.c_str());
     }
 
     Felix::LinuxWindow::~LinuxWindow()
     {
-
+        glfwDestroyWindow(_window);
     }
 
     void Felix::LinuxWindow::SetTitleCore(const std::string &title) {
-        XStoreName(_display,_window,title.c_str());
+        glfwSetWindowTitle(_window,title.c_str());
     }
 
     void Felix::LinuxWindow::SetSizeCore(const unsigned short width, const unsigned short height) {
-        XResizeWindow(_display,_window,width,height);
+        glfwSetWindowSize(_window,width,height);
     }
 
     void Felix::LinuxWindow::SetPositionCore(const unsigned short x, const unsigned short y) {
-        XMoveWindow(_display,_window,x,y);
+        glfwSetWindowPos(_window,x,y);
     }
 
     void Felix::LinuxWindow::PollInputEventsCore() {
-        while(XPending(_display))
-        {
-            XEvent  event;
-            XNextEvent(_display,&event);
-        }
+        glfwPollEvents();
+
     }
 
     void Felix::LinuxWindow::ShowCore() {
@@ -69,6 +66,66 @@ namespace Felix
 
     void Felix::LinuxWindow::HideCore() {
 
+    }
+
+    void LinuxWindow::OnWindowClosed(GLFWwindow *pWindow)
+    {
+        LinuxWindow* pFelixWindow = (LinuxWindow*)glfwGetWindowUserPointer(pWindow);
+
+        pFelixWindow->DispatchWindowMessage(new WindowClosedEvent());
+    }
+
+    void LinuxWindow::OnKey(GLFWwindow *pWindow, int key, int scanCode, int action, int mods)
+    {
+        LinuxWindow* pFelixWindow = (LinuxWindow*)glfwGetWindowUserPointer(pWindow);
+
+        switch (action)
+        {
+            case GLFW_PRESS:
+            {
+                pFelixWindow->DispatchWindowMessage(new KeyboardKeyDownEvent(key));
+                break;
+            }
+            case GLFW_RELEASE:
+            {
+                pFelixWindow->DispatchWindowMessage(new KeyboardKeyUpEvent(key));
+                break;
+            }
+        }
+
+    }
+
+    void LinuxWindow::OnMouseButton(GLFWwindow *pWindow, int button, int action, int mods)
+    {
+        LinuxWindow* pFelixWindow = (LinuxWindow*)glfwGetWindowUserPointer(pWindow);
+
+        switch (action) {
+            case GLFW_PRESS:
+            {
+                pFelixWindow->DispatchWindowMessage(new MouseButtonDownEvent(button));
+                break;
+            }
+            case GLFW_RELEASE:
+            {
+                pFelixWindow->DispatchWindowMessage(new MouseButtonUpEvent(button));
+                break;
+            }
+        }
+
+    }
+
+    void LinuxWindow::OnMouseMoved(GLFWwindow *pWindow, double x, double y)
+    {
+        LinuxWindow* pFelixWindow = (LinuxWindow*)glfwGetWindowUserPointer(pWindow);
+
+        pFelixWindow->DispatchWindowMessage(new MouseMovedEvent(x,y));
+    }
+
+    void LinuxWindow::OnMouseWheel(GLFWwindow *pWindow, double x, double y)
+    {
+        LinuxWindow* pFelixWindow = (LinuxWindow*)glfwGetWindowUserPointer(pWindow);
+
+        pFelixWindow->DispatchWindowMessage(new MouseWheelScrolled(x,y));
     }
 
 }

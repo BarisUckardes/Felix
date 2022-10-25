@@ -4,7 +4,6 @@
 #ifdef FELIX_OS_WINDOWS
 #include <Windows.h>
 #elif FELIX_OS_LINUX
-#include <glx.h>
 #endif
 
 namespace Felix
@@ -36,11 +35,6 @@ namespace Felix
         HGLRC _context;
 		HDC _windowDeviceContext;
 #elif  FELIX_OS_LINUX
-        GLXContext _context;
-        Display* _display;
-        Visual * _visual;
-        int _screen;
-        XID  _window;
 #endif
     };
 }

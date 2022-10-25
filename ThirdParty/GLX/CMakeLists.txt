@@ -1,1 +1,0 @@
-add_library(GLX "src/glx.c" )

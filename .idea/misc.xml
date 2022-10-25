@@ -3,7 +3,7 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <sourceRoots>
-      <file path="$PROJECT_DIR$/ThirdParty/GLX" />
+      <file path="$PROJECT_DIR$/ThirdParty/OpenGLX" />
     </sourceRoots>
   </component>
 </project>
