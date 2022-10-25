@@ -8,10 +8,9 @@ namespace Felix
 	/// </summary>
 	enum class EXPORT TextureUsage
 	{
-		Immutable = 1 << 1,
-		Sampled = 1 << 2,
-		RenderTarget = 1 << 3,
-		DepthStencilTarget = 1 << 4
+		Sampled = 1 << 1,
+		RenderTarget = 1 << 2,
+		DepthStencilTarget = 1 << 3
 	};
 
 	FORCEINLINE static bool operator|(const TextureUsage a, const TextureUsage b)

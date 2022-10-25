@@ -15,6 +15,8 @@ namespace Felix
     public:
         DX11SwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, Window* pOwnerWindow);
         virtual ~DX11SwapchainFramebuffer() override;
+
+        FORCEINLINE IDXGISwapChain* GetDXSwapchain() const noexcept { return _swapchain.Get();}
     protected:
         void OnResizeCore(const unsigned int width, const unsigned int Height) override;
 

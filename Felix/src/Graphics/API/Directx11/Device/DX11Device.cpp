@@ -55,7 +55,7 @@ namespace Felix
 
     void DX11Device::SwapbuffersCore()
     {
-
+        ((DX11SwapchainFramebuffer*)GetSwapchainFramebuffer())->GetDXSwapchain()->Present(1u,0);
     }
 
     CommandBuffer *DX11Device::CreateCommandBufferCore(const CommandBufferCreateDesc &desc) {

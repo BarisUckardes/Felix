@@ -10,8 +10,8 @@ Felix::DX11SwapchainFramebuffer::DX11SwapchainFramebuffer(const SwapchainFramebu
 {
     const WindowsWindow* pWin32Window = (const WindowsWindow*)pOwnerWindow;
     const DX11Device* pDX11Device = (const DX11Device*)pOwnerWindow->GetChildDevice();
-    ID3D11Device* pDevice = pDX11Device->GetDxXevice().Get();
-    IDXGIFactory4* pFactory = pDX11Device->GetDXFactory().Get();
+    ID3D11Device* pDevice = pDX11Device->GetDXDevice();
+    IDXGIFactory4* pFactory = pDX11Device->GetDXFactory();
 
 
     DXGI_MODE_DESC bufferDesc = {0};

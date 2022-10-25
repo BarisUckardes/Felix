@@ -19,9 +19,9 @@ namespace Felix
         DX11Device(const StandaloneGraphicsDeviceCreateDesc& desc);
         virtual ~DX11Device() override;
 
-        FORCEINLINE DXPTR<ID3D11Device> GetDxXevice() const noexcept { return _device;}
-        FORCEINLINE DXPTR<ID3D11DeviceContext> GetDXContenxt() const noexcept { return _context;}
-        FORCEINLINE DXPTR<IDXGIFactory4> GetDXFactory() const noexcept { return _factory;}
+        FORCEINLINE ID3D11Device* GetDXDevice() const noexcept { return _device.Get();}
+        FORCEINLINE ID3D11DeviceContext* GetDXContenxt() const noexcept { return _context.Get();}
+        FORCEINLINE IDXGIFactory4* GetDXFactory() const noexcept { return _factory.Get();}
 
     protected:
 

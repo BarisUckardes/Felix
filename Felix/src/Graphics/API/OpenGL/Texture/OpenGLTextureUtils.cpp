@@ -58,8 +58,6 @@ namespace Felix
 	{
 		switch (usage)
 		{
-			case Felix::TextureUsage::Immutable:
-				return GL_STATIC_DRAW;
 			case Felix::TextureUsage::Sampled:
 				return GL_STATIC_DRAW;
 			case Felix::TextureUsage::RenderTarget:
