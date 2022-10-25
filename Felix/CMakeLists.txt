@@ -40,6 +40,12 @@ include_directories("src")
 include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/OpenGL/include)
 include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/Stbi/include)
 
+if(WIN32)
+elseif(UNIX)
+  include_directories(${X11_INCLUDE_DIR})
+  include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/GLX/include)
+endif()
+
 #linker
 target_link_libraries(Felix Stbi)
 target_link_libraries(Felix OpenGL)
@@ -51,6 +57,8 @@ elseif(UNIX)
   find_package(X11 REQUIRED)
   target_link_libraries(Felix ${X11_LIBRARIES})
   include_directories(${X11_INCLUDE_DIR})
+  include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/GLX/include)
+  target_link_libraries(Felix GLX)
   endif()
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

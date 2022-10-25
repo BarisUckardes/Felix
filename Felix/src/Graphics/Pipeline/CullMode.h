@@ -8,7 +8,7 @@ namespace Felix
 	/// </summary>
 	enum class EXPORT CullMode
 	{
-		None = 0,
+		None0 = 0,
 		Front,
 		Back,
 		FrontAndBack

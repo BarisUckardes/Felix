@@ -1,10 +1,10 @@
 #include "GraphicsDevice.h"
 #include <Graphics/Device/StandaloneGraphicsDeviceCreateDesc.h>
 #include <Graphics/Device/WindowGraphicsDeviceCreateDesc.h>
-#include <Graphics/API/OpenGL/Device/OpenGLDevice.h>
 #include <Graphics/Device/GraphicsDeviceObjects.h>
 #include <Window/WindowDeviceAdapter.h>
 #include <Window/Window.h>
+#include <Graphics/API/OpenGL/Device/OpenGLDevice.h>
 
 namespace Felix
 {

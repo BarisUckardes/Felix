@@ -155,7 +155,7 @@ namespace Felix
 
 		glFrontFace(pGLPipeline->GetGLFrontFace());
 
-		if (rasterizerState.CulledFace == CullMode::None)
+		if (rasterizerState.CulledFace == CullMode::None0)
 			glDisable(GL_CULL_FACE);
 		else
 			glEnable(GL_CULL_FACE);

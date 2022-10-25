@@ -20,7 +20,7 @@ namespace Felix
 	{
 		switch (mode)
 		{
-		case CullMode::None:
+		case CullMode::None0:
 			return GL_NONE;
 		case CullMode::Front:
 			return GL_FRONT;
@@ -37,7 +37,7 @@ namespace Felix
 	{
 		switch (function)
 		{
-		case DepthTestFunction::Always:
+		case DepthTestFunction::Always0:
 			return GL_ALWAYS;
 		case DepthTestFunction::Never:
 			return GL_NEVER;
@@ -199,7 +199,7 @@ namespace Felix
 				return GL_NOTEQUAL;
 			case Felix::StencilFunction::GreaterEqual:
 				return GL_GEQUAL;
-			case Felix::StencilFunction::Always:
+			case Felix::StencilFunction::Always0:
 				return GL_ALWAYS;
 			default:
 				ASSERT(false, "OpenGLPipelineUtils", "Invalid StencilFunction");

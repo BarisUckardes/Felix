@@ -47,16 +47,16 @@ int main()
 
 	Felix::Window* pWindow = Felix::Window::Create(createDesc);
 
-//	/*
-//	* Create graphics device
-//	*/
-//	Felix::WindowGraphicsDeviceCreateDesc deviceDesc = {};
-//	deviceDesc.PreferredAPI = Felix::GraphicsAPI::OpenGL;
-//	deviceDesc.SwapchainBufferCount = 3;
-//	deviceDesc.SwapchainBufferFormat = Felix::TextureFormat::RGBA8;
-//	deviceDesc.SwapchainDepthStencilBufferFormat = Felix::TextureFormat::None;
-//
-//	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,pWindow);
+	/*
+	* Create graphics device
+	*/
+	Felix::WindowGraphicsDeviceCreateDesc deviceDesc = {};
+	deviceDesc.PreferredAPI = Felix::GraphicsAPI::OpenGL;
+	deviceDesc.SwapchainBufferCount = 3;
+	deviceDesc.SwapchainBufferFormat = Felix::TextureFormat::RGBA8;
+	deviceDesc.SwapchainDepthStencilBufferFormat = Felix::TextureFormat::None;
+
+	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,pWindow);
 //
 //	/*
 //	* Create command buffer

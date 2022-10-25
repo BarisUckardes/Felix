@@ -5,7 +5,7 @@
 #include <Graphics/Texture/TextureUpdateDesc.h>
 #include <Graphics/API/OpenGL/Buffer/OpenGLBufferUtils.h>
 #include <Graphics/API/OpenGL/Texture/OpenGLTextureUtils.h>
-
+#include <iostream>
 #ifdef FELIX_OS_WINDOWS
 #include <Platform/Windows/Window/WindowsWindow.h>
 #include <Graphics/API/OpenGL/Device/OpenGLDeviceUtilsWin32.h>
@@ -18,6 +18,9 @@ typedef int (WINAPI* PFNWGLGETSWAPINTERVALEXTPROC) (void);
 #define WGL_CONTEXT_FLAGS_ARB 0X2094
 #define WGL_CONTEXT_COREPROFILE_BIT_ARB 0x00000001
 #define WGL_CONTEXT_PROFILE_MASK_ARB 0x9126
+#elif  FELIX_OS_LINUX
+#include <Platform/Linux/Window/LinuxWindow.h>
+typedef GLXContext (*glXCreateContextAttribsARBProc)(Display*, GLXFBConfig, GLXContext, Bool, const int*);
 #endif
 
 namespace Felix
@@ -81,6 +84,30 @@ namespace Felix
 
         _context = gladContext;
         _windowDeviceContext = windowDeviceContext;
+#elif FELIX_OS_LINUX
+        const LinuxWindow* pLinuxWindow = (const LinuxWindow*)pOwnerWindow;
+        _display = pLinuxWindow->GetXDisplay();
+        _window = pLinuxWindow->GetXWindow();
+        _visual = pLinuxWindow->GetXVisual();
+        _screen = pLinuxWindow->GetXScreen();
+
+        constexpr  int attribs[] = {
+                GLX_X_RENDERABLE    , True,
+                GLX_DRAWABLE_TYPE   , GLX_WINDOW_BIT,
+                GLX_RENDER_TYPE     , GLX_RGBA_BIT,
+                GLX_X_VISUAL_TYPE   , GLX_TRUE_COLOR,
+                GLX_RED_SIZE        , 8,
+                GLX_GREEN_SIZE      , 8,
+                GLX_BLUE_SIZE       , 8,
+                GLX_ALPHA_SIZE      , 8,
+                GLX_DEPTH_SIZE      , 24,
+                GLX_STENCIL_SIZE    , 8,
+                GLX_DOUBLEBUFFER    , True,
+                None
+        };
+
+        int framebufferCount = 0;
+        GLXFBConfig* framebufferConfig = glXChooseFBConfig(_display, DefaultScreen(_display),attribs,&framebufferCount);
 #endif
 
 #ifdef FELIX_DEBUG
@@ -101,6 +128,8 @@ namespace Felix
     {
 #ifdef FELIX_OS_WINDOWS
         SwapBuffers(_windowDeviceContext);
+#elif FELIX_OS_LINUX
+        glXSwapBuffers(_display,_window);
 #endif
     }
     CommandBuffer* OpenGLDevice::CreateCommandBufferCore(const CommandBufferCreateDesc& desc)

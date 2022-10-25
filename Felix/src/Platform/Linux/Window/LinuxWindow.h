@@ -18,6 +18,7 @@ namespace Felix
         virtual ~LinuxWindow() override;
 
         FORCEINLINE Display* GetXDisplay() const noexcept { return _display;}
+        FORCEINLINE Visual * GetXVisual() const noexcept { return _visual;}
         FORCEINLINE XID GetXWindow() const noexcept { return _window;}
         FORCEINLINE int GetXScreen() const noexcept { return _screen;}
     protected:
@@ -29,6 +30,7 @@ namespace Felix
         void HideCore() override;
     private:
         Display* _display;
+        Visual * _visual;
         XID  _window;
         int _screen;
     };

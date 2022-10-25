@@ -2,8 +2,8 @@
 // Created by roveldo on 25.10.2022.
 //
 
+#include <X11/Xutil.h>
 #include "LinuxWindow.h"
-
 namespace Felix
 {
     Felix::LinuxWindow::LinuxWindow(const Felix::WindowCreateDesc &desc) : Window(desc)
@@ -14,9 +14,22 @@ namespace Felix
 
         _screen = DefaultScreen(_display);
 
-        _window = XCreateSimpleWindow(_display, RootWindow(_display,_screen),
-                                      100,100,1024,1024,
-                                      1, BlackPixel(_display,_screen), WhitePixel(_display,_screen));
+        _visual =  XDefaultVisual(_display,_screen);
+
+        XSetWindowAttributes  windowAttribs;
+        windowAttribs.border_pixel = BlackPixel(_display,_screen);
+        windowAttribs.background_pixel = WhitePixel(_display,_screen);
+        windowAttribs.override_redirect = true;
+        windowAttribs.colormap = XCreateColormap(_display,RootWindow(_display,_screen),_visual,AllocNone);
+        windowAttribs.event_mask = ExposureMask;
+
+        _window = XCreateWindow(_display, RootWindow(_display,_screen),
+                                      desc.PositionX,desc.PositionY,desc.Width,desc.Height,
+                                      0,
+                                      DefaultDepth(_display,_screen),
+                                      InputOutput,
+                                      _visual,
+                                      CWBackPixel | CWColormap | CWBorderPixel | CWEventMask,&windowAttribs);
 
         XSelectInput(_display,_window,ExposureMask | KeyPressMask);
 

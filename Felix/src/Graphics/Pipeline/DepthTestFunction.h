@@ -8,7 +8,7 @@ namespace Felix
 	/// </summary>
 	enum class EXPORT DepthTestFunction
 	{
-		Always,
+		Always0,
 		Never,
 		Less,
 		Equal,
