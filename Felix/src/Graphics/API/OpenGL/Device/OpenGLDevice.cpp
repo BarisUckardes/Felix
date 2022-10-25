@@ -239,6 +239,6 @@ namespace Felix
     }
     Framebuffer* OpenGLDevice::CreateSwapchainFramebufferCore(const SwapchainFramebufferCreateDesc& desc)
     {
-        return new OpenGLSwapchainFramebuffer(desc,{},GetOwnerWindow());
+        return new OpenGLSwapchainFramebuffer(desc,GetOwnerWindow());
     }
 }

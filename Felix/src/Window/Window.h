@@ -17,6 +17,7 @@ namespace Felix
 	public:
 		static Window* Create(const WindowCreateDesc& desc);
 	public:
+        FORCEINLINE GraphicsDevice* GetChildDevice() const noexcept { return _childDevice;}
 		FORCEINLINE std::string GetTitle() const noexcept { return _title; }
 		FORCEINLINE unsigned short GetWidth() const noexcept { return _width; }
 		FORCEINLINE unsigned short GetHeight() const noexcept { return _height; }

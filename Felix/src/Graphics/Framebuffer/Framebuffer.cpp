@@ -10,6 +10,15 @@ namespace Felix
 		_height = desc.Height;
 		_swapchain = bSwapchain;
 
+        /*
+         * Validate if swapchain
+         */
+        if(bSwapchain)
+        {
+            _depthStencil = false;
+            return;
+        }
+
 		/*
 		* Search for depth stencil texture
 		*/

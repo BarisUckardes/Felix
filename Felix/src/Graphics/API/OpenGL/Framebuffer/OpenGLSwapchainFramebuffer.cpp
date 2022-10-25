@@ -3,7 +3,7 @@
 namespace Felix
 {
    
-    OpenGLSwapchainFramebuffer::OpenGLSwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, const FramebufferCreateDesc& framebufferDesc, Window* pOwnerWindow) : SwapchainFramebuffer(swapchainDesc,framebufferDesc,pOwnerWindow)
+    OpenGLSwapchainFramebuffer::OpenGLSwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, Window* pOwnerWindow) : SwapchainFramebuffer(swapchainDesc,pOwnerWindow)
     {
 
     }

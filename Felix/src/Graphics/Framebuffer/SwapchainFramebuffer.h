@@ -20,8 +20,9 @@ namespace Felix
 		FORCEINLINE TextureFormat GetDepthStencilFormat() const noexcept { return _depthStencilFormat; }
 		FORCEINLINE unsigned int GetBufferCount() const noexcept { return _bufferCount; }
 
+
 	protected:
-		SwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, const FramebufferCreateDesc& framebufferDesc, Window* pOwnerWindow) : Framebuffer(framebufferDesc, true),
+		SwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, Window* pOwnerWindow) : Framebuffer({{},swapchainDesc.Width,swapchainDesc.Height},true),
 			_ownerWindow(pOwnerWindow), _colorFormat(swapchainDesc.Format), _depthStencilFormat(swapchainDesc.DepthStencilFormat), _bufferCount(swapchainDesc.BufferCount)
 		{
 

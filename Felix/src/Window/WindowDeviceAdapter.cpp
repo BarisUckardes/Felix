@@ -10,7 +10,7 @@ namespace Felix
 		/*
 		* Validate if the window expects the graphics device
 		*/
-		ASSERT(pDevice->GetOwnerWindow() != pWindow,"WindowDeviceAdapter","Cannot bind graphics device and window, window doesnt expect the target graphics device!");
+		ASSERT(pDevice->GetOwnerWindow() == pWindow,"WindowDeviceAdapter","Cannot bind graphics device and window, window doesnt expect the target graphics device!");
 
 		pWindow->_BindChildDevice(pDevice);
 	}

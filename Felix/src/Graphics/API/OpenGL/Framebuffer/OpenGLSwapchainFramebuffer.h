@@ -6,7 +6,7 @@ namespace Felix
 	class EXPORT OpenGLSwapchainFramebuffer final : public SwapchainFramebuffer
 	{
 	public:
-		OpenGLSwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc,const FramebufferCreateDesc& framebufferDesc,Window* pOwnerWindow);
+		OpenGLSwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc,Window* pOwnerWindow);
 		virtual ~OpenGLSwapchainFramebuffer();
 
 	protected:

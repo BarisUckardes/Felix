@@ -5,6 +5,8 @@
 #include <Window/WindowDeviceAdapter.h>
 #include <Window/Window.h>
 #include <Graphics/API/OpenGL/Device/OpenGLDevice.h>
+#include <Graphics/API/Directx11/Device/DX11Device.h>
+#include <Window/WindowDeviceAdapter.h>
 
 namespace Felix
 {
@@ -23,7 +25,7 @@ namespace Felix
                 ASSERT(false,"Graphics device","OpenGL or OpenGL-ES not allowed to create a standalone graphics device!");
                 break;
             case Felix::GraphicsAPI::Directx11:
-                ASSERT(false, "GraphicsDevice", "This api type is not supported at the moment");
+                pDevice = new DX11Device(desc);
                 break;
             case Felix::GraphicsAPI::Directx12:
                 ASSERT(false,"GraphicsDevice","This api type is not supported at the moment");
@@ -51,7 +53,7 @@ namespace Felix
         /*
         * Get requested api
         */
-        GraphicsAPI requestedAPI = desc.PreferredAPI;
+        GraphicsAPI requestedAPI = desc.Api;
 
         GraphicsDevice* pDevice = nullptr;
         switch (requestedAPI)
@@ -64,7 +66,10 @@ namespace Felix
             case Felix::GraphicsAPI::OpenGLES:
                 break;
             case Felix::GraphicsAPI::Directx11:
+            {
+                pDevice = new DX11Device(desc,pOwnerWindow);
                 break;
+            }
             case Felix::GraphicsAPI::Directx12:
                 break;
             case Felix::GraphicsAPI::Vulkan:
@@ -78,6 +83,11 @@ namespace Felix
             default:
                 break;
         }
+
+        /*
+         * Bind
+         */
+        WindowDeviceAdapter::BindWindowDevice(pOwnerWindow,pDevice);
 
         /*
         * Create swapchain desc

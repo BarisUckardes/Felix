@@ -98,7 +98,7 @@ namespace Felix
 	private:
 		std::vector<GraphicsDeviceObject*> _objects;
 		Window* _ownerWindow;
-		Framebuffer* _swapchainFramebuffer;
+        Framebuffer* _swapchainFramebuffer;
 		GraphicsDeviceCapabilities _capabilities;
 		bool _standalone;
 	};

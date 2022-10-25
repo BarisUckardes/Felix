@@ -10,7 +10,7 @@ namespace Felix
 	/// </summary>
 	struct EXPORT WindowGraphicsDeviceCreateDesc
 	{
-		GraphicsAPI PreferredAPI;
+		GraphicsAPI Api;
 		TextureFormat SwapchainBufferFormat;
 		unsigned char SwapchainBufferCount;
 		TextureFormat SwapchainDepthStencilBufferFormat;
