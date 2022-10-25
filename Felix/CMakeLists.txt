@@ -41,16 +41,17 @@ include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/OpenGL/include)
 include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/Stbi/include)
 
 #linker
-link_directories(${CMAKE_SOURCE_DIR}/ThirdParty/WGL/lib)
-
 target_link_libraries(Felix Stbi)
 target_link_libraries(Felix OpenGL)
 
 if(WIN32)
+  link_directories(${CMAKE_SOURCE_DIR}/ThirdParty/WGL/lib)
   target_link_libraries(Felix OpenGL32.lib)
-endif()
-
-
+elseif(UNIX)
+  find_package(X11 REQUIRED)
+  target_link_libraries(Felix ${X11_LIBRARIES})
+  include_directories(${X11_INCLUDE_DIR})
+  endif()
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Felix PROPERTY CXX_STANDARD 20)
