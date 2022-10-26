@@ -4,6 +4,7 @@
   <component name="CidrRootsConfiguration">
     <sourceRoots>
       <file path="$PROJECT_DIR$/Felix/src/Graphics/API/Directx11/Buffer" />
+      <file path="$PROJECT_DIR$/Felix/src/Graphics/API/Directx11/Pipeline" />
       <file path="$PROJECT_DIR$/ThirdParty/Directx" />
       <file path="$PROJECT_DIR$/ThirdParty/Directx/D3D" />
       <file path="$PROJECT_DIR$/ThirdParty/OpenGLX" />
