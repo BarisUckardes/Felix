@@ -4,7 +4,7 @@
 
 #include "DX11Device.h"
 #include <Platform/Windows/Window/WindowsWindow.h>
-#include <Graphics/API/Directx11/Framebuffer/DX11SwapchainFramebuffer.h>
+#include <Graphics/API/Directx11/Device/DX11DeviceObjects.h>
 
 namespace Felix
 {
@@ -63,7 +63,7 @@ namespace Felix
     }
 
     GraphicsBuffer *DX11Device::CreateBufferCore(const GraphicsBufferCreateDesc &desc) {
-        return nullptr;
+        return new DX11Buffer(desc,this);
     }
 
     Shader *DX11Device::CreateShaderCore(const ShaderCreateDesc &desc) {
@@ -71,7 +71,7 @@ namespace Felix
     }
 
     Texture *DX11Device::CreateTextureCore(const TextureCreateDesc &desc) {
-        return nullptr;
+        return new DX11Texture(desc,this);
     }
 
     Framebuffer *DX11Device::CreateFramebufferCore(const FramebufferCreateDesc &desc) {

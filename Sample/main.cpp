@@ -58,11 +58,11 @@ int main()
 
 	Felix::GraphicsDevice* pDevice = Felix::GraphicsDevice::CreateWindowDevice(deviceDesc,pWindow);
 
-//	/*
-//	* Create command buffer
-//	*/
-//	Felix::CommandBufferCreateDesc cmdBufferDesc = {};
-//	Felix::CommandBuffer* pCmdBuffer = pDevice->CreateCommandBuffer(cmdBufferDesc);
+	/*
+	* Create command buffer
+	*/
+	Felix::CommandBufferCreateDesc cmdBufferDesc = {};
+	Felix::CommandBuffer* pCmdBuffer = pDevice->CreateCommandBuffer(cmdBufferDesc);
 //
 //	/*
 //	* Create shaders
