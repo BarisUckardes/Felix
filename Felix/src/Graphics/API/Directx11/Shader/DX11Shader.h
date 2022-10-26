@@ -13,11 +13,11 @@ namespace Felix
 
     public:
         DX11Shader(const ShaderCreateDesc& desc,DX11Device* pDevice);
-        virtual ~DX11Shader() override;
+        virtual ~DX11Shader() {}
 
-
+        FORCEINLINE ID3DBlob* GetBlob() const noexcept { return _shaderBlob.Get();}
     private:
-
+        DXPTR<ID3DBlob> _shaderBlob;
     };
 
 }

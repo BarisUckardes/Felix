@@ -11,9 +11,6 @@ namespace Felix
 	public:
 		OpenGLCommandBuffer(const CommandBufferCreateDesc& desc);
 		virtual ~OpenGLCommandBuffer() {}
-
-		FORCEINLINE GraphicsDeviceObjectType GetDeviceObjectType() const noexcept { return GraphicsDeviceObjectType::CommandBuffer; }
-
 	protected:
 		virtual void LockCore() override final;
 		virtual void UnlockCore() override final;

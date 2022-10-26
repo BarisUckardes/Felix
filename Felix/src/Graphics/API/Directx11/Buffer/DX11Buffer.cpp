@@ -26,9 +26,13 @@ namespace Felix
         subresourceData.SysMemPitch = desc.SubItemSize;
 
         if(desc.pInitialData != nullptr)
-           ASSERT(SUCCEEDED( pDevice->GetDXDevice()->CreateBuffer(&bufferDesc,&subresourceData,&_buffer)),"DX11Buffer","Failed to create buffer")
+        {
+            ASSERT(SUCCEEDED( pDevice->GetDXDevice()->CreateBuffer(&bufferDesc,&subresourceData,&_buffer)),"DX11Buffer","Failed to create buffer");
+        }
         else
-            ASSERT(SUCCEEDED( pDevice->GetDXDevice()->CreateBuffer(&bufferDesc,nullptr,&_buffer)),"DX11Buffer","Failed to create buffer")
+        {
+            ASSERT(SUCCEEDED( pDevice->GetDXDevice()->CreateBuffer(&bufferDesc,nullptr,&_buffer)),"DX11Buffer","Failed to create buffer");
+        }
     }
     DX11Buffer::~DX11Buffer()
     {

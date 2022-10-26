@@ -17,12 +17,15 @@
 #define FORCEINLINE
 #endif
 
-
-
-
 #ifdef FELIX_DEBUG
-#define LOG(title,message,...)
+#define LOG(title,message,...) printf("[%s]:",title); printf(message,__VA_ARGS__); printf("\n"); fflush(stdout);
 #else
-#define LOG(title,message,...)
+#define LOG(title,message,...) printf("[%s]:",title); printf(message,__VA_ARGS__); printf("\n"); fflush(stdout);
 #endif
-#define ASSERT(expression,title,message,...) ASSERT_IMPL(expression)
+
+#ifdef FELIX_SAFE
+#define ASSERT(expression,title,message,...) if(!(expression)) { LOG(title,message,__VA_ARGS__) ASSERT_IMPL(expression)  }
+#else
+#define ASSERT(expression,title,message,...)
+#endif
+

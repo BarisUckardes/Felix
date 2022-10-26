@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const std::string vShader = R"(
+const std::string vShaderGLSL = R"(
 	#version 450 core
 	layout(location = 0) in vec2 aPosition;
 	layout(location = 1) in vec2 aUv;
@@ -19,7 +19,7 @@ const std::string vShader = R"(
 		fUv = aUv;
 	}
 )";
-const std::string fShader = R"(
+const std::string fShaderGLSL = R"(
 	#version 450 core
 
 
@@ -31,6 +31,37 @@ const std::string fShader = R"(
 	{
 		ColorOut = texture2D(fTexture,fUv);
 	}
+)";
+
+const std::string vShaderHLSL = R"(
+
+struct VertexIn
+{
+    float2 Position : POSITION;
+    float2 Uv : COLOR0;
+};
+
+struct VertexOut
+{
+    float4 Position : POSITION;
+    float2 Uv : COLOR0;
+};
+
+VertexOut main(VertexIn input)
+{
+    VertexOut vOut;
+    vOut.Position = float4(input.Position,0,0);
+    vOut.Uv = input.Uv;
+    return vOut;
+}
+)";
+const std::string fShaderHLSL = R"(
+
+float4 main() : SV_TARGET
+{
+    return float4(0,1,0,1);
+}
+
 )";
 
 int main()
@@ -63,53 +94,53 @@ int main()
 	*/
 	Felix::CommandBufferCreateDesc cmdBufferDesc = {};
 	Felix::CommandBuffer* pCmdBuffer = pDevice->CreateCommandBuffer(cmdBufferDesc);
-//
-//	/*
-//	* Create shaders
-//	*/
-//	Felix::ShaderCreateDesc vertexShaderDesc = {};
-//	vertexShaderDesc.Type = Felix::ShaderType::Vertex;
-//	vertexShaderDesc.Source = vShader;
-//	vertexShaderDesc.EntryPoint = "main";
-//
-//	Felix::ShaderCreateDesc fragmentShaderDesc = {};
-//	fragmentShaderDesc.Type = Felix::ShaderType::Fragment;
-//	fragmentShaderDesc.Source = fShader;
-//	fragmentShaderDesc.EntryPoint = "main";
-//
-//	Felix::Shader* pVertexShader = pDevice->CreateShader(vertexShaderDesc);
-//	Felix::Shader* pFragmentShader = pDevice->CreateShader(fragmentShaderDesc);
-//
-//	struct Vertex
-//	{
-//		float X;
-//		float Y;
-//		float U;
-//		float V;
-//	};
-//
-//	/*
-//	* Create buffers
-//	*/
-//	std::vector<Vertex> vertexes = { {1,-1,1,0},{-1,-1,0,0},{0,1,0.5,1} };
-//	std::vector<unsigned int> indexes = { 0,1,2,0,2,1 };
-//
-//	Felix::GraphicsBufferCreateDesc vertexBufferDesc = {};
-//	vertexBufferDesc.Type = Felix::GraphicsBufferType::VertexBuffer;
-//	vertexBufferDesc.Usage = Felix::GraphicsBufferUsage::Immutable;
-//	vertexBufferDesc.SubItemCount = vertexes.size();
-//	vertexBufferDesc.SubItemSize = sizeof(Vertex);
-//	vertexBufferDesc.pInitialData = (const unsigned char*)vertexes.data();
-//
-//	Felix::GraphicsBufferCreateDesc indexBufferDesc = {};
-//	indexBufferDesc.Type = Felix::GraphicsBufferType::IndexBuffer;
-//	indexBufferDesc.Usage = Felix::GraphicsBufferUsage::Immutable;
-//	indexBufferDesc.SubItemCount = indexes.size();
-//	indexBufferDesc.SubItemSize = sizeof(unsigned int);
-//	indexBufferDesc.pInitialData = (const unsigned char*)indexes.data();
-//
-//	Felix::GraphicsBuffer* pVertexBuffer = pDevice->CreateBuffer(vertexBufferDesc);
-//	Felix::GraphicsBuffer* pIndexBuffer = pDevice->CreateBuffer(indexBufferDesc);
+
+	/*
+	* Create shaders
+	*/
+	Felix::ShaderCreateDesc vertexShaderDesc = {};
+	vertexShaderDesc.Type = Felix::ShaderType::Vertex;
+	vertexShaderDesc.Source = vShaderHLSL;
+	vertexShaderDesc.EntryPoint = "main";
+
+	Felix::ShaderCreateDesc fragmentShaderDesc = {};
+	fragmentShaderDesc.Type = Felix::ShaderType::Fragment;
+	fragmentShaderDesc.Source = fShaderHLSL;
+	fragmentShaderDesc.EntryPoint = "main";
+
+	Felix::Shader* pVertexShader = pDevice->CreateShader(vertexShaderDesc);
+	Felix::Shader* pFragmentShader = pDevice->CreateShader(fragmentShaderDesc);
+
+	struct Vertex
+	{
+		float X;
+		float Y;
+		float U;
+		float V;
+	};
+
+	/*
+	* Create buffers
+	*/
+	std::vector<Vertex> vertexes = { {1,-1,1,0},{-1,-1,0,0},{0,1,0.5,1} };
+	std::vector<unsigned int> indexes = { 0,1,2,0,2,1 };
+
+	Felix::GraphicsBufferCreateDesc vertexBufferDesc = {};
+	vertexBufferDesc.Type = Felix::GraphicsBufferType::VertexBuffer;
+	vertexBufferDesc.Usage = Felix::GraphicsBufferUsage::Immutable;
+	vertexBufferDesc.SubItemCount = vertexes.size();
+	vertexBufferDesc.SubItemSize = sizeof(Vertex);
+	vertexBufferDesc.pInitialData = (const unsigned char*)vertexes.data();
+
+	Felix::GraphicsBufferCreateDesc indexBufferDesc = {};
+	indexBufferDesc.Type = Felix::GraphicsBufferType::IndexBuffer;
+	indexBufferDesc.Usage = Felix::GraphicsBufferUsage::Immutable;
+	indexBufferDesc.SubItemCount = indexes.size();
+	indexBufferDesc.SubItemSize = sizeof(unsigned int);
+	indexBufferDesc.pInitialData = (const unsigned char*)indexes.data();
+
+	Felix::GraphicsBuffer* pVertexBuffer = pDevice->CreateBuffer(vertexBufferDesc);
+	Felix::GraphicsBuffer* pIndexBuffer = pDevice->CreateBuffer(indexBufferDesc);
 //
 //	/*
 //	* Create textures

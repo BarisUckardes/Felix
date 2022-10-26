@@ -51,9 +51,13 @@ namespace Felix
         subresourceData.SysMemSlicePitch = 0;
 
        if(desc.pInitialData != nullptr)
+       {
            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture1D(&textureDesc,&subresourceData,&_texture1D)),"DX11Texture","Texture1D creation failed!")
+       }
        else
+       {
            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture1D(&textureDesc,nullptr,&_texture1D)),"DX11Texture","Texture1D creation failed!")
+       }
 
 
     }

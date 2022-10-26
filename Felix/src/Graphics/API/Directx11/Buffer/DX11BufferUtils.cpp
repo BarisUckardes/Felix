@@ -43,7 +43,7 @@ namespace Felix
             case GraphicsBufferUsage::Dynamic:
                 return D3D11_CPU_ACCESS_WRITE;
             case GraphicsBufferUsage::Immutable:
-                return D3D11_CPU_ACCESS_WRITE;
+                return 0;
             default:
                 ASSERT(false,"DX11BufferUtils","Invalid GraphicsBufferUsage!");
                 break;

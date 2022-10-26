@@ -50,6 +50,7 @@ namespace Felix
 
 		FORCEINLINE void DrawIndexed(const unsigned int indexCount);
 
+
 	protected:
 		FORCEINLINE virtual void LockCore() = 0;
 		FORCEINLINE virtual void UnlockCore() = 0;
@@ -72,6 +73,8 @@ namespace Felix
 		FORCEINLINE virtual void DrawIndexedCore(const unsigned int indexCount) = 0;
 
 		FORCEINLINE virtual void ClearCachedStateCore() = 0;
+
+        FORCEINLINE virtual GraphicsDeviceObjectType GetDeviceObjectType() const noexcept override final { return GraphicsDeviceObjectType::CommandBuffer;}
 	private:
 		FORCEINLINE void CheckBoundPipeline();
 		FORCEINLINE void CheckBoundFramebuffer();

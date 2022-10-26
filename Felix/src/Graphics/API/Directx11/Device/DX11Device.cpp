@@ -58,23 +58,43 @@ namespace Felix
         ((DX11SwapchainFramebuffer*)GetSwapchainFramebuffer())->GetDXSwapchain()->Present(1u,0);
     }
 
-    CommandBuffer *DX11Device::CreateCommandBufferCore(const CommandBufferCreateDesc &desc) {
-        return nullptr;
+    CommandBuffer *DX11Device::CreateCommandBufferCore(const CommandBufferCreateDesc &desc)
+    {
+        return new DX11CommandBuffer(desc);
     }
 
-    GraphicsBuffer *DX11Device::CreateBufferCore(const GraphicsBufferCreateDesc &desc) {
+    GraphicsBuffer *DX11Device::CreateBufferCore(const GraphicsBufferCreateDesc &desc)
+    {
         return new DX11Buffer(desc,this);
     }
 
-    Shader *DX11Device::CreateShaderCore(const ShaderCreateDesc &desc) {
-        return nullptr;
+    Shader *DX11Device::CreateShaderCore(const ShaderCreateDesc &desc)
+    {
+        DX11Shader* pShader = nullptr;
+        switch (desc.Type)
+        {
+            case ShaderType::Vertex:
+            {
+                pShader =  new DX11VertexShader(desc,this);
+                break;
+            }
+            case ShaderType::Fragment:
+            {
+                pShader = new DX11PixelShader(desc,this);
+                break;
+            }
+        }
+
+        return pShader;
     }
 
-    Texture *DX11Device::CreateTextureCore(const TextureCreateDesc &desc) {
+    Texture *DX11Device::CreateTextureCore(const TextureCreateDesc &desc)
+    {
         return new DX11Texture(desc,this);
     }
 
-    Framebuffer *DX11Device::CreateFramebufferCore(const FramebufferCreateDesc &desc) {
+    Framebuffer *DX11Device::CreateFramebufferCore(const FramebufferCreateDesc &desc)
+    {
         return nullptr;
     }
 
@@ -83,23 +103,28 @@ namespace Felix
         return new DX11SwapchainFramebuffer(desc,GetOwnerWindow());
     }
 
-    GraphicsResource *DX11Device::CreateResourceCore(const GraphicsResourceCreateDesc &desc) {
+    GraphicsResource *DX11Device::CreateResourceCore(const GraphicsResourceCreateDesc &desc)
+    {
         return nullptr;
     }
 
-    Pipeline *DX11Device::CreatePipelineCore(const PipelineCreateDesc &desc) {
+    Pipeline *DX11Device::CreatePipelineCore(const PipelineCreateDesc &desc)
+    {
         return nullptr;
     }
 
-    TextureSampler *DX11Device::CreateTextureSamplerCore(const TextureSamplerCreateDesc &desc) {
+    TextureSampler *DX11Device::CreateTextureSamplerCore(const TextureSamplerCreateDesc &desc)
+    {
         return nullptr;
     }
 
-    void DX11Device::UpdateBufferCore(GraphicsBuffer *pBuffer, const GraphicsBufferUpdateDesc &desc) {
+    void DX11Device::UpdateBufferCore(GraphicsBuffer *pBuffer, const GraphicsBufferUpdateDesc &desc)
+    {
 
     }
 
-    void DX11Device::UpdateTextureCore(Texture *pTexture, const TextureUpdateDesc &desc) {
+    void DX11Device::UpdateTextureCore(Texture *pTexture, const TextureUpdateDesc &desc)
+    {
 
     }
 }
