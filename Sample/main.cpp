@@ -207,8 +207,8 @@ int main()
 	pipelineDesc.ShadingPass = shadingPassDesc;
 
 	std::vector<Felix::InputElementDesc> inputElements;
-	inputElements.push_back(Felix::InputElementDesc({"POSITION",Felix::InputElementDataType::Float2,false}));
-	inputElements.push_back(Felix::InputElementDesc({ "TEXCOORD",Felix::InputElementDataType::Float2,false }));
+	inputElements.push_back(Felix::InputElementDesc({"POSITION",Felix::InputElementSemantic::Position,Felix::InputElementDataType::Float2,false}));
+	inputElements.push_back(Felix::InputElementDesc({"TEXCOORD",Felix::InputElementSemantic::TextureCoordinate,Felix::InputElementDataType::Float2,false }));
 	Felix::InputLayoutDesc inputLayoutDesc(inputElements);
 	pipelineDesc.InputLayout = inputLayoutDesc;
 
@@ -251,6 +251,7 @@ int main()
 
 	Felix::BlendingStateDesc blendingStateDesc = {};
 	blendingStateDesc.bEnable = false;
+    blendingStateDesc.bAlphaToCoverage = false;
 	blendingStateDesc.AlphaFunction = Felix::BlendingFunction::Add;
 	blendingStateDesc.SourceAlphaFactor = Felix::BlendingFactor::One;
 	blendingStateDesc.DestinationAlphaFactor = Felix::BlendingFactor::One;

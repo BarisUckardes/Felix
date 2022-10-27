@@ -28,6 +28,7 @@ namespace Felix
         FORCEINLINE static D3D11_BLEND GetColorBlendingFactor(const BlendingFactor factor);
         FORCEINLINE static D3D11_BLEND GetAlphaBlendingFactor(const BlendingFactor factor);
         FORCEINLINE static D3D11_PRIMITIVE_TOPOLOGY GetPrimitives(const PrimitiveTopology topology);
+        FORCEINLINE static std::string GetInputElementSemanticName(const InputElementSemantic semantic);
 
     };
 }

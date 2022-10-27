@@ -45,7 +45,9 @@ namespace Felix
         /*
          * Set blending
          */
-       // _dx11Context->OMSetBlendState(pDX11Pipeline->GetBlendingState(),nullptr,0);
+        float blendFactor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+        UINT sampleMask   = 0xffffffff;
+        _dx11Context->OMSetBlendState(pDX11Pipeline->GetBlendingState(),blendFactor,sampleMask);
 
         /*
          * Set input layout

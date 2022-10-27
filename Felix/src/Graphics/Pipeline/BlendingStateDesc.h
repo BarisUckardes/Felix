@@ -18,5 +18,6 @@ namespace Felix
 		BlendingFunction AlphaFunction;
 
 		bool bEnable;
+        bool bAlphaToCoverage;
 	};
 }

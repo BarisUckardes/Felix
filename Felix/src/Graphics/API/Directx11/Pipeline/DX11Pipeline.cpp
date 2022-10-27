@@ -21,17 +21,29 @@ namespace Felix
          */
         const std::vector<InputElementDesc> inputElementDescs = desc.InputLayout.GetElements();
 
+        /*
+         * Prepare semantic cache
+         */
+        unsigned char semanticCache[4];
+        for(unsigned char i = 0;i<4;i++)
+            semanticCache[i] = 0;
+
         std::vector<D3D11_INPUT_ELEMENT_DESC> inputElements;
+
         unsigned int offset = 0;
         for(unsigned char i = 0;i<inputElementDescs.size();i++)
         {
             const InputElementDesc& elementDesc = inputElementDescs[i];
 
-            D3D11_INPUT_ELEMENT_DESC inputElementDesc {elementDesc.Name.c_str(),0,DX11PipelineUtils::GetInputElementDataFormat(elementDesc.DataType),0,offset,D3D11_INPUT_PER_VERTEX_DATA,0};
+            const std::string semanticText = DX11PipelineUtils::GetInputElementSemanticName(elementDesc.Semantic);
+
+            D3D11_INPUT_ELEMENT_DESC inputElementDesc {elementDesc.Name.c_str(),semanticCache[(unsigned int)elementDesc.Semantic],DX11PipelineUtils::GetInputElementDataFormat(elementDesc.DataType),0,offset,D3D11_INPUT_PER_VERTEX_DATA,0};
 
             inputElements.push_back(inputElementDesc);
 
             offset+=InputElementUtils::GetElementSize(elementDesc.DataType);
+
+            semanticCache[(unsigned int)elementDesc.Semantic]++;
         }
 
         bool bVertexShaderFound = false;
@@ -93,14 +105,14 @@ namespace Felix
          * Create blending state
          */
         D3D11_BLEND_DESC blendDesc = {};
-        blendDesc.AlphaToCoverageEnable = false;
-        blendDesc.IndependentBlendEnable = desc.BlendingDesc.bEnable;
+        blendDesc.AlphaToCoverageEnable = desc.BlendingDesc.bAlphaToCoverage;
+        blendDesc.IndependentBlendEnable = true;
 
         for(unsigned char i = 0;i<8;i++)
         {
             D3D11_RENDER_TARGET_BLEND_DESC rtBlendDesc = {};
             rtBlendDesc.BlendEnable = desc.BlendingDesc.bEnable;
-            rtBlendDesc.RenderTargetWriteMask = desc.BlendingDesc.bEnable ? 1.0f : 0.0f;
+            rtBlendDesc.RenderTargetWriteMask =  D3D11_COLOR_WRITE_ENABLE_ALL;
             rtBlendDesc.BlendOp = DX11PipelineUtils::GetBlendingOperation(desc.BlendingDesc.ColorFunction);
             rtBlendDesc.SrcBlend = DX11PipelineUtils::GetColorBlendingFactor(desc.BlendingDesc.SourceColorFactor);
             rtBlendDesc.DestBlend = DX11PipelineUtils::GetColorBlendingFactor(desc.BlendingDesc.DestinationColorFactor);

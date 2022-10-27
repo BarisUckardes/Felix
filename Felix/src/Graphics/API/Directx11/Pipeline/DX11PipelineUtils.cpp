@@ -180,7 +180,25 @@ namespace Felix
 
     D3D11_BLEND DX11PipelineUtils::GetAlphaBlendingFactor(const BlendingFactor factor)
     {
-        return D3D11_BLEND_INV_SRC_COLOR;
+        switch (factor)
+        {
+            case BlendingFactor::Zero:
+                return D3D11_BLEND_ZERO;
+            case BlendingFactor::One:
+                return D3D11_BLEND_ONE;
+            case BlendingFactor::Source:
+                return D3D11_BLEND_SRC_ALPHA;
+            case BlendingFactor::OneMinusSource:
+                return D3D11_BLEND_SRC1_ALPHA;
+            case BlendingFactor::Destination:
+                return D3D11_BLEND_DEST_COLOR;
+            case BlendingFactor::OneMinusDestination:
+                return D3D11_BLEND_ZERO;
+            case BlendingFactor::Constant:
+                return D3D11_BLEND_ZERO;
+            case BlendingFactor::OneMinusConstant:
+                return D3D11_BLEND_ZERO;
+        }
     }
 
     D3D11_PRIMITIVE_TOPOLOGY DX11PipelineUtils::GetPrimitives(const PrimitiveTopology topology)
@@ -194,5 +212,40 @@ namespace Felix
             default:
                 ASSERT(false,"DX11PipelineUtils","Invalid PrimitiveTopology");
         }
+    }
+
+    std::string DX11PipelineUtils::GetInputElementSemanticName(const InputElementSemantic semantic)
+    {
+        std::string output;
+
+        switch (semantic)
+        {
+            case InputElementSemantic::Position:
+            {
+                output = "POSITION";
+                break;
+            }
+            case InputElementSemantic::Normal:
+            {
+                output = "NORMAL";
+                break;
+            }
+            case InputElementSemantic::Color:
+            {
+                output = "COLOR";
+                break;
+            }
+            case InputElementSemantic::TextureCoordinate:
+            {
+                output = "TEXCOORD";
+                break;
+            }
+            default:
+                ASSERT(false,"DX11PipelineUtils","Invalid InputElementSemantic");
+        }
+
+        //output+=count;
+
+        return output;
     }
 }
