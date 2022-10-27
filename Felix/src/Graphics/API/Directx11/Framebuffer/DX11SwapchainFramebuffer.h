@@ -17,12 +17,15 @@ namespace Felix
         virtual ~DX11SwapchainFramebuffer() override;
 
         FORCEINLINE IDXGISwapChain* GetDXSwapchain() const noexcept { return _swapchain.Get();}
+        FORCEINLINE ID3D11RenderTargetView* GetSwapchainRTV() const noexcept { return _renderTargetViews[0].Get();}
+        FORCEINLINE ID3D11DepthStencilView* GetSwapchainDSV() const noexcept { return _depthStencilView.Get();}
     protected:
         void OnResizeCore(const unsigned int width, const unsigned int Height) override;
 
     private:
         DXPTR<IDXGISwapChain> _swapchain;
         std::vector<DXPTR<ID3D11RenderTargetView>> _renderTargetViews;
+        DXPTR<ID3D11DepthStencilView> _depthStencilView;
     };
 
 }

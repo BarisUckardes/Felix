@@ -6,12 +6,13 @@
 #define STBI_DX11COMMANDBUFFER_H
 
 #include <Graphics/Command/CommandBuffer.h>
+#include <d3d11.h>
 
 namespace Felix
 {
     class EXPORT DX11CommandBuffer : public CommandBuffer {
     public:
-        DX11CommandBuffer(const CommandBufferCreateDesc& desc);
+        DX11CommandBuffer(const CommandBufferCreateDesc& desc,ID3D11Device* pDevice,ID3D11DeviceContext* pContext);
         virtual ~DX11CommandBuffer() override;
 
     protected:
@@ -47,6 +48,9 @@ namespace Felix
     protected:
 
     private:
+        ID3D11Device* _dx11Device;
+        ID3D11DeviceContext* _dx11Context;
+        D3D11_VIEWPORT _currentViewport;
     };
 
 }

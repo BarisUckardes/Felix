@@ -136,4 +136,63 @@ namespace Felix
                 ASSERT(false,"DX11Pipeline","Invalid CullMode!");
         }
     }
+
+    D3D11_BLEND_OP DX11PipelineUtils::GetBlendingOperation(const BlendingFunction function)
+    {
+        switch (function)
+        {
+            case BlendingFunction::Add:
+                return D3D11_BLEND_OP_ADD;
+            case BlendingFunction::Subtract:
+                return D3D11_BLEND_OP_SUBTRACT;
+            case BlendingFunction::ReverseSubtract:
+                return D3D11_BLEND_OP_REV_SUBTRACT;
+            case BlendingFunction::Min:
+                return D3D11_BLEND_OP_MIN;
+            case BlendingFunction::Max:
+                return D3D11_BLEND_OP_MAX;
+            default:
+                ASSERT(false,"DX11PipelineUtils","Invalid BlendingFunction!");
+        }
+    }
+    D3D11_BLEND DX11PipelineUtils::GetColorBlendingFactor(const BlendingFactor factor)
+    {
+        switch (factor)
+        {
+            case BlendingFactor::Zero:
+                return D3D11_BLEND_ZERO;
+            case BlendingFactor::One:
+                return D3D11_BLEND_ONE;
+            case BlendingFactor::Source:
+                return D3D11_BLEND_SRC_COLOR;
+            case BlendingFactor::OneMinusSource:
+                return D3D11_BLEND_SRC1_COLOR;
+            case BlendingFactor::Destination:
+                return D3D11_BLEND_DEST_COLOR;
+            case BlendingFactor::OneMinusDestination:
+                return D3D11_BLEND_ZERO;
+            case BlendingFactor::Constant:
+                return D3D11_BLEND_ZERO;
+            case BlendingFactor::OneMinusConstant:
+                return D3D11_BLEND_ZERO;
+        }
+    }
+
+    D3D11_BLEND DX11PipelineUtils::GetAlphaBlendingFactor(const BlendingFactor factor)
+    {
+        return D3D11_BLEND_INV_SRC_COLOR;
+    }
+
+    D3D11_PRIMITIVE_TOPOLOGY DX11PipelineUtils::GetPrimitives(const PrimitiveTopology topology)
+    {
+        switch(topology)
+        {
+            case PrimitiveTopology::TriangleList:
+                return D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
+            case PrimitiveTopology::Patches:
+                return D3D11_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST;
+            default:
+                ASSERT(false,"DX11PipelineUtils","Invalid PrimitiveTopology");
+        }
+    }
 }

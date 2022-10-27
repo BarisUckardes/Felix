@@ -8,11 +8,12 @@
 
 Felix::DX11SwapchainFramebuffer::DX11SwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, Window* pOwnerWindow) : SwapchainFramebuffer(swapchainDesc,pOwnerWindow)
 {
+    _depthStencilView = nullptr;
+
     const WindowsWindow* pWin32Window = (const WindowsWindow*)pOwnerWindow;
     const DX11Device* pDX11Device = (const DX11Device*)pOwnerWindow->GetChildDevice();
     ID3D11Device* pDevice = pDX11Device->GetDXDevice();
     IDXGIFactory4* pFactory = pDX11Device->GetDXFactory();
-
 
     DXGI_MODE_DESC bufferDesc = {0};
     bufferDesc.Width = swapchainDesc.Width;
@@ -36,7 +37,7 @@ Felix::DX11SwapchainFramebuffer::DX11SwapchainFramebuffer(const SwapchainFramebu
     ASSERT(SUCCEEDED(pFactory->MakeWindowAssociation(pWin32Window->GetWin32WindowHandle(),DXGI_MWA_NO_ALT_ENTER)),"DX11SwapchainFramebuffer","Make window association failed!");
 
     /*
-     * Create buffers
+     * Create color buffers
      */
     for(unsigned char i = 0;i<swapchainDesc.BufferCount;i++)
     {
@@ -57,6 +58,14 @@ Felix::DX11SwapchainFramebuffer::DX11SwapchainFramebuffer(const SwapchainFramebu
          * Release backbuffer
          */
         pBackBuffer->Release();
+    }
+
+    /*
+     * Create detph stencil buffer
+     */
+    if(swapchainDesc.DepthStencilFormat != TextureFormat::None)
+    {
+
     }
 }
 

@@ -10,6 +10,8 @@
 #include <dxgi.h>
 namespace Felix
 {
+
+
     class EXPORT DX11PipelineUtils {
 
     public:
@@ -22,6 +24,10 @@ namespace Felix
         FORCEINLINE static D3D11_CULL_MODE GetCullMode(const CullMode mode);
         FORCEINLINE static D3D11_STENCIL_OP GetStencilOperation(const StencilOperation operation);
         FORCEINLINE static D3D11_DEPTH_STENCILOP_DESC GetStencilFaceDesc(const StencilFaceDesc& desc);
+        FORCEINLINE static D3D11_BLEND_OP GetBlendingOperation(const BlendingFunction function);
+        FORCEINLINE static D3D11_BLEND GetColorBlendingFactor(const BlendingFactor factor);
+        FORCEINLINE static D3D11_BLEND GetAlphaBlendingFactor(const BlendingFactor factor);
+        FORCEINLINE static D3D11_PRIMITIVE_TOPOLOGY GetPrimitives(const PrimitiveTopology topology);
 
     };
 }

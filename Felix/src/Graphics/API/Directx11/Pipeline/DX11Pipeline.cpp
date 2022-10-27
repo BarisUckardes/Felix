@@ -4,6 +4,7 @@
 
 #include "DX11Pipeline.h"
 #include <d3d11.h>
+#include <d3d11_1.h>
 #include <Graphics/API/Directx11/Device/DX11Device.h>
 #include <Graphics/API/Directx11/Pipeline/DX11PipelineUtils.h>
 #include <Graphics/Pipeline/InputElementUtils.h>
@@ -26,7 +27,7 @@ namespace Felix
         {
             const InputElementDesc& elementDesc = inputElementDescs[i];
 
-            D3D11_INPUT_ELEMENT_DESC inputElementDesc {elementDesc.Name.c_str(),i,DX11PipelineUtils::GetInputElementDataFormat(elementDesc.DataType),0,offset,D3D11_INPUT_PER_VERTEX_DATA,0};
+            D3D11_INPUT_ELEMENT_DESC inputElementDesc {elementDesc.Name.c_str(),0,DX11PipelineUtils::GetInputElementDataFormat(elementDesc.DataType),0,offset,D3D11_INPUT_PER_VERTEX_DATA,0};
 
             inputElements.push_back(inputElementDesc);
 
@@ -95,7 +96,27 @@ namespace Felix
         blendDesc.AlphaToCoverageEnable = false;
         blendDesc.IndependentBlendEnable = desc.BlendingDesc.bEnable;
 
+        for(unsigned char i = 0;i<8;i++)
+        {
+            D3D11_RENDER_TARGET_BLEND_DESC rtBlendDesc = {};
+            rtBlendDesc.BlendEnable = desc.BlendingDesc.bEnable;
+            rtBlendDesc.RenderTargetWriteMask = desc.BlendingDesc.bEnable ? 1.0f : 0.0f;
+            rtBlendDesc.BlendOp = DX11PipelineUtils::GetBlendingOperation(desc.BlendingDesc.ColorFunction);
+            rtBlendDesc.SrcBlend = DX11PipelineUtils::GetColorBlendingFactor(desc.BlendingDesc.SourceColorFactor);
+            rtBlendDesc.DestBlend = DX11PipelineUtils::GetColorBlendingFactor(desc.BlendingDesc.DestinationColorFactor);
+            rtBlendDesc.BlendOpAlpha = DX11PipelineUtils::GetBlendingOperation(desc.BlendingDesc.AlphaFunction);
+            rtBlendDesc.SrcBlendAlpha = DX11PipelineUtils::GetAlphaBlendingFactor(desc.BlendingDesc.SourceAlphaFactor);
+            rtBlendDesc.DestBlendAlpha = DX11PipelineUtils::GetAlphaBlendingFactor(desc.BlendingDesc.DestinationAlphaFactor);
+
+            blendDesc.RenderTarget[i] = rtBlendDesc;
+        }
+
         ASSERT(SUCCEEDED(pDX11Device->CreateBlendState(&blendDesc,&_blendState)),"DX11Pipeline","Failed to create blending");
+
+        /*
+         * Create primitive topology
+         */
+        _topology = DX11PipelineUtils::GetPrimitives(desc.RasterizerDesc.Topology);
     }
 
     Felix::DX11Pipeline::~DX11Pipeline()

@@ -60,7 +60,7 @@ namespace Felix
 
     CommandBuffer *DX11Device::CreateCommandBufferCore(const CommandBufferCreateDesc &desc)
     {
-        return new DX11CommandBuffer(desc);
+        return new DX11CommandBuffer(desc,_device.Get(),_context.Get());
     }
 
     GraphicsBuffer *DX11Device::CreateBufferCore(const GraphicsBufferCreateDesc &desc)
@@ -110,7 +110,7 @@ namespace Felix
 
     Pipeline *DX11Device::CreatePipelineCore(const PipelineCreateDesc &desc)
     {
-        return nullptr;
+        return new DX11Pipeline(desc,this);
     }
 
     TextureSampler *DX11Device::CreateTextureSamplerCore(const TextureSamplerCreateDesc &desc)
