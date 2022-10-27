@@ -67,7 +67,7 @@ struct PixelInput
 
 float4 fs_main(PixelInput pixelData) : SV_TARGET
 {
-    float4 color = float4(0,0,0,255);
+    float4 color = float4(pixelData.Uv,0,255);
     return color;
 }
 
@@ -208,7 +208,7 @@ int main()
 
 	std::vector<Felix::InputElementDesc> inputElements;
 	inputElements.push_back(Felix::InputElementDesc({"POSITION",Felix::InputElementDataType::Float2,false}));
-	inputElements.push_back(Felix::InputElementDesc({ "TEXCOORD0",Felix::InputElementDataType::Float2,false }));
+	inputElements.push_back(Felix::InputElementDesc({ "TEXCOORD",Felix::InputElementDataType::Float2,false }));
 	Felix::InputLayoutDesc inputLayoutDesc(inputElements);
 	pipelineDesc.InputLayout = inputLayoutDesc;
 
