@@ -115,7 +115,7 @@ namespace Felix
 
     TextureSampler *DX11Device::CreateTextureSamplerCore(const TextureSamplerCreateDesc &desc)
     {
-        return nullptr;
+        return new DX11TextureSampler(desc,this);
     }
 
     void DX11Device::UpdateBufferCore(GraphicsBuffer *pBuffer, const GraphicsBufferUpdateDesc &desc)

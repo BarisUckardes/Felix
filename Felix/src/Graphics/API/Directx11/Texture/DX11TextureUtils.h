@@ -10,6 +10,8 @@
 #include <Graphics/Texture/TextureFormat.h>
 #include <Graphics/Texture/TextureUsage.h>
 #include <Graphics/Texture/TextureType.h>
+#include <Graphics/Texture/TextureSamplerWrapMode.h>
+#include <Graphics/Texture/TextureSamplerFilter.h>
 #include <d3d11.h>
 
 namespace Felix
@@ -24,6 +26,8 @@ namespace Felix
         FORCEINLINE static DXGI_FORMAT GetFormat(const TextureFormat format);
         FORCEINLINE static D3D11_SRV_DIMENSION  GetDimension(const TextureType type);
         FORCEINLINE static unsigned int GetCPUAccessFlags(const TextureUsage usage);
+        FORCEINLINE static D3D11_TEXTURE_ADDRESS_MODE GetUVMode(const TextureSamplerWrapMode mode);
+        FORCEINLINE static D3D11_FILTER GetFiltering(const TextureSamplerFilter filter);
     };
 
 }

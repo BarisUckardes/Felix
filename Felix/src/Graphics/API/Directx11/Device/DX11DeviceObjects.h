@@ -13,5 +13,6 @@
 #include <Graphics/API/Directx11/Shader/DX11VertexShader.h>
 #include <Graphics/API/Directx11/Shader/DX11PixelShader.h>
 #include <Graphics/API/Directx11/Pipeline/DX11Pipeline.h>
+#include <Graphics/API/Directx11/Texture/DX11TextureSampler.h>
 
 #endif //STBI_DX11DEVICEOBJECTS_H

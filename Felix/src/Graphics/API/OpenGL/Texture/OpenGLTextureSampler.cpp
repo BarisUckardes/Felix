@@ -8,12 +8,12 @@ namespace Felix
 	{
 		glGenSamplers(1, &_handle);
 
-		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_S, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingS));
-		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_T, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingT));
-		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_R, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingR));
+		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_S, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingU));
+		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_T, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingV));
+		glSamplerParameteri(_handle, GL_TEXTURE_WRAP_R, OpenGLTextureSamplerUtils::GetWrapMode(desc.WrappingW));
 
-		glSamplerParameteri(_handle, GL_TEXTURE_MAG_FILTER, OpenGLTextureSamplerUtils::GetMinFilter(desc.MinFilter));
-		glSamplerParameteri(_handle, GL_TEXTURE_MIN_FILTER, OpenGLTextureSamplerUtils::GetMagFilter(desc.MagFilter));
+		glSamplerParameteri(_handle, GL_TEXTURE_MAG_FILTER, OpenGLTextureSamplerUtils::GetMinFilter(desc.Filter,desc.bMipmaps));
+		glSamplerParameteri(_handle, GL_TEXTURE_MIN_FILTER, OpenGLTextureSamplerUtils::GetMagFilter(desc.Filter,desc.bMipmaps));
 		glSamplerParameteri(_handle, GL_TEXTURE_MAX_ANISOTROPY, desc.MaxAnisotropy);
 	}
 	OpenGLTextureSampler::~OpenGLTextureSampler()

@@ -79,16 +79,16 @@ namespace Felix
 
         D3D11_SUBRESOURCE_DATA subresourceData = {};
         subresourceData.pSysMem = desc.pInitialData;
-        subresourceData.SysMemPitch = 0;
+        subresourceData.SysMemPitch = 4*desc.Width; //TODO: implement texture format size utils
         subresourceData.SysMemSlicePitch = 0;
 
         if(desc.pInitialData != nullptr)
         {
-            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture2D(&textureDesc,&subresourceData,&_texture2D)),"DX11Texture","Texture1D creation failed!");
+            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture2D(&textureDesc,&subresourceData,&_texture2D)),"DX11Texture","Texture2D creation failed!");
         }
         else
         {
-            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture2D(&textureDesc,nullptr,&_texture2D)),"DX11Texture","Texture1D creation failed!");
+            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture2D(&textureDesc,nullptr,&_texture2D)),"DX11Texture","Texture2D creation failed!");
         }
     }
 
@@ -112,11 +112,11 @@ namespace Felix
 
         if(desc.pInitialData != nullptr)
         {
-            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture3D(&textureDesc,&subresourceData,&_texture3D)),"DX11Texture","Texture1D creation failed!");
+            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture3D(&textureDesc,&subresourceData,&_texture3D)),"DX11Texture","Texture3D creation failed!");
         }
         else
         {
-            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture3D(&textureDesc,nullptr,&_texture3D)),"DX11Texture","Texture1D creation failed!");
+            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture3D(&textureDesc,nullptr,&_texture3D)),"DX11Texture","Texture3D creation failed!");
         }
     }
 }

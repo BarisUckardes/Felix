@@ -91,7 +91,7 @@ int main()
 	* Create graphics device
 	*/
 	Felix::WindowGraphicsDeviceCreateDesc deviceDesc = {};
-	deviceDesc.Api = Felix::GraphicsAPI::Directx11;
+	deviceDesc.Api = Felix::GraphicsAPI::OpenGL;
 	deviceDesc.SwapchainBufferCount = 2;
 	deviceDesc.SwapchainBufferFormat = Felix::TextureFormat::RGBA8;
 	deviceDesc.SwapchainDepthStencilBufferFormat = Felix::TextureFormat::None;
@@ -109,12 +109,12 @@ int main()
 	*/
 	Felix::ShaderCreateDesc vertexShaderDesc = {};
 	vertexShaderDesc.Type = Felix::ShaderType::Vertex;
-	vertexShaderDesc.Source = vShaderHLSL;
+	vertexShaderDesc.Source = vShaderGLSL;
 	vertexShaderDesc.EntryPoint = "vs_main";
 
 	Felix::ShaderCreateDesc fragmentShaderDesc = {};
 	fragmentShaderDesc.Type = Felix::ShaderType::Fragment;
-	fragmentShaderDesc.Source = fShaderHLSL;
+	fragmentShaderDesc.Source = fShaderGLSL;
 	fragmentShaderDesc.EntryPoint = "fs_main";
 
 	Felix::Shader* pVertexShader = pDevice->CreateShader(vertexShaderDesc);
@@ -150,53 +150,54 @@ int main()
 
 	Felix::GraphicsBuffer* pVertexBuffer = pDevice->CreateBuffer(vertexBufferDesc);
 	Felix::GraphicsBuffer* pIndexBuffer = pDevice->CreateBuffer(indexBufferDesc);
-//
-//	/*
-//	* Create textures
-//	*/
-//	Felix::TextureLoadResult textureLoadResult = {};
-//#ifdef FELIX_OS_WINDOWS
-//	Felix::TextureLoader::LoadTextureFromDisk("D:/Resources/Textures/MudSurfaceTile.jpg", textureLoadResult);
-//#elif FELIX_OS_LINUX
-//    Felix::TextureLoader::LoadTextureFromDisk("/media/roveldo/Yeni Birim/Resources/Textures/MudSurfaceTile.jpg", textureLoadResult);
-//#endif
-//
-//	Felix::TextureCreateDesc textureDesc = {};
-//	textureDesc.Width = textureLoadResult.Width;
-//	textureDesc.Height = textureLoadResult.Height;
-//	textureDesc.Depth = textureLoadResult.Depth;
-//	textureDesc.Format = textureLoadResult.Format;
-//	textureDesc.Usage = Felix::TextureUsage::Immutable;
-//	textureDesc.Type = Felix::TextureType::Texture2D;
-//	textureDesc.bGenerateMipmaps = false;
-//	textureDesc.pInitialData = textureLoadResult.pData;
-//	Felix::Texture* pTexture = pDevice->CreateTexture(textureDesc);
-//
-//	/*
-//	* Create samplers
-//	*/
-//	Felix::TextureSamplerCreateDesc textureSamplerDesc = {};
-//	textureSamplerDesc.WrappingR = Felix::TextureSamplerWrapMode::Repeat;
-//	textureSamplerDesc.WrappingS = Felix::TextureSamplerWrapMode::Repeat;
-//	textureSamplerDesc.WrappingT = Felix::TextureSamplerWrapMode::Repeat;
-//	textureSamplerDesc.MinFilter = Felix::TextureSamplerMinFilter::Nearest;
-//	textureSamplerDesc.MagFilter = Felix::TextureSamplerMagFilter::Nearest;
-//	textureSamplerDesc.MaxAnisotropy = 1;
-//	Felix::TextureSampler* pTextureSampler = pDevice->CreateTextureSampler(textureSamplerDesc);
-//
-//	/*
-//	* Create resource
-//	*/
-//	Felix::GraphicsResourceCreateDesc textureResourceDesc = {};
-//	textureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
-//	textureResourceDesc.pDeviceObject = pTexture;
-//	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
-//	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
-//	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
-//
-//	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
-//	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
-//
+
+	/*
+	* Create textures
+	*/
+	Felix::TextureLoadResult textureLoadResult = {};
+#ifdef FELIX_OS_WINDOWS
+	Felix::TextureLoader::LoadTextureFromDisk("D:/Resources/Textures/MudSurfaceTile.jpg", textureLoadResult);
+#elif FELIX_OS_LINUX
+    Felix::TextureLoader::LoadTextureFromDisk("/media/roveldo/Yeni Birim/Resources/Textures/MudSurfaceTile.jpg", textureLoadResult);
+#endif
+
+
+	Felix::TextureCreateDesc textureDesc = {};
+	textureDesc.Width = textureLoadResult.Width;
+	textureDesc.Height = textureLoadResult.Height;
+	textureDesc.Depth = textureLoadResult.Depth;
+	textureDesc.Format = textureLoadResult.Format;
+	textureDesc.Usage = Felix::TextureUsage::Sampled;
+	textureDesc.Type = Felix::TextureType::Texture2D;
+	textureDesc.bGenerateMipmaps = false;
+	textureDesc.pInitialData = textureLoadResult.pData;
+	Felix::Texture* pTexture = pDevice->CreateTexture(textureDesc);
+
+	/*
+	* Create samplers
+	*/
+	Felix::TextureSamplerCreateDesc textureSamplerDesc = {};
+	textureSamplerDesc.WrappingU = Felix::TextureSamplerWrapMode::Repeat;
+	textureSamplerDesc.WrappingV = Felix::TextureSamplerWrapMode::Repeat;
+	textureSamplerDesc.WrappingW = Felix::TextureSamplerWrapMode::Repeat;
+    textureSamplerDesc.Filter = Felix::TextureSamplerFilter::MinPointMagPointMipPoint;
+	textureSamplerDesc.MaxAnisotropy = 1;
+    textureSamplerDesc.bMipmaps = false;
+	Felix::TextureSampler* pTextureSampler = pDevice->CreateTextureSampler(textureSamplerDesc);
+
+	/*
+	* Create resource
+	*/
+	Felix::GraphicsResourceCreateDesc textureResourceDesc = {};
+	textureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
+	textureResourceDesc.pDeviceObject = pTexture;
+	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
+	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
+	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
+
+	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
+	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
+
 	/*
 	* Create pipeline
 	*/
@@ -302,8 +303,8 @@ int main()
 		pCmdBuffer->SetVertexBuffer(pVertexBuffer);
 		pCmdBuffer->SetIndexBuffer(pIndexBuffer);
 
-		//pCmdBuffer->CommitResource(0, pTextureResource);
-		//pCmdBuffer->CommitResource(1, pSamplerResource);
+		pCmdBuffer->CommitResource(0, pTextureResource);
+		pCmdBuffer->CommitResource(1, pSamplerResource);
 
 		pCmdBuffer->DrawIndexed(6);
 		pCmdBuffer->Unlock();

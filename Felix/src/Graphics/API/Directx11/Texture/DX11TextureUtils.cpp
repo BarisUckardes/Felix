@@ -33,7 +33,7 @@ namespace Felix
         if(usage | TextureUsage::DepthStencilTarget)
             flags |= D3D11_BIND_DEPTH_STENCIL;
 
-        return flags;
+        return 0;
     }
 
     DXGI_FORMAT DX11TextureUtils::GetFormat(const TextureFormat format)
@@ -74,6 +74,37 @@ namespace Felix
 
     unsigned int DX11TextureUtils::GetCPUAccessFlags(const TextureUsage usage)
     {
-        return D3D11_CPU_ACCESS_WRITE;
+        switch (usage)
+        {
+            case TextureUsage::DepthStencilTarget:
+            case TextureUsage::RenderTarget:
+                return 0;
+            case TextureUsage::Sampled:
+                return D3D11_CPU_ACCESS_WRITE;
+            default:
+                ASSERT(false,"DX11TextureUtils","Invalid TextureUsage");
+                break;
+        }
+    }
+
+    D3D11_TEXTURE_ADDRESS_MODE DX11TextureUtils::GetUVMode(const TextureSamplerWrapMode mode)
+    {
+        switch (mode)
+        {
+            case TextureSamplerWrapMode::ClampToEdge:
+                return D3D11_TEXTURE_ADDRESS_CLAMP;
+            case TextureSamplerWrapMode::MirroredRepeat:
+                return D3D11_TEXTURE_ADDRESS_MIRROR;
+            case TextureSamplerWrapMode::Repeat:
+                return D3D11_TEXTURE_ADDRESS_MIRROR;
+            default:
+                ASSERT(false,"DX11TextureUtils","Invalid TextureSamplerWrapMode!");
+
+        }
+    }
+
+    D3D11_FILTER DX11TextureUtils::GetFiltering(const TextureSamplerFilter filter)
+    {
+        return D3D11_FILTER_ANISOTROPIC;
     }
 }

@@ -1,6 +1,5 @@
 #pragma once
-#include <Graphics/Texture/TextureSamplerMagFilter.h>
-#include <Graphics/Texture/TextureSamplerMinFilter.h>
+#include <Graphics/Texture/TextureSamplerFilter.h>
 #include <Graphics/Texture/TextureSamplerWrapMode.h>
 
 namespace Felix
@@ -10,11 +9,11 @@ namespace Felix
 	/// </summary>
 	struct EXPORT TextureSamplerCreateDesc
 	{
-		TextureSamplerMinFilter MinFilter;
-		TextureSamplerMagFilter MagFilter;
-		TextureSamplerWrapMode WrappingS;
-		TextureSamplerWrapMode WrappingT;
-		TextureSamplerWrapMode WrappingR;
+        TextureSamplerFilter Filter;
+		TextureSamplerWrapMode WrappingU;
+		TextureSamplerWrapMode WrappingV;
+		TextureSamplerWrapMode WrappingW;
+        bool bMipmaps;
 		unsigned int MaxAnisotropy;
 	};
 }
