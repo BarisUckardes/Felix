@@ -21,7 +21,7 @@ Supported graphics APIs:
 
 - [X] OpenGL
 - [ ] OpenGL-ES
-- [ ] Directx 11
+- [X] Directx 11
 - [ ] Directx 12
 - [ ] Vulkan
 - [ ] Metal

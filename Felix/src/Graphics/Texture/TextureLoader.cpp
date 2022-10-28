@@ -11,7 +11,7 @@ namespace Felix
 		int height = 0;
 		int channels = 0;
 
-		unsigned char* pData = stbi_load(path.c_str(), &width, &height, &channels,0);
+		unsigned char* pData = stbi_load(path.c_str(), &width, &height, &channels,4);
 
 		resultOut.Width = width;
 		resultOut.Height = height;

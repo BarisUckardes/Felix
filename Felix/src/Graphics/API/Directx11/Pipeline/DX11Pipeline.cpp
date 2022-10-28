@@ -37,7 +37,11 @@ namespace Felix
 
             const std::string semanticText = DX11PipelineUtils::GetInputElementSemanticName(elementDesc.Semantic);
 
-            D3D11_INPUT_ELEMENT_DESC inputElementDesc {elementDesc.Name.c_str(),semanticCache[(unsigned int)elementDesc.Semantic],DX11PipelineUtils::GetInputElementDataFormat(elementDesc.DataType),0,offset,D3D11_INPUT_PER_VERTEX_DATA,0};
+            char* pSemanticCache = new char[semanticText.size()+1];
+            semanticText.copy(pSemanticCache,semanticText.size(),0);
+            pSemanticCache[semanticText.size()] = '\0';
+
+            D3D11_INPUT_ELEMENT_DESC inputElementDesc {pSemanticCache,semanticCache[(unsigned int)elementDesc.Semantic],DX11PipelineUtils::GetInputElementDataFormat(elementDesc.DataType),0,offset,D3D11_INPUT_PER_VERTEX_DATA,0};
 
             inputElements.push_back(inputElementDesc);
 
@@ -128,7 +132,7 @@ namespace Felix
         /*
          * Create primitive topology
          */
-        _topology = DX11PipelineUtils::GetPrimitives(desc.RasterizerDesc.Topology);
+        _topology = DX11PipelineUtils::GetPrimitives(desc.Topology);
     }
 
     Felix::DX11Pipeline::~DX11Pipeline()

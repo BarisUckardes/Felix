@@ -14,7 +14,6 @@ namespace Felix
 		FrontFaceMode FrontFace;
 		CullMode CulledFace;
 		PolygonShadingMode ShadingMode;
-		PrimitiveTopology Topology;
 		bool bEnableDepthClip;
 		bool bEnableScissorTest;
 	};

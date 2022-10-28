@@ -65,6 +65,7 @@ namespace Felix
     void DX11Texture::_CreateAs2D(const TextureCreateDesc &desc, DX11Device *pDevice)
     {
         D3D11_TEXTURE2D_DESC textureDesc = {};
+        ZeroMemory(&textureDesc, sizeof(D3D11_TEXTURE2D_DESC));
         textureDesc.Width = desc.Width;
         textureDesc.Height = desc.Height;
         textureDesc.SampleDesc.Count = 1;
@@ -77,7 +78,7 @@ namespace Felix
         textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.UsageFlags);
         textureDesc.ArraySize = 1;
 
-        D3D11_SUBRESOURCE_DATA subresourceData = {};
+        D3D11_SUBRESOURCE_DATA subresourceData = {0};
         subresourceData.pSysMem = desc.pInitialData;
         subresourceData.SysMemPitch = 4*desc.Width; //TODO: implement texture format size utils
         subresourceData.SysMemSlicePitch = 0;

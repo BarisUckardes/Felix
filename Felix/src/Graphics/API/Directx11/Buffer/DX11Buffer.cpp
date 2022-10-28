@@ -13,9 +13,10 @@ namespace Felix
         /*
          * Create buffer desc
          */
+        const unsigned int bufferSize = desc.SubItemSize*desc.SubItemCount;
         D3D11_BUFFER_DESC bufferDesc = {};
         bufferDesc.Usage = DX11BufferUtils::GetBufferUsage(desc.Usage);
-        bufferDesc.ByteWidth = desc.SubItemSize*desc.SubItemCount;
+        bufferDesc.ByteWidth = bufferSize + (16-(bufferSize)%16);
         bufferDesc.StructureByteStride = desc.SubItemSize;
         bufferDesc.BindFlags = DX11BufferUtils::GetBufferBindingPoint(desc.Type);
         bufferDesc.CPUAccessFlags = DX11BufferUtils::GetBufferCpuWriteFlags(desc.Usage);

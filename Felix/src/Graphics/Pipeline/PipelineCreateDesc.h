@@ -22,6 +22,7 @@ namespace Felix
 		ShadingPassDesc ShadingPass;
 		OutputDesc Output;
 		ResourceStateDesc Resources;
+        PrimitiveTopology Topology;
 		PipelineType Type;
 	};
 }

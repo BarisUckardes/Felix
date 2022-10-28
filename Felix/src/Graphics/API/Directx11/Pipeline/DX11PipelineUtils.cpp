@@ -243,9 +243,6 @@ namespace Felix
             default:
                 ASSERT(false,"DX11PipelineUtils","Invalid InputElementSemantic");
         }
-
-        //output+=count;
-
         return output;
     }
 }

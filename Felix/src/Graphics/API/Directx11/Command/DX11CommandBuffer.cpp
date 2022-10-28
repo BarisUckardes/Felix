@@ -223,7 +223,139 @@ namespace Felix
 
     void DX11CommandBuffer::CommitResourceCore(const unsigned int slotIndex, GraphicsResource *pResource)
     {
+        const DX11Resource* pDX11Resource = (const DX11Resource*)pResource;
+        const ShaderType targetStage = GetBoundPipeline()->GetResourceStateDesc().SlotDescriptions[slotIndex].Stage;
 
+        switch(pResource->GetResourceType())
+        {
+            case GraphicsResourceType::Texture:
+            {
+                const DX11Resource* pDX11Resource = (const DX11Resource*)pResource;
+                _CommitResourceAsTexture(slotIndex,targetStage,pDX11Resource);
+
+                break;
+            }
+            case GraphicsResourceType::TextureSampler:
+            {
+                const DX11TextureSampler* pDX11Sampler = (const DX11TextureSampler*)pResource->GetResource();
+                _CommitResourceAsSampler(slotIndex,targetStage,pDX11Sampler);
+
+                break;
+            }
+            case GraphicsResourceType::ConstantBuffer:
+            {
+                const DX11Buffer* pDX11Buffer = (const DX11Buffer*)pResource->GetResource();
+                _CommitResourceAsConstantBuffer(slotIndex,targetStage,pDX11Buffer);
+                break;
+            }
+        }
+    }
+    void DX11CommandBuffer::_CommitResourceAsTexture(const unsigned int slotIndex,const ShaderType targetStage,const DX11Resource* pResource)
+    {
+        ID3D11ShaderResourceView* pSrv = pResource->GetDXResourceView();
+
+        switch(targetStage)
+        {
+            case ShaderType::Vertex:
+            {
+
+                _dx11Context->VSSetShaderResources(0,1,&pSrv);
+                break;
+            }
+            case ShaderType::Fragment:
+            {
+                _dx11Context->PSSetShaderResources(0,1,&pSrv);
+                break;
+            }
+            case ShaderType::Geometry:
+            {
+                break;
+            }
+            case ShaderType::TesellationEval:
+            {
+                break;
+            }
+            case ShaderType::TesellationControl:
+            {
+                break;
+            }
+            case ShaderType::Compute:
+            {
+                break;
+            }
+        }
+    }
+
+    void DX11CommandBuffer::_CommitResourceAsSampler(const unsigned int slotIndex,const ShaderType targetStage,const DX11TextureSampler *pSampler)
+    {
+        ID3D11SamplerState* pDX11Sampler = pSampler->GetDX11Sampler();
+
+        switch(targetStage)
+        {
+            case ShaderType::Vertex:
+            {
+
+                _dx11Context->VSSetSamplers(0,1,&pDX11Sampler);
+                break;
+            }
+            case ShaderType::Fragment:
+            {
+                _dx11Context->PSSetSamplers(0,1,&pDX11Sampler);
+                break;
+            }
+            case ShaderType::Geometry:
+            {
+                break;
+            }
+            case ShaderType::TesellationEval:
+            {
+                break;
+            }
+            case ShaderType::TesellationControl:
+            {
+                break;
+            }
+            case ShaderType::Compute:
+            {
+                break;
+            }
+        }
+    }
+
+    void DX11CommandBuffer::_CommitResourceAsConstantBuffer(const unsigned int slotIndex,const ShaderType targetStage,const DX11Buffer* pBuffer)
+    {
+        ID3D11Buffer * pDX11Buffer = pBuffer->GetDX11Buffer();
+
+        switch(targetStage)
+        {
+            case ShaderType::Vertex:
+            {
+
+                _dx11Context->VSSetConstantBuffers(0,1,&pDX11Buffer);
+                break;
+            }
+            case ShaderType::Fragment:
+            {
+                _dx11Context->PSSetConstantBuffers(0,1,&pDX11Buffer);
+                break;
+            }
+            case ShaderType::Geometry:
+            {
+                break;
+            }
+            case ShaderType::TesellationEval:
+            {
+                break;
+            }
+            case ShaderType::TesellationControl:
+            {
+                break;
+            }
+            case ShaderType::Compute:
+            {
+                break;
+            }
+        }
     }
 
     void DX11CommandBuffer::DrawIndexedCore(const unsigned int indexCount)

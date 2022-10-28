@@ -6,10 +6,17 @@
 #define STBI_DX11COMMANDBUFFER_H
 
 #include <Graphics/Command/CommandBuffer.h>
+#include <Graphics/Shader/ShaderType.h>
 #include <d3d11.h>
 
 namespace Felix
 {
+    class DX11Texture;
+    class DX11TextureSampler;
+    class DX11Buffer;
+    class DX11Resource;
+
+
     class EXPORT DX11CommandBuffer : public CommandBuffer {
     public:
         DX11CommandBuffer(const CommandBufferCreateDesc& desc,ID3D11Device* pDevice,ID3D11DeviceContext* pContext);
@@ -40,7 +47,9 @@ namespace Felix
         void SetIndexBufferCore(GraphicsBuffer *pBuffer) override;
 
         void CommitResourceCore(const unsigned int slotIndex, GraphicsResource *pResource) override;
-
+        void _CommitResourceAsTexture(const unsigned int slotIndex,const ShaderType targetStage,const DX11Resource* pResource);
+        void _CommitResourceAsSampler(const unsigned int slotIndex,const ShaderType targetStage,const DX11TextureSampler* pSampler);
+        void _CommitResourceAsConstantBuffer(const unsigned int slotIndex,const ShaderType targetStage,const DX11Buffer* pBuffer);
         void DrawIndexedCore(const unsigned int indexCount) override;
 
         void ClearCachedStateCore() override;

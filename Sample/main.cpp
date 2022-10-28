@@ -65,9 +65,17 @@ struct PixelInput
     float2 Uv : TEXCOORD0;
 };
 
+Texture2D fTexture : register(t0);
+SamplerState fTextureSampler : register(s0);
+
+cbuffer TestBuffer
+{
+    float testValue;
+};
+
 float4 fs_main(PixelInput pixelData) : SV_TARGET
 {
-    float4 color = float4(pixelData.Uv,0,255);
+    float4 color = fTexture.Sample(fTextureSampler,pixelData.Uv)*testValue;
     return color;
 }
 
@@ -133,6 +141,7 @@ int main()
 	*/
 	std::vector<Vertex> vertexes = { {1,-1,1,0},{-1,-1,0,0},{0,1,0.5,1} };
 	std::vector<unsigned int> indexes = { 0,1,2,0,2,1 };
+    const float constantBufferData = 1.0f;
 
 	Felix::GraphicsBufferCreateDesc vertexBufferDesc = {};
 	vertexBufferDesc.Type = Felix::GraphicsBufferType::VertexBuffer;
@@ -148,15 +157,23 @@ int main()
 	indexBufferDesc.SubItemSize = sizeof(unsigned int);
 	indexBufferDesc.pInitialData = (const unsigned char*)indexes.data();
 
+    Felix::GraphicsBufferCreateDesc constantBufferDesc = {};
+    constantBufferDesc.Type = Felix::GraphicsBufferType::ConstantBuffer;
+    constantBufferDesc.Usage = Felix::GraphicsBufferUsage::Immutable;
+    constantBufferDesc.SubItemCount = 1;
+    constantBufferDesc.SubItemSize = sizeof(float);
+    constantBufferDesc.pInitialData = (const unsigned char*)&constantBufferData;
+
 	Felix::GraphicsBuffer* pVertexBuffer = pDevice->CreateBuffer(vertexBufferDesc);
 	Felix::GraphicsBuffer* pIndexBuffer = pDevice->CreateBuffer(indexBufferDesc);
+    Felix::GraphicsBuffer* pConstantBuffer = pDevice->CreateBuffer(constantBufferDesc);
 
 	/*
 	* Create textures
 	*/
 	Felix::TextureLoadResult textureLoadResult = {};
 #ifdef FELIX_OS_WINDOWS
-	Felix::TextureLoader::LoadTextureFromDisk("D:/Resources/Textures/MudSurfaceTile.jpg", textureLoadResult);
+	Felix::TextureLoader::LoadTextureFromDisk("D:/Resources/Textures/Smiley.png", textureLoadResult);
 #elif FELIX_OS_LINUX
     Felix::TextureLoader::LoadTextureFromDisk("/media/roveldo/Yeni Birim/Resources/Textures/MudSurfaceTile.jpg", textureLoadResult);
 #endif
@@ -167,9 +184,9 @@ int main()
 	textureDesc.Height = textureLoadResult.Height;
 	textureDesc.Depth = textureLoadResult.Depth;
 	textureDesc.Format = textureLoadResult.Format;
-	textureDesc.UsageFlags = Felix::TextureUsage::Sampled | Felix::TextureUsage::RenderTarget;
+	textureDesc.UsageFlags = Felix::TextureUsage::Sampled;
 	textureDesc.Type = Felix::TextureType::Texture2D;
-	textureDesc.bGenerateMipmaps = true;
+	textureDesc.bGenerateMipmaps = false;
 	textureDesc.pInitialData = textureLoadResult.pData;
 	Felix::Texture* pTexture = pDevice->CreateTexture(textureDesc);
 
@@ -184,7 +201,7 @@ int main()
 	textureSamplerDesc.MaxAnisotropy = 1;
     textureSamplerDesc.bMipmaps = false;
     textureSamplerDesc.MinLod = 0;
-    textureSamplerDesc.MaxLod = 0;
+    textureSamplerDesc.MaxLod = 1;
     textureSamplerDesc.LodBias = 0;
 	Felix::TextureSampler* pTextureSampler = pDevice->CreateTextureSampler(textureSamplerDesc);
 
@@ -197,9 +214,13 @@ int main()
 	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
 	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
 	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
+    Felix::GraphicsResourceCreateDesc constantBufferResourceDesc = {};
+    constantBufferResourceDesc.Type = Felix::GraphicsResourceType::ConstantBuffer;
+    constantBufferResourceDesc.pDeviceObject = pConstantBuffer;
 
 	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
 	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
+    Felix::GraphicsResource* pConstantBufferResource = pDevice->CreateResource(constantBufferResourceDesc);
 
 	/*
 	* Create pipeline
@@ -222,7 +243,6 @@ int main()
 	rasterizerStateDesc.CulledFace = Felix::CullMode::Back;
 	rasterizerStateDesc.FrontFace = Felix::FrontFaceMode::CounterClockWise;
 	rasterizerStateDesc.ShadingMode = Felix::PolygonShadingMode::Solid;
-	rasterizerStateDesc.Topology = Felix::PrimitiveTopology::TriangleList;
 	pipelineDesc.RasterizerDesc = rasterizerStateDesc;
 
 	Felix::DepthStencilStateDesc depthStencilStateDesc = {};
@@ -268,6 +288,7 @@ int main()
 	Felix::ResourceStateDesc resourceStateDesc = {};
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::Texture,Felix::ShaderType::Fragment });
 	resourceStateDesc.SlotDescriptions.push_back({ "fTexture",Felix::GraphicsResourceType::TextureSampler,Felix::ShaderType::Fragment });
+    resourceStateDesc.SlotDescriptions.push_back({ "TestBuffer",Felix::GraphicsResourceType::ConstantBuffer,Felix::ShaderType::Fragment });
 
 	pipelineDesc.Resources = resourceStateDesc;
 
@@ -306,8 +327,9 @@ int main()
 		pCmdBuffer->SetVertexBuffer(pVertexBuffer);
 		pCmdBuffer->SetIndexBuffer(pIndexBuffer);
 
-		//pCmdBuffer->CommitResource(0, pTextureResource);
-		//pCmdBuffer->CommitResource(1, pSamplerResource);
+		pCmdBuffer->CommitResource(0, pTextureResource);
+		pCmdBuffer->CommitResource(1, pSamplerResource);
+        pCmdBuffer->CommitResource(2,pConstantBufferResource);
 
 		pCmdBuffer->DrawIndexed(6);
 		pCmdBuffer->Unlock();

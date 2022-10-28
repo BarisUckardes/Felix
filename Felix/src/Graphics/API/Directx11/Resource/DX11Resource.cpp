@@ -40,7 +40,7 @@ namespace Felix
 
         D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
         srvDesc.Format = DX11TextureUtils::GetFormat(pTexture->GetFormat());
-        srvDesc.Texture2D.MipLevels = 1;
+        srvDesc.Texture2D.MipLevels = -1;
         srvDesc.Texture2D.MostDetailedMip = 0;
 
         ID3D11Resource* pDX11Resource = nullptr;
@@ -72,7 +72,7 @@ namespace Felix
             }
         }
 
-        ASSERT(SUCCEEDED( pDevice->GetDXDevice()->CreateShaderResourceView(pDX11Resource,&srvDesc,&_resourceView)),"DX11Resource","Failed to create shader resource view for the shader");
+        ASSERT(SUCCEEDED( pDevice->GetDXDevice()->CreateShaderResourceView(pDX11Resource,&srvDesc,&_resourceView)),"DX11Resource","Failed to create texture shader resource view for the shader");
     }
 
     void DX11Resource::_CreateAsSampler(GraphicsDeviceObject *pDeviceObject, DX11Device *pDevice)
@@ -82,13 +82,12 @@ namespace Felix
 
     void DX11Resource::_CreateAsConstantBuffer(GraphicsDeviceObject *pDeviceObject, DX11Device *pDevice)
     {
-        D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
-        ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
-
-        srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
-
-        ID3D11Resource* pDX11Resource = ((const DX11Buffer*)pDeviceObject)->GetDX11Buffer();
-
-        ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateShaderResourceView(pDX11Resource,&srvDesc,&_resourceView)),"DX11Resource","Failed to create shader resource view for the shader");
+//        D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+//        ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
+//        srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
+//
+//        ID3D11Resource* pDX11Resource = ((const DX11Buffer*)pDeviceObject)->GetDX11Buffer();
+//
+//        ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateShaderResourceView(pDX11Resource,&srvDesc,&_resourceView)),"DX11Resource","Failed to create constant buffer shader resource view for the shader");
     }
 }

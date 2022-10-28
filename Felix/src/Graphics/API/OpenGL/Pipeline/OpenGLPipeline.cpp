@@ -42,7 +42,7 @@ namespace Felix
 		/*
 		* Create pipeline state variables for OpenGL
 		*/
-		_primitives = OpenGLPipelineUtils::GetPrimitiveTopology(desc.RasterizerDesc.Topology);
+		_primitives = OpenGLPipelineUtils::GetPrimitiveTopology(desc.Topology);
 		_frontFace = OpenGLPipelineUtils::GetFrontFace(desc.RasterizerDesc.FrontFace);
 		_cullFace = OpenGLPipelineUtils::GetCullFace(desc.RasterizerDesc.CulledFace);
 		_depthFunction = OpenGLPipelineUtils::GetDepthFunction(desc.DepthStencilDesc.TestFunction);

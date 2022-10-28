@@ -10,9 +10,17 @@ namespace Felix
 
     D3D11_USAGE DX11TextureUtils::GetUsage(const TextureUsage usage)
     {
-        if (usage & TextureUsage::DepthStencilTarget || usage & TextureUsage::RenderTarget || usage & TextureUsage::Sampled )
+        if (usage & TextureUsage::Sampled)
         {
-            return D3D11_USAGE_DEFAULT;
+            return D3D11_USAGE_IMMUTABLE;
+        }
+        if(usage & TextureUsage::RenderTarget)
+        {
+            return D3D11_USAGE_IMMUTABLE;
+        }
+        if(usage & TextureUsage::DepthStencilTarget)
+        {
+            return D3D11_USAGE_IMMUTABLE;
         }
     }
 
@@ -43,9 +51,9 @@ namespace Felix
             case TextureFormat::None:
                 return DXGI_FORMAT_UNKNOWN;
             case TextureFormat::RGB8:
-                return DXGI_FORMAT_R8G8B8A8_UINT;
+                return DXGI_FORMAT_R8G8B8A8_UNORM;
             case TextureFormat::RGBA8:
-                return DXGI_FORMAT_R8G8B8A8_UINT;
+                return DXGI_FORMAT_R8G8B8A8_UNORM;
             case TextureFormat::Depth24Stencil8:
                 return DXGI_FORMAT_D24_UNORM_S8_UINT;
             default:
@@ -95,6 +103,28 @@ namespace Felix
 
     D3D11_FILTER DX11TextureUtils::GetFiltering(const TextureSamplerFilter filter,const bool bMipmaps)
     {
-        return D3D11_FILTER_ANISOTROPIC;
+        switch (filter)
+        {
+            case TextureSamplerFilter::Anisotropic:
+                return D3D11_FILTER_ANISOTROPIC;
+            case TextureSamplerFilter::MinPointMagPointMipPoint:
+                return D3D11_FILTER_MIN_MAG_MIP_POINT;
+            case TextureSamplerFilter::MinPointMagPointMipLinear:
+                return D3D11_FILTER_MIN_MAG_POINT_MIP_LINEAR;
+            case TextureSamplerFilter::MinPointMagLinearMipPoint:
+                return D3D11_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT;
+            case TextureSamplerFilter::MinPointMagLinearMipLinear:
+                return D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR;
+            case TextureSamplerFilter::MinLinearMagPointMipPoint:
+                return D3D11_FILTER_MIN_LINEAR_MAG_MIP_POINT;
+            case TextureSamplerFilter::MinLinearMagPointMipLinear:
+                return D3D11_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR;
+            case TextureSamplerFilter::MinLinearMagLinearMipPoint:
+                return D3D11_FILTER_MIN_MAG_LINEAR_MIP_POINT;
+            case TextureSamplerFilter::MinLinearMagLinearMipLinear:
+                return D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+            default:
+                ASSERT(false,"OpenGLTextureSamplerUtils","Invalid TextureSamplerFilter!");
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace Felix
 			_shadingPassDesc(desc.ShadingPass),
 			_outputDesc(desc.Output),
 			_resourceStateDesc(desc.Resources),
+            _topology(desc.Topology),
 			_type(desc.Type)
 		{}
 		virtual ~Pipeline() {}
@@ -43,6 +44,7 @@ namespace Felix
 		const ShadingPassDesc _shadingPassDesc;
 		const OutputDesc _outputDesc;
 		const ResourceStateDesc _resourceStateDesc;
+        const PrimitiveTopology _topology;
 		const PipelineType _type;
 	};
 }
