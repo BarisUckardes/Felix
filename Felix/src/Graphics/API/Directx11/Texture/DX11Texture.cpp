@@ -37,12 +37,12 @@ namespace Felix
     {
         D3D11_TEXTURE1D_DESC textureDesc = {};
         textureDesc.Width = desc.Width;
-        textureDesc.Usage = DX11TextureUtils::GetUsage(desc.Usage);
-        textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.Usage);
+        textureDesc.Usage = DX11TextureUtils::GetUsage(desc.UsageFlags);
+        textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.UsageFlags);
         textureDesc.Format = DX11TextureUtils::GetFormat(desc.Format);
         textureDesc.MipLevels = 1;
         textureDesc.MiscFlags = 0;
-        textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.Usage);
+        textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.UsageFlags);
         textureDesc.ArraySize = 1;
 
         D3D11_SUBRESOURCE_DATA subresourceData = {};
@@ -69,12 +69,12 @@ namespace Felix
         textureDesc.Height = desc.Height;
         textureDesc.SampleDesc.Count = 1;
         textureDesc.SampleDesc.Quality = 0;
-        textureDesc.Usage = DX11TextureUtils::GetUsage(desc.Usage);
-        textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.Usage);
+        textureDesc.Usage = DX11TextureUtils::GetUsage(desc.UsageFlags);
+        textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.UsageFlags);
         textureDesc.Format = DX11TextureUtils::GetFormat(desc.Format);
         textureDesc.MipLevels = 1;
         textureDesc.MiscFlags = 0;
-        textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.Usage);
+        textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.UsageFlags);
         textureDesc.ArraySize = 1;
 
         D3D11_SUBRESOURCE_DATA subresourceData = {};
@@ -98,12 +98,12 @@ namespace Felix
         textureDesc.Width = desc.Width;
         textureDesc.Height  =desc.Height;
         textureDesc.Depth = desc.Depth;
-        textureDesc.Usage = DX11TextureUtils::GetUsage(desc.Usage);
-        textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.Usage);
+        textureDesc.Usage = DX11TextureUtils::GetUsage(desc.UsageFlags);
+        textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.UsageFlags);
         textureDesc.Format = DX11TextureUtils::GetFormat(desc.Format);
         textureDesc.MipLevels = 1;
         textureDesc.MiscFlags = 0;
-        textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.Usage);
+        textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.UsageFlags);
 
         D3D11_SUBRESOURCE_DATA subresourceData = {};
         subresourceData.pSysMem = desc.pInitialData;

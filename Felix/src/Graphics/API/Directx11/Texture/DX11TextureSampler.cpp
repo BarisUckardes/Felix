@@ -17,7 +17,7 @@ namespace Felix
         samplerDesc.MinLOD = desc.MinLod;
         samplerDesc.MaxLOD = desc.MaxLod;
         samplerDesc.MipLODBias = desc.LodBias;
-        //samplerDesc.Filter = DX11TextureUtils::GetFiltering(desc.MinFilter,desc.MagFilter);
+        samplerDesc.Filter = DX11TextureUtils::GetFiltering(desc.Filter,desc.bMipmaps);
         samplerDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
         samplerDesc.AddressU = DX11TextureUtils::GetUVMode(desc.WrappingU);
         samplerDesc.AddressV = DX11TextureUtils::GetUVMode(desc.WrappingV);

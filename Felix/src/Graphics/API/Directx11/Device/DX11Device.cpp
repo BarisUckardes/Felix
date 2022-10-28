@@ -105,7 +105,7 @@ namespace Felix
 
     GraphicsResource *DX11Device::CreateResourceCore(const GraphicsResourceCreateDesc &desc)
     {
-        return nullptr;
+        return new DX11Resource(desc,this);
     }
 
     Pipeline *DX11Device::CreatePipelineCore(const PipelineCreateDesc &desc)

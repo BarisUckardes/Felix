@@ -10,15 +10,9 @@ namespace Felix
 
     D3D11_USAGE DX11TextureUtils::GetUsage(const TextureUsage usage)
     {
-        switch (usage)
+        if (usage & TextureUsage::DepthStencilTarget || usage & TextureUsage::RenderTarget || usage & TextureUsage::Sampled )
         {
-            case TextureUsage::DepthStencilTarget:
-            case TextureUsage::RenderTarget:
-            case TextureUsage::Sampled:
-                return D3D11_USAGE_DEFAULT;
-            default:
-                ASSERT(false,"DX11TextureUtils","Invalid TextureUsage");
-                break;
+            return D3D11_USAGE_DEFAULT;
         }
     }
 
@@ -26,14 +20,20 @@ namespace Felix
     {
         unsigned int flags = 0;
 
-        if(usage | TextureUsage::Sampled)
+        if(usage & TextureUsage::Sampled)
+        {
             flags|=D3D11_BIND_SHADER_RESOURCE;
-        if(usage | TextureUsage::RenderTarget)
+        }
+        if(usage & TextureUsage::RenderTarget)
+        {
             flags|=D3D11_BIND_RENDER_TARGET;
-        if(usage | TextureUsage::DepthStencilTarget)
+        }
+        if(usage & TextureUsage::DepthStencilTarget)
+        {
             flags |= D3D11_BIND_DEPTH_STENCIL;
+        }
 
-        return 0;
+        return flags;
     }
 
     DXGI_FORMAT DX11TextureUtils::GetFormat(const TextureFormat format)
@@ -74,17 +74,7 @@ namespace Felix
 
     unsigned int DX11TextureUtils::GetCPUAccessFlags(const TextureUsage usage)
     {
-        switch (usage)
-        {
-            case TextureUsage::DepthStencilTarget:
-            case TextureUsage::RenderTarget:
-                return 0;
-            case TextureUsage::Sampled:
-                return D3D11_CPU_ACCESS_WRITE;
-            default:
-                ASSERT(false,"DX11TextureUtils","Invalid TextureUsage");
-                break;
-        }
+        return 0;
     }
 
     D3D11_TEXTURE_ADDRESS_MODE DX11TextureUtils::GetUVMode(const TextureSamplerWrapMode mode)

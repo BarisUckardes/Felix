@@ -11,7 +11,7 @@ namespace Felix
 	struct EXPORT TextureCreateDesc
 	{
 		TextureType Type;
-		TextureUsage Usage;
+		TextureUsage UsageFlags;
 		TextureFormat Format;
 		unsigned int Width;
 		unsigned int Height;

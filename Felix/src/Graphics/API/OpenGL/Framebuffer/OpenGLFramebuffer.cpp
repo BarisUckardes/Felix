@@ -20,13 +20,13 @@ namespace Felix
 			const OpenGLTexture* pAttachment = (const OpenGLTexture*)desc.Attachments[i];
 			const unsigned int textureHandle = pAttachment->GetGLHandle();
 
-			if (pAttachment->GetUsage() | TextureUsage::RenderTarget)
+			if (pAttachment->GetUsageFlags() & TextureUsage::RenderTarget)
 			{
 				glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentSlot, GL_TEXTURE_2D, textureHandle, 0);
 				drawBuffers.push_back(attachmentSlot);
 				attachmentSlot++;
 			}
-			else if (pAttachment->GetUsage() | TextureUsage::DepthStencilTarget)
+			else if (pAttachment->GetUsageFlags() & TextureUsage::DepthStencilTarget)
 			{
 				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,GL_TEXTURE_2D, textureHandle, 0);
 			}

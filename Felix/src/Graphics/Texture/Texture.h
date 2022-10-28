@@ -11,7 +11,7 @@ namespace Felix
 	{
 	public:
 		FORCEINLINE TextureType GetTextureType() const noexcept { return _type; }
-		FORCEINLINE TextureUsage GetUsage() const noexcept { return _usage; }
+		FORCEINLINE TextureUsage GetUsageFlags() const noexcept { return _usageFlags; }
 		FORCEINLINE TextureFormat GetFormat() const noexcept { return _format; }
 		FORCEINLINE unsigned int GetWidth() const noexcept { return _width; }
 		FORCEINLINE unsigned int GetHeight() const noexcept { return _height; }
@@ -20,11 +20,11 @@ namespace Felix
 		FORCEINLINE GraphicsDeviceObjectType GetDeviceObjectType() const noexcept final override { return GraphicsDeviceObjectType::Texture; }
 
 	protected:
-		Texture(const TextureCreateDesc& desc) : _type(desc.Type),_usage(desc.Usage),_format(desc.Format),_width(desc.Width),_height(desc.Height),_depth(desc.Depth) {}
+		Texture(const TextureCreateDesc& desc) : _type(desc.Type),_usageFlags(desc.UsageFlags),_format(desc.Format),_width(desc.Width),_height(desc.Height),_depth(desc.Depth) {}
 		virtual ~Texture() {}
 	private:
 		TextureType _type;
-		TextureUsage _usage;
+        TextureUsage _usageFlags;
 		TextureFormat _format;
 		unsigned int _width;
 		unsigned int _height;

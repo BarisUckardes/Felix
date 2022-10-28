@@ -19,7 +19,7 @@ namespace Felix
 
         FORCEINLINE ID3D11Texture1D* GetDXTexture1D() const noexcept { return _texture1D.Get();}
         FORCEINLINE ID3D11Texture2D* GetDXTexture2D() const noexcept { return _texture2D.Get();}
-        FORCEINLINE ID3D11Texture3D* GetDXTextture3D() const noexcept { return _texture3D.Get();}
+        FORCEINLINE ID3D11Texture3D* GetDXTexture3D() const noexcept { return _texture3D.Get();}
     private:
         void _CreateAs1D(const TextureCreateDesc& desc,DX11Device* pDevice);
         void _CreateAs2D(const TextureCreateDesc& desc,DX11Device* pDevice);

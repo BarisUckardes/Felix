@@ -167,9 +167,9 @@ int main()
 	textureDesc.Height = textureLoadResult.Height;
 	textureDesc.Depth = textureLoadResult.Depth;
 	textureDesc.Format = textureLoadResult.Format;
-	textureDesc.Usage = Felix::TextureUsage::Sampled;
+	textureDesc.UsageFlags = Felix::TextureUsage::Sampled | Felix::TextureUsage::RenderTarget;
 	textureDesc.Type = Felix::TextureType::Texture2D;
-	textureDesc.bGenerateMipmaps = false;
+	textureDesc.bGenerateMipmaps = true;
 	textureDesc.pInitialData = textureLoadResult.pData;
 	Felix::Texture* pTexture = pDevice->CreateTexture(textureDesc);
 
@@ -191,15 +191,15 @@ int main()
 	/*
 	* Create resource
 	*/
-//	Felix::GraphicsResourceCreateDesc textureResourceDesc = {};
-//	textureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
-//	textureResourceDesc.pDeviceObject = pTexture;
-//	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
-//	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
-//	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
-//
-//	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
-//	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
+	Felix::GraphicsResourceCreateDesc textureResourceDesc = {};
+	textureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
+	textureResourceDesc.pDeviceObject = pTexture;
+	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
+	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
+	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
+
+	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
+	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
 
 	/*
 	* Create pipeline

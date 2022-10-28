@@ -26,7 +26,7 @@ namespace Felix
 		{
 			Texture* pAttachment = desc.Attachments[i];
 
-			if (pAttachment->GetUsage() | TextureUsage::DepthStencilTarget)
+			if (pAttachment->GetUsageFlags() & TextureUsage::DepthStencilTarget)
 			{
 				_depthStencilTexture = pAttachment;
 				_depthStencil = true;
