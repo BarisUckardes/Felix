@@ -14,11 +14,11 @@ namespace Felix
         ID3D11Device* pDX11Device = pDevice->GetDXDevice();
         D3D11_SAMPLER_DESC samplerDesc = {};
         samplerDesc.MaxAnisotropy = desc.MaxAnisotropy;
-        samplerDesc.MinLOD = 1;
-        samplerDesc.MaxLOD = 1;
+        samplerDesc.MinLOD = desc.MinLod;
+        samplerDesc.MaxLOD = desc.MaxLod;
+        samplerDesc.MipLODBias = desc.LodBias;
         //samplerDesc.Filter = DX11TextureUtils::GetFiltering(desc.MinFilter,desc.MagFilter);
         samplerDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
-        samplerDesc.MipLODBias = 0;
         samplerDesc.AddressU = DX11TextureUtils::GetUVMode(desc.WrappingU);
         samplerDesc.AddressV = DX11TextureUtils::GetUVMode(desc.WrappingV);
         samplerDesc.AddressW = DX11TextureUtils::GetUVMode(desc.WrappingW);

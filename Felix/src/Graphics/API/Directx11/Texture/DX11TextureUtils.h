@@ -27,7 +27,7 @@ namespace Felix
         FORCEINLINE static D3D11_SRV_DIMENSION  GetDimension(const TextureType type);
         FORCEINLINE static unsigned int GetCPUAccessFlags(const TextureUsage usage);
         FORCEINLINE static D3D11_TEXTURE_ADDRESS_MODE GetUVMode(const TextureSamplerWrapMode mode);
-        FORCEINLINE static D3D11_FILTER GetFiltering(const TextureSamplerFilter filter);
+        FORCEINLINE static D3D11_FILTER GetFiltering(const TextureSamplerFilter filte,const bool bMipmaps);
     };
 
 }

@@ -15,6 +15,9 @@ namespace Felix
 		glSamplerParameteri(_handle, GL_TEXTURE_MAG_FILTER, OpenGLTextureSamplerUtils::GetMinFilter(desc.Filter,desc.bMipmaps));
 		glSamplerParameteri(_handle, GL_TEXTURE_MIN_FILTER, OpenGLTextureSamplerUtils::GetMagFilter(desc.Filter,desc.bMipmaps));
 		glSamplerParameteri(_handle, GL_TEXTURE_MAX_ANISOTROPY, desc.MaxAnisotropy);
+        glSamplerParameteri(_handle, GL_TEXTURE_MIN_LOD,desc.MinLod);
+        glSamplerParameteri(_handle,GL_TEXTURE_MAX_LOD,desc.MaxLod);
+        glSamplerParameteri(_handle,GL_TEXTURE_LOD_BIAS,desc.LodBias);
 	}
 	OpenGLTextureSampler::~OpenGLTextureSampler()
 	{

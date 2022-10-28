@@ -13,6 +13,9 @@ namespace Felix
 		TextureSamplerWrapMode WrappingU;
 		TextureSamplerWrapMode WrappingV;
 		TextureSamplerWrapMode WrappingW;
+        unsigned int MinLod;
+        unsigned int MaxLod;
+        int LodBias;
         bool bMipmaps;
 		unsigned int MaxAnisotropy;
 	};

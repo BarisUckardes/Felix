@@ -103,7 +103,7 @@ namespace Felix
         }
     }
 
-    D3D11_FILTER DX11TextureUtils::GetFiltering(const TextureSamplerFilter filter)
+    D3D11_FILTER DX11TextureUtils::GetFiltering(const TextureSamplerFilter filter,const bool bMipmaps)
     {
         return D3D11_FILTER_ANISOTROPIC;
     }

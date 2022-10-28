@@ -91,7 +91,7 @@ int main()
 	* Create graphics device
 	*/
 	Felix::WindowGraphicsDeviceCreateDesc deviceDesc = {};
-	deviceDesc.Api = Felix::GraphicsAPI::OpenGL;
+	deviceDesc.Api = Felix::GraphicsAPI::Directx11;
 	deviceDesc.SwapchainBufferCount = 2;
 	deviceDesc.SwapchainBufferFormat = Felix::TextureFormat::RGBA8;
 	deviceDesc.SwapchainDepthStencilBufferFormat = Felix::TextureFormat::None;
@@ -109,12 +109,12 @@ int main()
 	*/
 	Felix::ShaderCreateDesc vertexShaderDesc = {};
 	vertexShaderDesc.Type = Felix::ShaderType::Vertex;
-	vertexShaderDesc.Source = vShaderGLSL;
+	vertexShaderDesc.Source = vShaderHLSL;
 	vertexShaderDesc.EntryPoint = "vs_main";
 
 	Felix::ShaderCreateDesc fragmentShaderDesc = {};
 	fragmentShaderDesc.Type = Felix::ShaderType::Fragment;
-	fragmentShaderDesc.Source = fShaderGLSL;
+	fragmentShaderDesc.Source = fShaderHLSL;
 	fragmentShaderDesc.EntryPoint = "fs_main";
 
 	Felix::Shader* pVertexShader = pDevice->CreateShader(vertexShaderDesc);
@@ -183,20 +183,23 @@ int main()
     textureSamplerDesc.Filter = Felix::TextureSamplerFilter::MinPointMagPointMipPoint;
 	textureSamplerDesc.MaxAnisotropy = 1;
     textureSamplerDesc.bMipmaps = false;
+    textureSamplerDesc.MinLod = 0;
+    textureSamplerDesc.MaxLod = 0;
+    textureSamplerDesc.LodBias = 0;
 	Felix::TextureSampler* pTextureSampler = pDevice->CreateTextureSampler(textureSamplerDesc);
 
 	/*
 	* Create resource
 	*/
-	Felix::GraphicsResourceCreateDesc textureResourceDesc = {};
-	textureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
-	textureResourceDesc.pDeviceObject = pTexture;
-	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
-	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
-	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
-
-	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
-	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
+//	Felix::GraphicsResourceCreateDesc textureResourceDesc = {};
+//	textureResourceDesc.Type = Felix::GraphicsResourceType::Texture;
+//	textureResourceDesc.pDeviceObject = pTexture;
+//	Felix::GraphicsResourceCreateDesc textureSamplerResourceDesc = {};
+//	textureSamplerResourceDesc.Type = Felix::GraphicsResourceType::TextureSampler;
+//	textureSamplerResourceDesc.pDeviceObject = pTextureSampler;
+//
+//	Felix::GraphicsResource* pTextureResource = pDevice->CreateResource(textureResourceDesc);
+//	Felix::GraphicsResource* pSamplerResource = pDevice->CreateResource(textureSamplerResourceDesc);
 
 	/*
 	* Create pipeline
@@ -303,8 +306,8 @@ int main()
 		pCmdBuffer->SetVertexBuffer(pVertexBuffer);
 		pCmdBuffer->SetIndexBuffer(pIndexBuffer);
 
-		pCmdBuffer->CommitResource(0, pTextureResource);
-		pCmdBuffer->CommitResource(1, pSamplerResource);
+		//pCmdBuffer->CommitResource(0, pTextureResource);
+		//pCmdBuffer->CommitResource(1, pSamplerResource);
 
 		pCmdBuffer->DrawIndexed(6);
 		pCmdBuffer->Unlock();
