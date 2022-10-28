@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/27/2022.
 //
@@ -15,3 +16,4 @@ namespace Felix
         ASSERT(SUCCEEDED( pDX11Device->CreatePixelShader(pBlob->GetBufferPointer(),pBlob->GetBufferSize(),nullptr,&_shader)),"DX11PixelShader","Shader creation failed!");
     }
 }
+#endif

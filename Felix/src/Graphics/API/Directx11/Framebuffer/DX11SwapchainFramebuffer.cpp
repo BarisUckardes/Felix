@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/25/2022.
 //
@@ -80,3 +81,5 @@ void Felix::DX11SwapchainFramebuffer::OnResizeCore(const unsigned int width, con
     _swapchain->ResizeBuffers(0,0,0, DXGI_FORMAT_UNKNOWN, 0);
 }
 
+
+#endif

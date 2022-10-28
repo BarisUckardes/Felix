@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/26/2022.
 //
@@ -40,3 +41,5 @@ namespace Felix
 
     }
 }
+
+#endif

@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/27/2022.
 //
@@ -32,3 +33,5 @@ std::string Felix::DX11ShaderUtils::GetTargetShaderString(const Felix::ShaderCre
 
     return text;
 }
+
+#endif

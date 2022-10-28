@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/26/2022.
 //
@@ -23,10 +24,11 @@ namespace Felix
                    0,
                    &_shaderBlob,
                    &pErrorBlob
-                   );
+        );
 
 
         ASSERT(pErrorBlob == nullptr,"DX11Shader","Shader compilation failed with logs: %s",pErrorBlob->GetBufferPointer());
     }
 
 }
+#endif

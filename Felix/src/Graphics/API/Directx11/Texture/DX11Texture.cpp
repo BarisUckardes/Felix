@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/26/2022.
 //
@@ -50,14 +51,14 @@ namespace Felix
         subresourceData.SysMemPitch = 0;
         subresourceData.SysMemSlicePitch = 0;
 
-       if(desc.pInitialData != nullptr)
-       {
-           ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture1D(&textureDesc,&subresourceData,&_texture1D)),"DX11Texture","Texture1D creation failed!")
-       }
-       else
-       {
-           ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture1D(&textureDesc,nullptr,&_texture1D)),"DX11Texture","Texture1D creation failed!")
-       }
+        if(desc.pInitialData != nullptr)
+        {
+            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture1D(&textureDesc,&subresourceData,&_texture1D)),"DX11Texture","Texture1D creation failed!")
+        }
+        else
+        {
+            ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateTexture1D(&textureDesc,nullptr,&_texture1D)),"DX11Texture","Texture1D creation failed!")
+        }
 
 
     }
@@ -121,3 +122,4 @@ namespace Felix
         }
     }
 }
+#endif

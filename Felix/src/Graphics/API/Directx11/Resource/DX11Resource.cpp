@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/28/2022.
 //
@@ -91,3 +92,4 @@ namespace Felix
 //        ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateShaderResourceView(pDX11Resource,&srvDesc,&_resourceView)),"DX11Resource","Failed to create constant buffer shader resource view for the shader");
     }
 }
+#endif

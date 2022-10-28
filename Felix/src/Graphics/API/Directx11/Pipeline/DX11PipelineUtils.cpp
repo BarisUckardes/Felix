@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/27/2022.
 //
@@ -10,36 +11,36 @@ namespace Felix
     {
         switch(type)
         {
-                    case InputElementDataType::Boolean:
-                        return DXGI_FORMAT_R8_UNORM;
-                    case InputElementDataType::Integer:
-                        return DXGI_FORMAT_R32_SINT;
-                    case InputElementDataType::Integer2:
-                        return DXGI_FORMAT_R32G32_SINT;
-                    case InputElementDataType::Integer3:
-                        return DXGI_FORMAT_R32G32B32_SINT;
-                    case InputElementDataType::Integer4:
-                        return DXGI_FORMAT_R32G32B32A32_SINT;
-                    case InputElementDataType::UnsignedInteger:
-                        return DXGI_FORMAT_R32_UINT;
-                    case InputElementDataType::UnsignedInteger2:
-                        return DXGI_FORMAT_R32G32_UINT;
-                    case InputElementDataType::UnsignedInteger3:
-                        return DXGI_FORMAT_R32G32B32_UINT;
-                    case InputElementDataType::UnsignedInteger4:
-                        return DXGI_FORMAT_R32G32B32A32_UINT;
-                    case InputElementDataType::Float:
-                        return DXGI_FORMAT_R32_FLOAT;
-                    case InputElementDataType::Float2:
-                        return DXGI_FORMAT_R32G32_FLOAT;
-                    case InputElementDataType::Float3:
-                        return DXGI_FORMAT_R32G32B32_FLOAT;
-                    case InputElementDataType::Float4:
-                        return DXGI_FORMAT_R32G32B32A32_FLOAT;
-                    case InputElementDataType::Matrix3x3:
-                        return DXGI_FORMAT_R32_SINT;
-                    case InputElementDataType::Matrix4x4:
-                        return DXGI_FORMAT_R32_SINT;
+            case InputElementDataType::Boolean:
+                return DXGI_FORMAT_R8_UNORM;
+            case InputElementDataType::Integer:
+                return DXGI_FORMAT_R32_SINT;
+            case InputElementDataType::Integer2:
+                return DXGI_FORMAT_R32G32_SINT;
+            case InputElementDataType::Integer3:
+                return DXGI_FORMAT_R32G32B32_SINT;
+            case InputElementDataType::Integer4:
+                return DXGI_FORMAT_R32G32B32A32_SINT;
+            case InputElementDataType::UnsignedInteger:
+                return DXGI_FORMAT_R32_UINT;
+            case InputElementDataType::UnsignedInteger2:
+                return DXGI_FORMAT_R32G32_UINT;
+            case InputElementDataType::UnsignedInteger3:
+                return DXGI_FORMAT_R32G32B32_UINT;
+            case InputElementDataType::UnsignedInteger4:
+                return DXGI_FORMAT_R32G32B32A32_UINT;
+            case InputElementDataType::Float:
+                return DXGI_FORMAT_R32_FLOAT;
+            case InputElementDataType::Float2:
+                return DXGI_FORMAT_R32G32_FLOAT;
+            case InputElementDataType::Float3:
+                return DXGI_FORMAT_R32G32B32_FLOAT;
+            case InputElementDataType::Float4:
+                return DXGI_FORMAT_R32G32B32A32_FLOAT;
+            case InputElementDataType::Matrix3x3:
+                return DXGI_FORMAT_R32_SINT;
+            case InputElementDataType::Matrix4x4:
+                return DXGI_FORMAT_R32_SINT;
             default:
                 ASSERT(false,"DX11PipelineUtils","Invalid InputElementDataType!");
         }
@@ -246,3 +247,4 @@ namespace Felix
         return output;
     }
 }
+#endif

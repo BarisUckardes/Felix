@@ -1,3 +1,4 @@
+#ifdef FELIX_OS_WINDOWS
 //
 // Created by Baris on 10/26/2022.
 //
@@ -143,7 +144,7 @@ namespace Felix
 
     void DX11CommandBuffer::ClearColorCore(const unsigned char r, const unsigned char g, const unsigned char b,
                                            const unsigned char a)
-                                           {
+    {
         const Framebuffer* pFramebuffer = GetBoundFramebuffer();
 
         ID3D11RenderTargetView* pRtv = nullptr;
@@ -370,3 +371,4 @@ namespace Felix
 
 
 }
+#endif
