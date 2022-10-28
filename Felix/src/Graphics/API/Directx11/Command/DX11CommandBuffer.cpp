@@ -139,6 +139,11 @@ namespace Felix
     void DX11CommandBuffer::SetScissorsCore(const ScissorsDesc &desc)
     {
         D3D11_RECT rect = {};
+        rect.bottom = desc.Height - desc.PositionY;
+        rect.left = 0;
+        rect.top = 0;
+        rect.right = desc.Width - desc.PositionX;
+
         _dx11Context->RSSetScissorRects(1,&rect);
     }
 

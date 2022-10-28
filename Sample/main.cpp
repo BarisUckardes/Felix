@@ -239,7 +239,7 @@ int main()
 
 	Felix::RasterizerStateDesc rasterizerStateDesc = {};
 	rasterizerStateDesc.bEnableDepthClip = false;
-	rasterizerStateDesc.bEnableScissorTest = false;
+	rasterizerStateDesc.bEnableScissorTest = true;
 	rasterizerStateDesc.CulledFace = Felix::CullMode::Back;
 	rasterizerStateDesc.FrontFace = Felix::FrontFaceMode::CounterClockWise;
 	rasterizerStateDesc.ShadingMode = Felix::PolygonShadingMode::Solid;
@@ -310,6 +310,12 @@ int main()
 	viewport.MinDepth = 0.0f;
 	viewport.MaxDepth = 1.0f;
 
+    Felix::ScissorsDesc scissor = {};
+    scissor.PositionY = 0;
+    scissor.PositionX = 0;
+    scissor.Width = 1024;
+    scissor.Height = 1024;
+
 	/*
 	* Loop
 	*/
@@ -323,6 +329,7 @@ int main()
 		pCmdBuffer->BindPipeline(pPipeline);
 		pCmdBuffer->BindFramebuffer(pSwapchainFramebuffer);
 		pCmdBuffer->SetViewport(viewport);
+        pCmdBuffer->SetScissors(scissor);
 		pCmdBuffer->ClearColor(1, 0, 0, 1);
 		pCmdBuffer->SetVertexBuffer(pVertexBuffer);
 		pCmdBuffer->SetIndexBuffer(pIndexBuffer);
