@@ -23,7 +23,6 @@ namespace Felix
 
         FORCEINLINE static D3D11_USAGE GetUsage(const TextureUsage usage);
         FORCEINLINE static unsigned int GetBindFlags(const TextureUsage usage);
-        FORCEINLINE static DXGI_FORMAT GetFormat(const TextureFormat format);
         FORCEINLINE static D3D11_SRV_DIMENSION  GetDimension(const TextureType type);
         FORCEINLINE static unsigned int GetCPUAccessFlags(const TextureUsage usage);
         FORCEINLINE static D3D11_TEXTURE_ADDRESS_MODE GetUVMode(const TextureSamplerWrapMode mode);

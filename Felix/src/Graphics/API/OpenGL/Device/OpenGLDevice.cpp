@@ -194,6 +194,14 @@ namespace Felix
                 break;
         }
     }
+    void OpenGLDevice::WaitForFinishCore()
+    {
+
+    }
+    void OpenGLDevice::SubmitCommandsCore(CommandBuffer* pCmdBuffer)
+    {
+
+    }
     TextureSampler* OpenGLDevice::CreateTextureSamplerCore(const TextureSamplerCreateDesc& desc)
     {
         return new OpenGLTextureSampler(desc);

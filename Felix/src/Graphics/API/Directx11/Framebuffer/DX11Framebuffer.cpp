@@ -6,6 +6,7 @@
 #include <Graphics/API/Directx11/Texture/DX11Texture.h>
 #include <Graphics/API/Directx11/Texture/DX11TextureUtils.h>
 #include <Graphics/API/Directx11/Device/DX11Device.h>
+#include <Graphics/API/Directx/DXGI/DXGIUtils.h>
 
 namespace Felix
 {
@@ -19,7 +20,7 @@ namespace Felix
             const DX11Texture *pTexture = (const DX11Texture *) desc.Attachments[i];
 
             D3D11_RENDER_TARGET_VIEW_DESC rtvDesc = {};
-            rtvDesc.Format = DX11TextureUtils::GetFormat(pTexture->GetFormat());
+            rtvDesc.Format = DXGIUtils::GetFormat(pTexture->GetFormat());
             rtvDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
             rtvDesc.Texture2D.MipSlice = 0;
 
@@ -48,7 +49,7 @@ namespace Felix
         if(pDepthStencilTexture != nullptr)
         {
             D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc = {};
-            dsvDesc.Format = DX11TextureUtils::GetFormat(pDepthStencilTexture->GetFormat());
+            dsvDesc.Format = DXGIUtils::GetFormat(pDepthStencilTexture->GetFormat());
             dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
             dsvDesc.Texture2D.MipSlice = 0;
 

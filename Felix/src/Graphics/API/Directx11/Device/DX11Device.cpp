@@ -128,5 +128,13 @@ namespace Felix
     {
 
     }
+    void DX11Device::WaitForFinishCore()
+    {
+
+    }
+    void DX11Device::SubmitCommandsCore(CommandBuffer* pCmdBuffer)
+    {
+
+    }
 }
 #endif

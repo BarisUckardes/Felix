@@ -44,6 +44,8 @@ namespace Felix
         virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) override;
         virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) override;
 
+        virtual void WaitForFinishCore() override final;
+        virtual void SubmitCommandsCore(CommandBuffer* pCmdBuffer) override final;
     private:
         DXPTR<ID3D11Device> _device;
         DXPTR<ID3D11DeviceContext> _context;

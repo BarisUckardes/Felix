@@ -70,6 +70,8 @@ namespace Felix
 		void UpdateBuffer(GraphicsBuffer* pBuffer,const GraphicsBufferUpdateDesc& desc);
 		void UpdateTexture(Texture* pTexture,const TextureUpdateDesc& desc);
 
+		void WaitForFinish();
+		void SubmitCommands(CommandBuffer* pCmdBuffer);
 	protected:
 		GraphicsDevice(Window* pOwnerWindow);
 		GraphicsDevice();
@@ -92,6 +94,8 @@ namespace Felix
 		virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) = 0;
 		virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) = 0;
 
+		virtual void WaitForFinishCore() = 0;
+		virtual void SubmitCommandsCore(CommandBuffer* pCmdBuffer) = 0;
 	private:
 		void RegisterDeviceObject(GraphicsDeviceObject* pDeviceObject);
 		void CreateSwapchainFramebuffer(const SwapchainFramebufferCreateDesc& desc);

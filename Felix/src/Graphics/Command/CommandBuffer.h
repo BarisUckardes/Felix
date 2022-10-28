@@ -50,7 +50,6 @@ namespace Felix
 
 		FORCEINLINE void DrawIndexed(const unsigned int indexCount);
 
-
 	protected:
 		FORCEINLINE virtual void LockCore() = 0;
 		FORCEINLINE virtual void UnlockCore() = 0;

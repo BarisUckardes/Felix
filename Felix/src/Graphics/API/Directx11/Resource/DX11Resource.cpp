@@ -9,6 +9,7 @@
 #include <Graphics/API/Directx11/Texture/DX11TextureSampler.h>
 #include <Graphics/API/Directx11/Device/DX11Device.h>
 #include <Graphics/API/Directx11/Buffer/DX11Buffer.h>
+#include <Graphics/API/Directx/DXGI/DXGIUtils.h>
 
 namespace Felix
 {
@@ -40,7 +41,7 @@ namespace Felix
         const DX11Texture* pDX11Texture = (const DX11Texture*)pTexture;
 
         D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
-        srvDesc.Format = DX11TextureUtils::GetFormat(pTexture->GetFormat());
+        srvDesc.Format = DXGIUtils::GetFormat(pTexture->GetFormat());
         srvDesc.Texture2D.MipLevels = -1;
         srvDesc.Texture2D.MostDetailedMip = 0;
 

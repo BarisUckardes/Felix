@@ -6,6 +6,7 @@
 #include "DX11Texture.h"
 #include <Graphics/API/Directx11/Texture/DX11TextureUtils.h>
 #include <Graphics/API/Directx11/Device/DX11Device.h>
+#include <Graphics/API/Directx/DXGI/DXGIUtils.h>
 
 namespace Felix
 {
@@ -40,7 +41,7 @@ namespace Felix
         textureDesc.Width = desc.Width;
         textureDesc.Usage = DX11TextureUtils::GetUsage(desc.UsageFlags);
         textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.UsageFlags);
-        textureDesc.Format = DX11TextureUtils::GetFormat(desc.Format);
+        textureDesc.Format = DXGIUtils::GetFormat(desc.Format);
         textureDesc.MipLevels = 1;
         textureDesc.MiscFlags = 0;
         textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.UsageFlags);
@@ -73,7 +74,7 @@ namespace Felix
         textureDesc.SampleDesc.Quality = 0;
         textureDesc.Usage = DX11TextureUtils::GetUsage(desc.UsageFlags);
         textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.UsageFlags);
-        textureDesc.Format = DX11TextureUtils::GetFormat(desc.Format);
+        textureDesc.Format = DXGIUtils::GetFormat(desc.Format);
         textureDesc.MipLevels = 1;
         textureDesc.MiscFlags = 0;
         textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.UsageFlags);
@@ -102,7 +103,7 @@ namespace Felix
         textureDesc.Depth = desc.Depth;
         textureDesc.Usage = DX11TextureUtils::GetUsage(desc.UsageFlags);
         textureDesc.BindFlags = DX11TextureUtils::GetBindFlags(desc.UsageFlags);
-        textureDesc.Format = DX11TextureUtils::GetFormat(desc.Format);
+        textureDesc.Format = DXGIUtils::GetFormat(desc.Format);
         textureDesc.MipLevels = 1;
         textureDesc.MiscFlags = 0;
         textureDesc.CPUAccessFlags = DX11TextureUtils::GetCPUAccessFlags(desc.UsageFlags);

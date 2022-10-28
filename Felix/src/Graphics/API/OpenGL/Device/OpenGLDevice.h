@@ -29,6 +29,9 @@ namespace Felix
 
         virtual void UpdateBufferCore(GraphicsBuffer* pBuffer, const GraphicsBufferUpdateDesc& desc) override;
         virtual void UpdateTextureCore(Texture* pTexture, const TextureUpdateDesc& desc) override;
+
+        virtual void WaitForFinishCore() override final;
+        virtual void SubmitCommandsCore(CommandBuffer* pCmdBuffer) override final;
     private:
 
 #ifdef FELIX_OS_WINDOWS

@@ -24,28 +24,17 @@ namespace Felix
 
     protected:
         void LockCore() override;
-
         void UnlockCore() override;
-
         void BindPipelineCore(Pipeline *pPipeline) override;
-
         void BindFramebufferCore(Framebuffer *pFramebuffer) override;
-
         void SetViewportCore(const ViewportDesc &desc) override;
-
         void SetScissorsCore(const ScissorsDesc &desc) override;
-
         void ClearColorCore(const unsigned char r, const unsigned char g, const unsigned char b,
                             const unsigned char a) override;
-
         void ClearDepthCore(const unsigned char depth) override;
-
         void ClearStencilCore(const int stencil) override;
-
         void SetVertexBufferCore(GraphicsBuffer *pBuffer) override;
-
         void SetIndexBufferCore(GraphicsBuffer *pBuffer) override;
-
         void CommitResourceCore(const unsigned int slotIndex, GraphicsResource *pResource) override;
         void _CommitResourceAsTexture(const unsigned int slotIndex,const ShaderType targetStage,const DX11Resource* pResource);
         void _CommitResourceAsSampler(const unsigned int slotIndex,const ShaderType targetStage,const DX11TextureSampler* pSampler);

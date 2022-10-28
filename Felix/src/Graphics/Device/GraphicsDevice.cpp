@@ -6,6 +6,7 @@
 #include <Window/Window.h>
 #include <Graphics/API/OpenGL/Device/OpenGLDevice.h>
 #include <Graphics/API/Directx11/Device/DX11Device.h>
+#include <Graphics/API/Directx12/Device/DX12Device.h>
 #include <Window/WindowDeviceAdapter.h>
 
 namespace Felix
@@ -28,7 +29,7 @@ namespace Felix
                 pDevice = new DX11Device(desc);
                 break;
             case Felix::GraphicsAPI::Directx12:
-                ASSERT(false,"GraphicsDevice","This api type is not supported at the moment");
+                pDevice = new DX12Device(desc);
                 break;
             case Felix::GraphicsAPI::Vulkan:
                 ASSERT(false,"GraphicsDevice","This api type is not supported at the moment");
@@ -71,6 +72,10 @@ namespace Felix
                 break;
             }
             case Felix::GraphicsAPI::Directx12:
+            {
+                pDevice = new DX12Device(desc, pOwnerWindow);
+                break;
+            }
                 break;
             case Felix::GraphicsAPI::Vulkan:
                 break;
@@ -105,6 +110,19 @@ namespace Felix
         pDevice->CreateSwapchainFramebuffer(swapchainFramebufferDesc);
 
         return pDevice;
+    }
+
+    GraphicsDevice::GraphicsDevice(Window* pOwnerWindow)
+    {
+        _standalone = false;
+        _ownerWindow = pOwnerWindow;
+    }
+
+    GraphicsDevice::GraphicsDevice()
+    {
+        _standalone = true;
+        _ownerWindow = nullptr;
+        _swapchainFramebuffer = nullptr;
     }
 
     void GraphicsDevice::Swapbuffers()
@@ -192,18 +210,8 @@ namespace Felix
     {
         UpdateTextureCore(pTexture, desc);
     }
-    GraphicsDevice::GraphicsDevice(Window* pOwnerWindow)
-    {
-        _standalone = false;
-        _ownerWindow = pOwnerWindow;
-    }
 
-    GraphicsDevice::GraphicsDevice()
-    {
-        _standalone = true;
-        _ownerWindow = nullptr;
-        _swapchainFramebuffer = nullptr;
-    }
+ 
 
     void GraphicsDevice::RegisterDeviceObject(GraphicsDeviceObject* pDeviceObject)
     {
@@ -219,5 +227,13 @@ namespace Felix
         _swapchainFramebuffer = pFramebuffer;
     }
 
+    void GraphicsDevice::WaitForFinish()
+    {
+        WaitForFinishCore();
+    }
+    void GraphicsDevice::SubmitCommands(CommandBuffer* pCmdBuffer)
+    {
+        SubmitCommandsCore(pCmdBuffer);
+    }
   
 }
