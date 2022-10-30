@@ -7,6 +7,7 @@ namespace Felix
 {
 	DX12SwapchainFramebuffer::DX12SwapchainFramebuffer(const SwapchainFramebufferCreateDesc& swapchainDesc, Window* pOwnerWindow,DX12Device* pDevice) : SwapchainFramebuffer(swapchainDesc,pOwnerWindow)
 	{
+
 		/*
 		* Create swapchain
 		*/

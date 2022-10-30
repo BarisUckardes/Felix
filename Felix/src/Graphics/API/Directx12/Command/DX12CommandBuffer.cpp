@@ -7,7 +7,7 @@ namespace Felix
 	{
 		ASSERT(SUCCEEDED(pDevice->GetDXDevice()->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, pDevice->GetDXCmdAllocator(), nullptr, IID_PPV_ARGS(&_cmdList))), "DX12CommandBuffer", "Failed to create a command list");
 
-		ASSERT(SUCCEEDED(_cmdList->Close()), "DX12CommandBuffer", "Failed to close the command list");
+		ASSERT(SUCCEEDED(_cmdList->Close()), "DX12CommandBuffer", "Failed to first close the command list");
 
 		_ownerAllocator = pDevice->GetDXCmdAllocator();
 	}
@@ -25,6 +25,7 @@ namespace Felix
 	}
 	void DX12CommandBuffer::BindPipelineCore(Pipeline* pPipeline)
 	{
+
 	}
 
 	void DX12CommandBuffer::BindFramebufferCore(Framebuffer* pFramebuffer)

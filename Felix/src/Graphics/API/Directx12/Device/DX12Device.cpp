@@ -15,29 +15,7 @@ namespace Felix
 	{
 
 	}
-	std::string GetLastErrorAsString()
-	{
-		//Get the error message ID, if any.
-		DWORD errorMessageID = ::GetLastError();
-		if (errorMessageID == 0) {
-			return std::string(); //No error message has been recorded
-		}
 
-		LPSTR messageBuffer = nullptr;
-
-		//Ask Win32 to give us the string version of that message ID.
-		//The parameters we pass in, tell Win32 to create the buffer that holds the message for us (because we don't yet know how long the message string will be).
-		size_t size = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-			NULL, errorMessageID, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&messageBuffer, 0, NULL);
-
-		//Copy the error message into a std::string.
-		std::string message(messageBuffer, size);
-
-		//Free the Win32's string's buffer.
-		LocalFree(messageBuffer);
-
-		return message;
-	}
 	void DX12Device::_CreateDevice()
 	{
 		/*
@@ -88,6 +66,11 @@ namespace Felix
 		* Create command queue
 		*/
 		D3D12_COMMAND_QUEUE_DESC cmdQueueDesc = {};
+		cmdQueueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
+		cmdQueueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
+		cmdQueueDesc.Priority = D3D12_COMMAND_QUEUE_PRIORITY_NORMAL;
+		cmdQueueDesc.NodeMask = 0;
+
 		ASSERT(SUCCEEDED(_device->CreateCommandQueue(&cmdQueueDesc, IID_PPV_ARGS(_cmdQueue.GetAddressOf()))), "DX12Device", "Failed to create a command queue");
 
 		/*
@@ -98,9 +81,11 @@ namespace Felix
 		/*
 		* Create fence
 		*/
-		_device->CreateFence(1, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&_fence));
+		_device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&_fence));
+		_fenceValue = 0;
 
 		_fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
+		ASSERT(_fenceEvent != nullptr, "DX12Device", "Failed to create the fence event");
 
 	}
 	void DX12Device::SwapbuffersCore()
@@ -156,20 +141,40 @@ namespace Felix
 
 	void DX12Device::WaitForFinishCore()
 	{
-		const unsigned int fenceValue = _fenceValue;
-		_cmdQueue->Signal(_fence.Get(), fenceValue);
+		/*
+		* Wait for the device to finish
+		*/
+		const unsigned int waitValue = _fenceValue + 1;
+		ASSERT(SUCCEEDED(_cmdQueue->Signal(_fence.Get(), waitValue)), "DX12Device", "Command queue signalling failed!");
+		ASSERT(SUCCEEDED(_fence->SetEventOnCompletion(waitValue, _fenceEvent)), "DX12Device", "Set event on completion failed!");
 
-		_fenceValue++;
+		const unsigned short waitResult = WaitForSingleObject(_fenceEvent, INFINITE);
 
-		if (_fence->GetCompletedValue() < _fenceValue)
+		switch (waitResult)
 		{
-			_fence->SetEventOnCompletion(fenceValue, _fenceEvent);
-
-			WaitForSingleObject(_fenceEvent, INFINITE);
+			case WAIT_ABANDONED:
+			{
+				break;
+			}
+			case WAIT_OBJECT_0:
+			{
+				break;
+			}
+			case WAIT_TIMEOUT:
+			{
+				break;
+			}
+			case WAIT_FAILED:
+			{
+				break;
+			}
 		}
+		_fenceValue = waitValue;
 
+		/*
+		* Clear the command allocator for all the child command lists
+		*/
 		ASSERT(SUCCEEDED(_cmdAllocator.Reset()),"DX12Device","Couldnt reset the command allocator");
-
 	}
 	void DX12Device::SubmitCommandsCore(CommandBuffer* pCmdBuffer)
 	{

@@ -342,9 +342,10 @@ int main()
 
 		pCmdBuffer->Unlock();
 		pDevice->SubmitCommands(pCmdBuffer);
+		//pDevice->Swapbuffers();
 		pDevice->WaitForFinish();
 
-		//pDevice->Swapbuffers();
+		
 	}
 
 	return 0;
