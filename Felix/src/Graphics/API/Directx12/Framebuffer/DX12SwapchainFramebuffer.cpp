@@ -54,7 +54,9 @@ namespace Felix
 		ASSERT(SUCCEEDED(pDX12Device->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(&_rtvHeap))), "DX12SwapchainFramebuffer", "Failed to create descriptor heap for the swapchain rtvs");
 
 		const unsigned int rtvDescriptorSize = pDX12Device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+
 		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = _rtvHeap->GetCPUDescriptorHandleForHeapStart();
+
 		for (unsigned char i = 0; i < desc.BufferCount; i++)
 		{
 			DXPTR<ID3D12Resource> rtv;
@@ -72,6 +74,15 @@ namespace Felix
 	DX12SwapchainFramebuffer::~DX12SwapchainFramebuffer()
 	{
 
+	}
+	D3D12_CPU_DESCRIPTOR_HANDLE DX12SwapchainFramebuffer::GetDXCurrentRtvDescriptor() const noexcept
+	{
+		ID3D12Device* pDX12Device = ((DX12Device*)GetOwnerDevice())->GetDXDevice();
+		const unsigned int rtvDescriptorSize = pDX12Device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = _rtvHeap->GetCPUDescriptorHandleForHeapStart();
+		rtvHandle.ptr += rtvDescriptorSize*_swapchain->GetCurrentBackBufferIndex();
+
+		return rtvHandle;
 	}
 	void DX12SwapchainFramebuffer::OnResizeCore(const unsigned int width, const unsigned int Height)
 	{

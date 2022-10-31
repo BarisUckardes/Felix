@@ -297,7 +297,7 @@ int main()
 //	/*
 //	* Create framebuffer
 //	*/
-//	Felix::Framebuffer* pSwapchainFramebuffer = pDevice->GetSwapchainFramebuffer();
+	Felix::Framebuffer* pSwapchainFramebuffer = pDevice->GetSwapchainFramebuffer();
 //
 //	/*
 //	* Create viewports
@@ -326,23 +326,23 @@ int main()
 
 		pCmdBuffer->Lock();
 
-		/*pCmdBuffer->BindPipeline(pPipeline);
+		//pCmdBuffer->BindPipeline(pPipeline);
 		pCmdBuffer->BindFramebuffer(pSwapchainFramebuffer);
-		pCmdBuffer->SetViewport(viewport);
-        pCmdBuffer->SetScissors(scissor);
+		//pCmdBuffer->SetViewport(viewport);
+        //pCmdBuffer->SetScissors(scissor);
 		pCmdBuffer->ClearColor(1, 0, 0, 1);
-		pCmdBuffer->SetVertexBuffer(pVertexBuffer);
-		pCmdBuffer->SetIndexBuffer(pIndexBuffer);
+		//pCmdBuffer->SetVertexBuffer(pVertexBuffer);
+		//pCmdBuffer->SetIndexBuffer(pIndexBuffer);
 
-		pCmdBuffer->CommitResource(0, pTextureResource);
-		pCmdBuffer->CommitResource(1, pSamplerResource);
-        pCmdBuffer->CommitResource(2,pConstantBufferResource);
+		//pCmdBuffer->CommitResource(0, pTextureResource);
+		//pCmdBuffer->CommitResource(1, pSamplerResource);
+        //pCmdBuffer->CommitResource(2,pConstantBufferResource);
 
-		pCmdBuffer->DrawIndexed(6);*/
+		//pCmdBuffer->DrawIndexed(6);
 
 		pCmdBuffer->Unlock();
 		pDevice->SubmitCommands(pCmdBuffer);
-		//pDevice->Swapbuffers();
+		pDevice->Swapbuffers();
 		pDevice->WaitForFinish();
 
 		

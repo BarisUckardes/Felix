@@ -14,6 +14,8 @@ namespace Felix
 
 		FORCEINLINE IDXGISwapChain3* GetDXSwapchain() const noexcept { return _swapchain.Get(); }
 		FORCEINLINE ID3D12DescriptorHeap* GetDXRtvHeap() const noexcept { return _rtvHeap.Get(); }
+		FORCEINLINE D3D12_CPU_DESCRIPTOR_HANDLE GetDXCurrentRtvDescriptor() const noexcept;
+		FORCEINLINE ID3D12Resource* GetDXCurrentRtv() const noexcept { return _rtvs[_swapchain->GetCurrentBackBufferIndex()].Get(); }
 
 	protected:
 		// Inherited via SwapchainFramebuffer

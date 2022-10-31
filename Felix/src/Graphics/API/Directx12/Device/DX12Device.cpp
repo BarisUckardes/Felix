@@ -88,11 +88,13 @@ namespace Felix
 		ASSERT(_fenceEvent != nullptr, "DX12Device", "Failed to create the fence event");
 
 	}
+
 	void DX12Device::SwapbuffersCore()
 	{
 		const DX12SwapchainFramebuffer* pFramebuffer = (const DX12SwapchainFramebuffer*)GetSwapchainFramebuffer();
 
-		ASSERT(pFramebuffer->GetDXSwapchain()->Present(1, 0), "DX12Device", "Failed to swap the swapchain buffers");
+		ASSERT(SUCCEEDED(pFramebuffer->GetDXSwapchain()->Present(1, 0)), "DX12Device", "Failed to swap the swapchain buffers");
+
 	}
 	CommandBuffer* DX12Device::CreateCommandBufferCore(const CommandBufferCreateDesc& desc)
 	{

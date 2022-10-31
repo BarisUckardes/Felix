@@ -22,9 +22,9 @@ namespace Felix
 	}
 	void CommandBuffer::Unlock()
 	{
-		ClearCachedState();
 		UnlockCore();
-
+		ClearCachedState();
+		
 		_locked = false;
 	}
 	void CommandBuffer::BindPipeline(Pipeline* pPipeline)
@@ -38,11 +38,11 @@ namespace Felix
 	void CommandBuffer::BindFramebuffer(Framebuffer* pFramebuffer)
 	{
 		CheckLock();
-		CheckBoundPipeline();
-
-		_boundFramebuffer = pFramebuffer;
+		//CheckBoundPipeline();
 
 		BindFramebufferCore(pFramebuffer);
+
+		_boundFramebuffer = pFramebuffer;
 	}
 	void CommandBuffer::SetViewport(const ViewportDesc& desc)
 	{
