@@ -14,29 +14,32 @@ namespace Felix
 		WindowsWindow* pWin32Window = (WindowsWindow*)pOwnerWindow;
 
 		IDXGIFactory4* pFactory = pDevice->GetDXFactory();
-		ID3D12CommandQueue* pCmdQueue = nullptr;
-		ID3D12Device* pDX12Device = (ID3D12Device*)pDevice->GetDXDevice();
+		ID3D12CommandQueue* pCmdQueue = pDevice->GetDXCmdQueue();
+		ID3D12Device* pDX12Device = pDevice->GetDXDevice();
 
 		DXGI_MODE_DESC bufferDesc = {};
 		bufferDesc.Width = swapchainDesc.Width;
 		bufferDesc.Height = swapchainDesc.Height;
-		bufferDesc.Format = DXGIUtils::GetFormat(swapchainDesc.Format);
+		bufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		bufferDesc.RefreshRate.Numerator = 0;
+		bufferDesc.RefreshRate.Denominator = 1;
+		bufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
+		bufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
 
 		DXGI_SAMPLE_DESC sampleDesc = {};
 		sampleDesc.Count = 1;
 		sampleDesc.Quality = 0;
 
-		const unsigned int bufferCount = swapchainDesc.BufferCount;
 		DXGI_SWAP_CHAIN_DESC desc = {};
-		desc.BufferCount = bufferCount;
+		desc.BufferCount = swapchainDesc.BufferCount;
 		desc.BufferDesc = bufferDesc;
 		desc.Windowed = true;
 		desc.SampleDesc = sampleDesc;
 		desc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 		desc.OutputWindow = pWin32Window->GetWin32WindowHandle();
+		desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 
-
-		ASSERT(SUCCEEDED(pFactory->CreateSwapChain(pDevice->GetDXCmdQueue(), &desc, (IDXGISwapChain**)_swapchain.GetAddressOf())), "DX12SwapchainFramebuffer", "Failed to create swapchain");
+		ASSERT(SUCCEEDED(pFactory->CreateSwapChain(pCmdQueue, &desc, (IDXGISwapChain**)_swapchain.GetAddressOf())), "DX12SwapchainFramebuffer", "Failed to create swapchain");
 
 		/*
 		* Make association

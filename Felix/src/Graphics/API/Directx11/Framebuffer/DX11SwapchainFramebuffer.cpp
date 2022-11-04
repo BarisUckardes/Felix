@@ -19,7 +19,7 @@ Felix::DX11SwapchainFramebuffer::DX11SwapchainFramebuffer(const SwapchainFramebu
     DXGI_MODE_DESC bufferDesc = {0};
     bufferDesc.Width = swapchainDesc.Width;
     bufferDesc.Height = swapchainDesc.Height;
-    bufferDesc.RefreshRate.Numerator = 60; // implement adaptive
+    bufferDesc.RefreshRate.Numerator = 0;
     bufferDesc.RefreshRate.Denominator = 1;
     bufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
     bufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;

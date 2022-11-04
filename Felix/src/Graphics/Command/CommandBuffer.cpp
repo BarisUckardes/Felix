@@ -23,6 +23,7 @@ namespace Felix
 	void CommandBuffer::Unlock()
 	{
 		UnlockCore();
+
 		ClearCachedState();
 		
 		_locked = false;

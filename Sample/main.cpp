@@ -327,10 +327,10 @@ int main()
 		pCmdBuffer->Lock();
 
 		//pCmdBuffer->BindPipeline(pPipeline);
-		pCmdBuffer->BindFramebuffer(pSwapchainFramebuffer);
+		//pCmdBuffer->BindFramebuffer(pSwapchainFramebuffer);
 		//pCmdBuffer->SetViewport(viewport);
         //pCmdBuffer->SetScissors(scissor);
-		pCmdBuffer->ClearColor(1, 0, 0, 1);
+		//pCmdBuffer->ClearColor(1, 0, 0, 1);
 		//pCmdBuffer->SetVertexBuffer(pVertexBuffer);
 		//pCmdBuffer->SetIndexBuffer(pIndexBuffer);
 

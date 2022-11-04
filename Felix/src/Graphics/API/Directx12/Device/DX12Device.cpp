@@ -54,6 +54,7 @@ namespace Felix
 			if (SUCCEEDED(D3D12CreateDevice(pAdapter, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(_device.GetAddressOf()))))
 			{
 				adapterFound = true;
+				LOG("DX12Device", "Adapter found %s", &desc.Description);
 				break;
 			}
 
@@ -61,6 +62,11 @@ namespace Felix
 		}
 
 		ASSERT(adapterFound, "DX12Device", "Failed to create a viable GPU");
+
+		/*
+		* Create command allocator
+		*/
+		ASSERT(SUCCEEDED(_device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(_cmdAllocator.GetAddressOf()))), "DX12Device", "Failed to create a command allocator");
 
 		/*
 		* Create command queue
@@ -74,11 +80,6 @@ namespace Felix
 		ASSERT(SUCCEEDED(_device->CreateCommandQueue(&cmdQueueDesc, IID_PPV_ARGS(_cmdQueue.GetAddressOf()))), "DX12Device", "Failed to create a command queue");
 
 		/*
-		* Create command allocator
-		*/
-		ASSERT(SUCCEEDED(_device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(_cmdAllocator.GetAddressOf()))), "DX12Device", "Failed to create a command allocator");
-
-		/*
 		* Create fence
 		*/
 		_device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&_fence));
@@ -86,7 +87,6 @@ namespace Felix
 
 		_fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
 		ASSERT(_fenceEvent != nullptr, "DX12Device", "Failed to create the fence event");
-
 	}
 
 	void DX12Device::SwapbuffersCore()
@@ -143,40 +143,18 @@ namespace Felix
 
 	void DX12Device::WaitForFinishCore()
 	{
-		/*
-		* Wait for the device to finish
-		*/
-		const unsigned int waitValue = _fenceValue + 1;
-		ASSERT(SUCCEEDED(_cmdQueue->Signal(_fence.Get(), waitValue)), "DX12Device", "Command queue signalling failed!");
-		ASSERT(SUCCEEDED(_fence->SetEventOnCompletion(waitValue, _fenceEvent)), "DX12Device", "Set event on completion failed!");
+		_cmdQueue->Signal(_fence.Get(), _fenceValue + 1);
 
-		const unsigned short waitResult = WaitForSingleObject(_fenceEvent, INFINITE);
+		_fence->SetEventOnCompletion(_fenceValue + 1, _fenceEvent);
 
-		switch (waitResult)
-		{
-			case WAIT_ABANDONED:
-			{
-				break;
-			}
-			case WAIT_OBJECT_0:
-			{
-				break;
-			}
-			case WAIT_TIMEOUT:
-			{
-				break;
-			}
-			case WAIT_FAILED:
-			{
-				break;
-			}
-		}
-		_fenceValue = waitValue;
+		WaitForSingleObject(_fenceEvent, INFINITE);
+
+		_fenceValue++;
 
 		/*
 		* Clear the command allocator for all the child command lists
 		*/
-		ASSERT(SUCCEEDED(_cmdAllocator.Reset()),"DX12Device","Couldnt reset the command allocator");
+		_cmdAllocator.Reset();
 	}
 	void DX12Device::SubmitCommandsCore(CommandBuffer* pCmdBuffer)
 	{

@@ -130,11 +130,37 @@ namespace Felix
 	}
 	void DX12CommandBuffer::ClearDepthCore(const unsigned char depth)
 	{
+		Framebuffer* pFramebuffer = GetBoundFramebuffer();
 
+		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = {};
+		if (pFramebuffer->IsSwapchain())
+		{
+			const DX12SwapchainFramebuffer* pDXFramebuffer = (const DX12SwapchainFramebuffer*)pFramebuffer;
+			rtvHandle = pDXFramebuffer->GetDXCurrentRtvDescriptor();
+		}
+		else
+		{
+
+		}
+
+		_cmdList->ClearDepthStencilView(rtvHandle,D3D12_CLEAR_FLAG_DEPTH,depth,0,0,nullptr);
 	}
 	void DX12CommandBuffer::ClearStencilCore(const int stencil)
 	{
+		Framebuffer* pFramebuffer = GetBoundFramebuffer();
 
+		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = {};
+		if (pFramebuffer->IsSwapchain())
+		{
+			const DX12SwapchainFramebuffer* pDXFramebuffer = (const DX12SwapchainFramebuffer*)pFramebuffer;
+			rtvHandle = pDXFramebuffer->GetDXCurrentRtvDescriptor();
+		}
+		else
+		{
+
+		}
+
+		_cmdList->ClearDepthStencilView(rtvHandle, D3D12_CLEAR_FLAG_STENCIL, 0, stencil, 0, nullptr);
 	}
 	void DX12CommandBuffer::SetVertexBufferCore(GraphicsBuffer* pBuffer)
 	{

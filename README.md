@@ -25,8 +25,5 @@ Supported graphics APIs:
 - [ ] Directx 12
 - [ ] Vulkan
 - [ ] Metal
-- [ ] GNM
-- [ ] GNMX
-
 
 

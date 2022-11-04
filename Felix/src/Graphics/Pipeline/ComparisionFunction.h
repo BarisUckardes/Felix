@@ -6,9 +6,9 @@ namespace Felix
 	/// <summary>
 	/// Supported depth test functions
 	/// </summary>
-	enum class EXPORT DepthTestFunction
+	enum class EXPORT ComparisionFunction
 	{
-		Always0,
+		Always,
 		Never,
 		Less,
 		Equal,
